@@ -27,7 +27,10 @@ body{background:var(--bg);color:var(--ink);font-family:'Noto Sans KR',sans-serif
 .gate-en{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;color:var(--ink3);margin-bottom:28px;letter-spacing:.5px;}
 .gate-notice{background:var(--green-l);border:1px solid rgba(29,92,56,.15);border-radius:12px;padding:16px 18px;margin-bottom:28px;text-align:left;}
 .gate-notice-title{font-size:11.5px;font-weight:700;color:var(--green);letter-spacing:.5px;margin-bottom:8px;font-family:'Outfit',sans-serif;}
-.gate-notice-txt{font-size:12.5px;color:var(--ink2);line-height:1.75;}
+.gate-notice-txt{font-size:12.5px;color:var(--ink2);line-height:1.85;}
+.gate-quote{display:block;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:13.5px;color:var(--green);line-height:1.7;padding:10px 14px;border-left:3px solid var(--green);background:rgba(29,92,56,.04);border-radius:0 6px 6px 0;margin:4px 0;}
+.gate-quote em{display:block;font-size:12px;color:var(--ink3);font-style:normal;margin-top:4px;font-family:'Outfit',sans-serif;letter-spacing:.5px;}
+.gate-warning{display:block;font-size:11px;color:var(--ink3);background:#f7f6f2;border:1px solid var(--line);border-radius:7px;padding:10px 12px;line-height:1.7;margin-top:2px;}
 /* 두 버튼 */
 .gate-btns{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:6px;}
 .gate-role-btn{padding:18px 12px;border-radius:14px;border:2px solid var(--line);background:var(--bg);cursor:pointer;transition:all .2s;text-align:center;font-family:'Noto Sans KR',sans-serif;}
@@ -342,11 +345,16 @@ footer{border-top:1px solid var(--line);padding:32px 28px;max-width:1140px;margi
     <!-- STEP 1: 역할 선택 -->
     <div id="gateStep1">
       <div class="gate-notice">
-        <div class="gate-notice-title">📚 공교육을 위한 플랫폼</div>
+        <div class="gate-notice-title">📚 공교육을 위한 나눔 플랫폼</div>
         <div class="gate-notice-txt">
-          이 자료실은 <strong>비영리 공교육 진학 정보 플랫폼</strong>입니다.<br>
-          수시·정시·면접·창체·상담 자료를 무료로 제공하며,<br>
-          공교육 발전을 위한 나눔을 지향합니다.
+          가르치는 선생님도, 자신의 길을 찾아가는 학생도.<br>
+          모든 배움의 순간을 함께 연결하는 공교육 나눔 플랫폼.<br><br>
+          좋은 자료는 한 사람의 수업을 넘어<br>
+          누군가의 진로와 미래를 바꿉니다.<br><br>
+          <span class="gate-quote">"Education is the most powerful weapon<br>which you can use to change the world."<br><em>— Nelson Mandela</em></span><br><br>
+          교육은 세상을 바꾸는 가장 강력한 힘입니다.<br>
+          그리고 그 시작은, 함께 나누는 한 개의 수업 자료일지도 모릅니다.<br><br>
+          <span class="gate-warning">⚠️ 본 자료실의 모든 콘텐츠는 공교육 발전과 교육 나눔을 위해 제공됩니다. 자료의 상업적 이용 및 무단 재배포를 금하며, 교육적 목적 안에서만 활용해주시기 바랍니다.</span>
         </div>
       </div>
       <div class="gate-btns">
