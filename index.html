@@ -19,45 +19,39 @@ html{scroll-behavior:smooth;}
 body{background:var(--bg);color:var(--ink);font-family:'Noto Sans KR',sans-serif;min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
 
 /* ── GATE ── */
-.gate{position:fixed;inset:0;z-index:999;background:linear-gradient(135deg,#0f1a14 0%,#1a2820 50%,#0f1a14 100%);display:flex;align-items:center;justify-content:center;padding:20px;}
-.gate-box{background:var(--white);border-radius:24px;padding:48px 40px;max-width:460px;width:100%;text-align:center;box-shadow:0 40px 120px rgba(0,0,0,.4);}
-.gate-logo{width:68px;height:68px;border-radius:18px;background:#181815;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;box-shadow:0 8px 24px rgba(0,0,0,.2);}
-.gate-logo-txt{font-family:'Great Vibes',cursive;font-size:36px;background:linear-gradient(135deg,#c8e0cc,#fff,#b8d4be);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-.gate-title{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:600;margin-bottom:4px;letter-spacing:-.5px;}
-.gate-en{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;color:var(--ink3);margin-bottom:28px;letter-spacing:.5px;}
-.gate-notice{background:var(--green-l);border:1px solid rgba(29,92,56,.15);border-radius:12px;padding:16px 18px;margin-bottom:28px;text-align:left;}
-.gate-notice-title{font-size:11.5px;font-weight:700;color:var(--green);letter-spacing:.5px;margin-bottom:8px;font-family:'Outfit',sans-serif;}
-.gate-notice-txt{font-size:12.5px;color:var(--ink2);line-height:1.85;}
-.gate-quote{display:block;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:13.5px;color:var(--green);line-height:1.7;padding:10px 14px;border-left:3px solid var(--green);background:rgba(29,92,56,.04);border-radius:0 6px 6px 0;margin:4px 0;}
-.gate-quote em{display:block;font-size:12px;color:var(--ink3);font-style:normal;margin-top:4px;font-family:'Outfit',sans-serif;letter-spacing:.5px;}
-.gate-warning{display:block;font-size:11px;color:var(--ink3);background:#f7f6f2;border:1px solid var(--line);border-radius:7px;padding:10px 12px;line-height:1.7;margin-top:2px;}
-/* 두 버튼 */
-.gate-btns{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:6px;}
-.gate-role-btn{padding:18px 12px;border-radius:14px;border:2px solid var(--line);background:var(--bg);cursor:pointer;transition:all .2s;text-align:center;font-family:'Noto Sans KR',sans-serif;}
-.gate-role-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.1);}
+.gate{position:fixed;inset:0;z-index:999;background:linear-gradient(135deg,#0f1a14 0%,#1a2820 50%,#0f1a14 100%);display:flex;align-items:flex-start;justify-content:center;padding:16px;overflow-y:auto;}
+.gate-box{background:var(--white);border-radius:20px;padding:28px 24px;max-width:460px;width:100%;text-align:center;box-shadow:0 24px 60px rgba(0,0,0,.4);margin:auto;}
+.gate-logo{width:52px;height:52px;border-radius:13px;background:#181815;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;box-shadow:0 4px 14px rgba(0,0,0,.2);}
+.gate-logo-txt{font-family:'Great Vibes',cursive;font-size:28px;background:linear-gradient(135deg,#c8e0cc,#fff,#b8d4be);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.gate-title{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:600;margin-bottom:2px;letter-spacing:-.5px;}
+.gate-en{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:12.5px;color:var(--ink3);margin-bottom:16px;letter-spacing:.5px;}
+.gate-notice{background:var(--green-l);border:1px solid rgba(29,92,56,.15);border-radius:11px;padding:13px 15px;margin-bottom:16px;text-align:left;max-height:35vh;overflow-y:auto;}
+.gate-notice-title{font-size:10.5px;font-weight:700;color:var(--green);letter-spacing:.5px;margin-bottom:7px;font-family:'Outfit',sans-serif;}
+.gate-notice-txt{font-size:11.5px;color:var(--ink2);line-height:1.8;}
+.gate-quote{display:block;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:12.5px;color:var(--green);line-height:1.65;padding:8px 12px;border-left:3px solid var(--green);background:rgba(29,92,56,.05);border-radius:0 6px 6px 0;margin:7px 0;}
+.gate-quote em{display:block;font-size:10.5px;color:var(--ink3);font-style:normal;margin-top:3px;font-family:'Outfit',sans-serif;letter-spacing:.5px;}
+.gate-warning{display:block;font-size:10.5px;color:var(--ink3);background:#f7f6f2;border:1px solid var(--line);border-radius:7px;padding:8px 11px;line-height:1.7;margin-top:7px;}
+.gate-btns{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:6px;}
+.gate-role-btn{padding:14px 10px;border-radius:12px;border:2px solid var(--line);background:var(--bg);cursor:pointer;transition:all .2s;text-align:center;font-family:'Noto Sans KR',sans-serif;-webkit-tap-highlight-color:transparent;touch-action:manipulation;}
+.gate-role-btn:hover,.gate-role-btn:active{transform:translateY(-1px);box-shadow:0 6px 16px rgba(0,0,0,.1);}
 .gate-role-btn.teacher{border-color:var(--green);background:var(--green-l);}
-.gate-role-btn.teacher:hover{background:#d8ece0;}
 .gate-role-btn.student{border-color:var(--blue);background:var(--blue-l);}
-.gate-role-btn.student:hover{background:#d4e6f6;}
-.gate-role-icon{font-size:28px;margin-bottom:6px;}
-.gate-role-label{font-size:14px;font-weight:700;color:var(--ink);}
-.gate-role-sub{font-size:11px;color:var(--ink3);margin-top:2px;}
-/* pw step */
+.gate-role-icon{font-size:24px;margin-bottom:4px;}
+.gate-role-label{font-size:13px;font-weight:700;color:var(--ink);}
+.gate-role-sub{font-size:10px;color:var(--ink3);margin-top:2px;}
 .gate-pw-step{display:none;}
 .gate-pw-step.on{display:block;}
-.gate-back{background:none;border:none;color:var(--ink3);font-size:12.5px;cursor:pointer;font-family:'Noto Sans KR',sans-serif;margin-bottom:16px;display:inline-flex;align-items:center;gap:4px;}
+.gate-back{background:none;border:none;color:var(--ink3);font-size:12px;cursor:pointer;font-family:'Noto Sans KR',sans-serif;margin-bottom:12px;display:inline-flex;align-items:center;gap:4px;padding:6px 0;-webkit-tap-highlight-color:transparent;}
 .gate-back:hover{color:var(--ink);}
-.gate-pw-role{font-size:16px;font-weight:700;margin-bottom:14px;}
+.gate-pw-role{font-size:14px;font-weight:700;margin-bottom:10px;}
 .gate-input-wrap{display:flex;gap:8px;margin-bottom:8px;}
-.gate-input{flex:1;padding:12px 14px;border:1.5px solid var(--line);border-radius:10px;font-size:16px;text-align:center;letter-spacing:5px;font-family:'Outfit',sans-serif;font-weight:700;color:var(--ink);background:var(--bg);outline:none;transition:border-color .2s;}
+.gate-input{flex:1;padding:12px 10px;border:1.5px solid var(--line);border-radius:10px;font-size:20px;text-align:center;letter-spacing:6px;font-family:'Outfit',sans-serif;font-weight:700;color:var(--ink);background:var(--bg);outline:none;transition:border-color .2s;min-width:0;}
 .gate-input:focus{border-color:var(--green);background:var(--white);}
-.gate-enter-btn{padding:12px 20px;border-radius:10px;border:none;font-size:14px;font-weight:700;cursor:pointer;font-family:'Noto Sans KR',sans-serif;transition:all .2s;white-space:nowrap;color:#fff;}
+.gate-enter-btn{padding:12px 16px;border-radius:10px;border:none;font-size:13.5px;font-weight:700;cursor:pointer;font-family:'Noto Sans KR',sans-serif;transition:all .2s;white-space:nowrap;color:#fff;flex-shrink:0;-webkit-tap-highlight-color:transparent;touch-action:manipulation;}
 .gate-enter-btn.teacher{background:var(--green);}
-.gate-enter-btn.teacher:hover{background:#164d2e;}
 .gate-enter-btn.student{background:var(--blue);}
-.gate-enter-btn.student:hover{background:#122d52;}
-.gate-err{font-size:12px;color:var(--red);display:none;margin-top:4px;}
-.gate-copy{font-size:10.5px;color:var(--ink3);margin-top:20px;font-family:'Outfit',sans-serif;}
+.gate-err{font-size:12px;color:var(--red);display:none;margin-top:6px;}
+.gate-copy{font-size:10px;color:var(--ink3);margin-top:14px;font-family:'Outfit',sans-serif;}
 
 /* ── NAV ── */
 nav{position:fixed;top:0;left:0;right:0;z-index:100;height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 28px;background:rgba(246,245,241,.94);backdrop-filter:blur(18px);border-bottom:1px solid var(--line);}
@@ -82,7 +76,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:56px;display:flex;ali
 .btn-s:hover{background:var(--green);}
 
 /* ── HERO ── */
-.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 24px 110px;position:relative;overflow:hidden;}
+.hero{min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:72px 24px 80px;position:relative;overflow:hidden;}
 .orb-a{position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(29,92,56,.07) 0%,transparent 65%);top:-150px;left:-180px;animation:fl1 14s ease-in-out infinite;pointer-events:none;}
 .orb-b{position:absolute;width:450px;height:450px;border-radius:50%;background:radial-gradient(circle,rgba(176,138,40,.06) 0%,transparent 65%);bottom:-80px;right:-100px;animation:fl2 17s ease-in-out infinite;pointer-events:none;}
 @keyframes fl1{0%,100%{transform:translate(0,0)}50%{transform:translate(24px,-16px)}}
@@ -99,29 +93,26 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:56px;display:flex;ali
 .btn-hp:hover{background:var(--green);transform:translateY(-2px);box-shadow:0 8px 22px rgba(29,92,56,.22);}
 
 /* ── BOARD PILLS in HERO ── */
-.hero-boards-wrap{margin-top:40px;animation:fu .75s .33s ease both;position:relative;z-index:1;max-width:780px;width:100%;}
-.hero-boards-label{font-size:9.5px;color:var(--ink3);letter-spacing:3px;font-family:'Outfit',sans-serif;margin-bottom:14px;font-weight:600;}
-.hero-boards{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;}
+.hero-boards-wrap{margin-top:32px;animation:fu .75s .33s ease both;position:relative;z-index:1;max-width:720px;width:100%;}
+.hero-boards-label{font-size:9px;color:var(--ink3);letter-spacing:3px;font-family:'Outfit',sans-serif;margin-bottom:12px;font-weight:600;}
+.hero-boards{display:flex;gap:7px;justify-content:center;flex-wrap:wrap;padding:0 8px;}
 .hero-pill{
-  padding:8px 18px;border-radius:100px;
-  border:1.5px solid var(--line);background:var(--white);
-  font-size:12.5px;color:var(--ink2);font-weight:600;
+  padding:7px 16px;border-radius:100px;
+  border:1.5px solid transparent;
+  font-size:12px;font-weight:600;
   cursor:pointer;transition:all .2s;
-  display:flex;align-items:center;gap:7px;
-  box-shadow:0 2px 8px rgba(0,0,0,.05);
+  display:flex;align-items:center;gap:6px;
+  box-shadow:0 1px 4px rgba(0,0,0,.08);
+  -webkit-tap-highlight-color:transparent;
+  touch-action:manipulation;
+  white-space:nowrap;
 }
-.hero-pill:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(0,0,0,.1);}
-/* pill colors per board color */
-.hero-pill.c-green{border-color:rgba(29,92,56,.3);background:var(--green-l);color:var(--green);}
-.hero-pill.c-green:hover{background:#d8ece0;border-color:var(--green);}
-.hero-pill.c-blue{border-color:rgba(26,61,110,.3);background:var(--blue-l);color:var(--blue);}
-.hero-pill.c-blue:hover{background:#ccddf0;border-color:var(--blue);}
-.hero-pill.c-purple{border-color:rgba(71,38,128,.3);background:var(--purple-l);color:var(--purple);}
-.hero-pill.c-purple:hover{background:#ddd8f0;border-color:var(--purple);}
-.hero-pill.c-gold{border-color:rgba(176,138,40,.3);background:var(--gold-l);color:var(--gold);}
-.hero-pill.c-gold:hover{background:#eee0c0;border-color:var(--gold);}
-.hero-pill.c-red{border-color:rgba(140,42,42,.3);background:var(--red-l);color:var(--red);}
-.hero-pill.c-red:hover{background:#eed8d8;border-color:var(--red);}
+.hero-pill:hover,.hero-pill:active{transform:translateY(-2px);box-shadow:0 5px 14px rgba(0,0,0,.12);}
+.hero-pill.c-green{background:var(--green-l);color:var(--green);border-color:rgba(29,92,56,.25);}
+.hero-pill.c-blue{background:var(--blue-l);color:var(--blue);border-color:rgba(26,61,110,.25);}
+.hero-pill.c-purple{background:var(--purple-l);color:var(--purple);border-color:rgba(71,38,128,.25);}
+.hero-pill.c-gold{background:var(--gold-l);color:var(--gold);border-color:rgba(176,138,40,.25);}
+.hero-pill.c-red{background:var(--red-l);color:var(--red);border-color:rgba(140,42,42,.25);}
 
 .hero-scroll{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;color:var(--ink3);font-size:9px;letter-spacing:3px;font-family:'Outfit',sans-serif;font-weight:500;animation:fu .75s .5s ease both;z-index:0;}
 .scroll-line{width:1px;height:26px;background:linear-gradient(to bottom,var(--ink3),transparent);animation:sl 2.2s infinite;}
@@ -311,25 +302,58 @@ footer{border-top:1px solid var(--line);padding:32px 28px;max-width:1140px;margi
 .footer-copy strong{color:var(--ink2);font-weight:600;}
 .footer-copy a{color:var(--green);text-decoration:none;}
 
-@media(max-width:900px){
-  nav{padding:0 16px;}
-  main{padding:0 16px 80px;}
-  .metrics{grid-template-columns:1fr 1fr;}
-  footer{padding:24px 16px;}
-  .hero{padding:70px 16px 100px;}
-  .gate-btns{grid-template-columns:1fr 1fr;}
+/* ── RESPONSIVE ── */
+/* 태블릿 가로 & 작은 노트북 */
+@media(max-width:1024px){
+  nav{padding:0 20px;}
+  main{padding:0 20px 80px;}
+  .metrics{grid-template-columns:repeat(2,1fr);}
+  footer{padding:28px 20px;}
+  .hero{padding:68px 20px 80px;}
 }
-@media(max-width:600px){
-  .metrics{grid-template-columns:1fr 1fr;}
-  .metric{padding:14px 12px;}
-  .metric-n{font-size:22px;}
-  .grid{grid-template-columns:1fr;}
-  .hero-h1{font-size:clamp(46px,13vw,76px);}
+/* 태블릿 세로 */
+@media(max-width:768px){
+  nav{padding:0 16px;}
+  main{padding:0 16px 70px;}
+  .hero{padding:64px 16px 74px;}
+  .hero-h1{font-size:clamp(48px,10vw,80px);letter-spacing:-2px;}
+  .hero-en{font-size:clamp(14px,2.5vw,20px);}
+  .hero-desc{font-size:14px;}
+  .hero-boards{gap:6px;}
+  .hero-pill{font-size:11.5px;padding:6px 13px;}
+  .metrics{grid-template-columns:repeat(2,1fr);}
+  footer{padding:24px 16px;}
+  .footer-inner{flex-direction:column;}
   .nav-copy{display:none;}
-  footer .footer-inner{flex-direction:column;}
-  .admin-bar{padding:7px 16px;}
-  .gate-box{padding:32px 24px;}
-  .gate-btns{gap:8px;}
+}
+/* 핸드폰 */
+@media(max-width:480px){
+  nav{padding:0 12px;height:52px;}
+  nav .btn-g:first-child{display:none;}
+  main{padding:0 12px 60px;}
+  .hero{padding:60px 12px 70px;}
+  .hero-h1{font-size:clamp(42px,13vw,64px);letter-spacing:-2px;}
+  .hero-boards-wrap{margin-top:24px;}
+  .hero-pill{font-size:11px;padding:6px 12px;gap:5px;}
+  .metrics{grid-template-columns:1fr 1fr;}
+  .metric{padding:12px 10px;}
+  .metric-n{font-size:20px;}
+  .metric-l{font-size:10px;}
+  .grid{grid-template-columns:1fr;}
+  footer{padding:20px 12px;}
+  .footer-inner{flex-direction:column;}
+  .admin-bar{padding:6px 12px;font-size:11px;}
+  .gate-box{padding:20px 16px;}
+  .gate-role-icon{font-size:22px;}
+  .gate-role-label{font-size:12px;}
+  .board-item{padding:12px 14px;gap:10px;}
+  .board-meta .board-cnt{display:none;}
+}
+/* 초소형 폰 */
+@media(max-width:360px){
+  .hero-h1{font-size:38px;}
+  .gate-btns{grid-template-columns:1fr 1fr;}
+  .gate-role-btn{padding:12px 6px;}
 }
 </style>
 </head>
@@ -358,16 +382,16 @@ footer{border-top:1px solid var(--line);padding:32px 28px;max-width:1140px;margi
         </div>
       </div>
       <div class="gate-btns">
-        <div class="gate-role-btn teacher" onclick="selectRole('teacher')">
+        <button class="gate-role-btn teacher" onclick="selectRole('teacher')" type="button">
           <div class="gate-role-icon">👩‍🏫</div>
           <div class="gate-role-label">선생님</div>
           <div class="gate-role-sub">교사 전용 입장</div>
-        </div>
-        <div class="gate-role-btn student" onclick="selectRole('student')">
+        </button>
+        <button class="gate-role-btn student" onclick="selectRole('student')" type="button">
           <div class="gate-role-icon">🎓</div>
           <div class="gate-role-label">학생 · 학부모</div>
           <div class="gate-role-sub">학생 및 학부모 입장</div>
-        </div>
+        </button>
       </div>
     </div>
 
@@ -637,7 +661,10 @@ function selectRole(r){
   const btn=document.getElementById('gateEnterBtn');
   btn.className='gate-enter-btn '+r;
   document.getElementById('gatePwRole').textContent=r==='teacher'?'👩‍🏫 선생님 비밀번호 입력':'🎓 학생·학부모 비밀번호 입력';
-  document.getElementById('gateInput').focus();
+  // 모바일에서도 포커스
+  setTimeout(()=>{
+    try{document.getElementById('gateInput').focus();}catch(e){}
+  },100);
 }
 function backToStep1(){
   document.getElementById('gateStep1').style.display='';
