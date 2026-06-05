@@ -18,44 +18,68 @@
 html{scroll-behavior:smooth;}
 body{background:var(--bg);color:var(--ink);font-family:'Noto Sans KR',sans-serif;min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
 
-/* ── GATE (입장 비밀번호) ── */
-.gate{position:fixed;inset:0;z-index:999;background:var(--ink);display:flex;align-items:center;justify-content:center;padding:20px;}
-.gate-box{background:var(--white);border-radius:20px;padding:48px 40px;max-width:440px;width:100%;text-align:center;box-shadow:0 40px 100px rgba(0,0,0,.3);}
-.gate-logo{width:64px;height:64px;border-radius:16px;background:#181815;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;}
-.gate-logo-txt{font-family:'Great Vibes',cursive;font-size:34px;background:linear-gradient(135deg,#c8e0cc,#fff,#b8d4be);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-.gate-title{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:600;margin-bottom:6px;letter-spacing:-.5px;}
-.gate-sub{font-size:13px;color:var(--ink3);margin-bottom:28px;line-height:1.7;}
-.gate-notice{background:var(--green-l);border:1px solid rgba(29,92,56,.15);border-radius:12px;padding:16px 18px;margin-bottom:24px;text-align:left;}
-.gate-notice-title{font-size:12px;font-weight:700;color:var(--green);letter-spacing:.5px;margin-bottom:8px;font-family:'Outfit',sans-serif;}
+/* ── GATE ── */
+.gate{position:fixed;inset:0;z-index:999;background:linear-gradient(135deg,#0f1a14 0%,#1a2820 50%,#0f1a14 100%);display:flex;align-items:center;justify-content:center;padding:20px;}
+.gate-box{background:var(--white);border-radius:24px;padding:48px 40px;max-width:460px;width:100%;text-align:center;box-shadow:0 40px 120px rgba(0,0,0,.4);}
+.gate-logo{width:68px;height:68px;border-radius:18px;background:#181815;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;box-shadow:0 8px 24px rgba(0,0,0,.2);}
+.gate-logo-txt{font-family:'Great Vibes',cursive;font-size:36px;background:linear-gradient(135deg,#c8e0cc,#fff,#b8d4be);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.gate-title{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:600;margin-bottom:4px;letter-spacing:-.5px;}
+.gate-en{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;color:var(--ink3);margin-bottom:28px;letter-spacing:.5px;}
+.gate-notice{background:var(--green-l);border:1px solid rgba(29,92,56,.15);border-radius:12px;padding:16px 18px;margin-bottom:28px;text-align:left;}
+.gate-notice-title{font-size:11.5px;font-weight:700;color:var(--green);letter-spacing:.5px;margin-bottom:8px;font-family:'Outfit',sans-serif;}
 .gate-notice-txt{font-size:12.5px;color:var(--ink2);line-height:1.75;}
-.gate-input-wrap{display:flex;gap:8px;margin-bottom:10px;}
-.gate-input{flex:1;padding:11px 14px;border:1px solid var(--line);border-radius:10px;font-size:15px;text-align:center;letter-spacing:4px;font-family:'Outfit',sans-serif;font-weight:600;color:var(--ink);background:var(--bg);outline:none;transition:border-color .2s;}
+/* 두 버튼 */
+.gate-btns{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:6px;}
+.gate-role-btn{padding:18px 12px;border-radius:14px;border:2px solid var(--line);background:var(--bg);cursor:pointer;transition:all .2s;text-align:center;font-family:'Noto Sans KR',sans-serif;}
+.gate-role-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.1);}
+.gate-role-btn.teacher{border-color:var(--green);background:var(--green-l);}
+.gate-role-btn.teacher:hover{background:#d8ece0;}
+.gate-role-btn.student{border-color:var(--blue);background:var(--blue-l);}
+.gate-role-btn.student:hover{background:#d4e6f6;}
+.gate-role-icon{font-size:28px;margin-bottom:6px;}
+.gate-role-label{font-size:14px;font-weight:700;color:var(--ink);}
+.gate-role-sub{font-size:11px;color:var(--ink3);margin-top:2px;}
+/* pw step */
+.gate-pw-step{display:none;}
+.gate-pw-step.on{display:block;}
+.gate-back{background:none;border:none;color:var(--ink3);font-size:12.5px;cursor:pointer;font-family:'Noto Sans KR',sans-serif;margin-bottom:16px;display:inline-flex;align-items:center;gap:4px;}
+.gate-back:hover{color:var(--ink);}
+.gate-pw-role{font-size:16px;font-weight:700;margin-bottom:14px;}
+.gate-input-wrap{display:flex;gap:8px;margin-bottom:8px;}
+.gate-input{flex:1;padding:12px 14px;border:1.5px solid var(--line);border-radius:10px;font-size:16px;text-align:center;letter-spacing:5px;font-family:'Outfit',sans-serif;font-weight:700;color:var(--ink);background:var(--bg);outline:none;transition:border-color .2s;}
 .gate-input:focus{border-color:var(--green);background:var(--white);}
-.gate-btn{padding:11px 20px;border-radius:10px;background:var(--ink);color:#fff;border:none;font-size:14px;font-weight:700;cursor:pointer;font-family:'Noto Sans KR',sans-serif;transition:all .2s;white-space:nowrap;}
-.gate-btn:hover{background:var(--green);}
+.gate-enter-btn{padding:12px 20px;border-radius:10px;border:none;font-size:14px;font-weight:700;cursor:pointer;font-family:'Noto Sans KR',sans-serif;transition:all .2s;white-space:nowrap;color:#fff;}
+.gate-enter-btn.teacher{background:var(--green);}
+.gate-enter-btn.teacher:hover{background:#164d2e;}
+.gate-enter-btn.student{background:var(--blue);}
+.gate-enter-btn.student:hover{background:#122d52;}
 .gate-err{font-size:12px;color:var(--red);display:none;margin-top:4px;}
-.gate-copy{font-size:11px;color:var(--ink3);margin-top:20px;font-family:'Outfit',sans-serif;}
+.gate-copy{font-size:10.5px;color:var(--ink3);margin-top:20px;font-family:'Outfit',sans-serif;}
 
 /* ── NAV ── */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;height:58px;display:flex;align-items:center;justify-content:space-between;padding:0 32px;background:rgba(246,245,241,.94);backdrop-filter:blur(18px);border-bottom:1px solid var(--line);}
-.nav-left{display:flex;align-items:center;gap:12px;cursor:pointer;}
-.nav-logo{width:40px;height:40px;border-radius:10px;background:#181815;display:flex;align-items:center;justify-content:center;position:relative;flex-shrink:0;overflow:hidden;}
-.nav-logo-txt{font-family:'Great Vibes',cursive;font-size:22px;padding-bottom:2px;background:linear-gradient(135deg,#c8e0cc,#fff,#b8d4be);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;position:relative;z-index:1;}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 28px;background:rgba(246,245,241,.94);backdrop-filter:blur(18px);border-bottom:1px solid var(--line);}
+.nav-left{display:flex;align-items:center;gap:11px;cursor:pointer;}
+.nav-logo{width:38px;height:38px;border-radius:10px;background:#181815;display:flex;align-items:center;justify-content:center;position:relative;flex-shrink:0;overflow:hidden;}
+.nav-logo-txt{font-family:'Great Vibes',cursive;font-size:21px;padding-bottom:2px;background:linear-gradient(135deg,#c8e0cc,#fff,#b8d4be);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;position:relative;z-index:1;}
 .nav-logo-shine{position:absolute;inset:0;background:linear-gradient(135deg,transparent 30%,rgba(255,255,255,.12) 50%,transparent 70%);animation:shine 4s ease-in-out infinite;}
 @keyframes shine{0%,100%{opacity:0;transform:translateX(-100%)}50%{opacity:1;transform:translateX(100%)}}
-.nav-wordmark-ko{font-family:'Outfit',sans-serif;font-size:14px;font-weight:700;color:var(--ink);letter-spacing:-.3px;transition:color .2s;}
+.nav-wordmark-ko{font-family:'Outfit',sans-serif;font-size:13.5px;font-weight:700;color:var(--ink);letter-spacing:-.3px;transition:color .2s;}
 .nav-left:hover .nav-wordmark-ko{color:var(--green);}
-.nav-copy{font-size:9px;color:var(--ink3);letter-spacing:1.5px;font-family:'Outfit',sans-serif;overflow:hidden;width:0;transition:width 1.5s ease;white-space:nowrap;background:linear-gradient(90deg,#9a9a92,#1d5c38,#b08a28,#9a9a92);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-.nav-copy.on{width:220px;animation:shimmer 3s linear infinite;}
+.nav-copy{font-size:8.5px;color:var(--ink3);letter-spacing:1.5px;font-family:'Outfit',sans-serif;overflow:hidden;width:0;transition:width 1.5s ease;white-space:nowrap;background:linear-gradient(90deg,#9a9a92,#1d5c38,#b08a28,#9a9a92);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.nav-copy.on{width:200px;animation:shimmer 3s linear infinite;}
 @keyframes shimmer{0%{background-position:200% center}100%{background-position:-200% center}}
-.nav-right{display:flex;gap:8px;align-items:center;}
-.btn-g{padding:6px 14px;border-radius:8px;border:1px solid var(--line);background:transparent;font-size:12.5px;font-weight:500;color:var(--ink2);cursor:pointer;font-family:'Noto Sans KR',sans-serif;transition:all .17s;}
+/* role indicator */
+.nav-role{display:none;font-size:11px;padding:3px 10px;border-radius:100px;font-weight:600;font-family:'Outfit',sans-serif;}
+.nav-role.teacher{display:inline-block;background:var(--green-l);color:var(--green);}
+.nav-role.student{display:inline-block;background:var(--blue-l);color:var(--blue);}
+.nav-right{display:flex;gap:6px;align-items:center;}
+.btn-g{padding:6px 13px;border-radius:8px;border:1px solid var(--line);background:transparent;font-size:12px;font-weight:500;color:var(--ink2);cursor:pointer;font-family:'Noto Sans KR',sans-serif;transition:all .17s;}
 .btn-g:hover{background:var(--white);border-color:#bbb;color:var(--ink);}
-.btn-s{padding:6px 14px;border-radius:8px;border:none;background:var(--ink);font-size:12.5px;font-weight:600;color:#fff;cursor:pointer;font-family:'Noto Sans KR',sans-serif;transition:all .17s;}
+.btn-s{padding:6px 13px;border-radius:8px;border:none;background:var(--ink);font-size:12px;font-weight:600;color:#fff;cursor:pointer;font-family:'Noto Sans KR',sans-serif;transition:all .17s;}
 .btn-s:hover{background:var(--green);}
 
 /* ── HERO ── */
-.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 24px 100px;position:relative;overflow:hidden;}
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 24px 110px;position:relative;overflow:hidden;}
 .orb-a{position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(29,92,56,.07) 0%,transparent 65%);top:-150px;left:-180px;animation:fl1 14s ease-in-out infinite;pointer-events:none;}
 .orb-b{position:absolute;width:450px;height:450px;border-radius:50%;background:radial-gradient(circle,rgba(176,138,40,.06) 0%,transparent 65%);bottom:-80px;right:-100px;animation:fl2 17s ease-in-out infinite;pointer-events:none;}
 @keyframes fl1{0%,100%{transform:translate(0,0)}50%{transform:translate(24px,-16px)}}
@@ -63,31 +87,47 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:58px;display:flex;ali
 .hero-badge{display:inline-flex;align-items:center;gap:7px;padding:5px 14px;border-radius:100px;border:1px solid rgba(29,92,56,.2);background:rgba(29,92,56,.05);font-size:11.5px;color:var(--green);font-weight:600;margin-bottom:28px;animation:fu .7s ease both;}
 .badge-dot{width:5px;height:5px;border-radius:50%;background:var(--green);animation:bk 2.5s infinite;}
 @keyframes bk{0%,100%{opacity:1}50%{opacity:.3}}
-.hero-h1{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(56px,10vw,120px);line-height:.95;letter-spacing:-3px;color:var(--ink);animation:fu .75s .07s ease both;margin-bottom:6px;}
+.hero-h1{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(56px,10vw,118px);line-height:.95;letter-spacing:-3px;color:var(--ink);animation:fu .75s .07s ease both;margin-bottom:6px;}
 .hero-h1 em{font-style:italic;color:var(--green);}
-.hero-en{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:clamp(16px,2.5vw,26px);color:var(--ink3);animation:fu .75s .14s ease both;margin-bottom:26px;letter-spacing:1px;}
-.hero-desc{font-size:15px;color:var(--ink2);line-height:1.85;max-width:480px;margin:0 auto 40px;animation:fu .75s .2s ease both;}
+.hero-en{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:clamp(15px,2.2vw,24px);color:var(--ink3);animation:fu .75s .14s ease both;margin-bottom:26px;letter-spacing:1px;}
+.hero-desc{font-size:14.5px;color:var(--ink2);line-height:1.85;max-width:460px;margin:0 auto 36px;animation:fu .75s .2s ease both;}
 .hero-cta{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;animation:fu .75s .26s ease both;}
-.btn-hp{padding:12px 30px;border-radius:12px;background:var(--ink);color:#fff;border:none;font-size:14px;font-weight:600;cursor:pointer;font-family:'Noto Sans KR',sans-serif;transition:all .25s;}
-.btn-hp:hover{background:var(--green);transform:translateY(-2px);box-shadow:0 8px 24px rgba(29,92,56,.22);}
-.btn-hg{padding:12px 24px;border-radius:12px;background:transparent;color:var(--ink2);border:1px solid var(--line);font-size:14px;font-weight:500;cursor:pointer;font-family:'Noto Sans KR',sans-serif;transition:all .25s;}
-.btn-hg:hover{background:var(--white);border-color:#bbb;}
+.btn-hp{padding:12px 28px;border-radius:12px;background:var(--ink);color:#fff;border:none;font-size:13.5px;font-weight:600;cursor:pointer;font-family:'Noto Sans KR',sans-serif;transition:all .25s;}
+.btn-hp:hover{background:var(--green);transform:translateY(-2px);box-shadow:0 8px 22px rgba(29,92,56,.22);}
 
-/* Board pills in hero - dynamic */
-.hero-boards-wrap{margin-top:44px;animation:fu .75s .33s ease both;position:relative;z-index:1;}
-.hero-boards-label{font-size:10px;color:var(--ink3);letter-spacing:2px;font-family:'Outfit',sans-serif;margin-bottom:10px;}
-.hero-boards{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;max-width:700px;}
-.hero-pill{padding:7px 16px;border-radius:100px;background:var(--white);border:1px solid var(--line);font-size:12.5px;color:var(--ink2);font-weight:500;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:6px;}
-.hero-pill:hover{border-color:var(--green);color:var(--green);background:var(--green-l);}
+/* ── BOARD PILLS in HERO ── */
+.hero-boards-wrap{margin-top:40px;animation:fu .75s .33s ease both;position:relative;z-index:1;max-width:780px;width:100%;}
+.hero-boards-label{font-size:9.5px;color:var(--ink3);letter-spacing:3px;font-family:'Outfit',sans-serif;margin-bottom:14px;font-weight:600;}
+.hero-boards{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;}
+.hero-pill{
+  padding:8px 18px;border-radius:100px;
+  border:1.5px solid var(--line);background:var(--white);
+  font-size:12.5px;color:var(--ink2);font-weight:600;
+  cursor:pointer;transition:all .2s;
+  display:flex;align-items:center;gap:7px;
+  box-shadow:0 2px 8px rgba(0,0,0,.05);
+}
+.hero-pill:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(0,0,0,.1);}
+/* pill colors per board color */
+.hero-pill.c-green{border-color:rgba(29,92,56,.3);background:var(--green-l);color:var(--green);}
+.hero-pill.c-green:hover{background:#d8ece0;border-color:var(--green);}
+.hero-pill.c-blue{border-color:rgba(26,61,110,.3);background:var(--blue-l);color:var(--blue);}
+.hero-pill.c-blue:hover{background:#ccddf0;border-color:var(--blue);}
+.hero-pill.c-purple{border-color:rgba(71,38,128,.3);background:var(--purple-l);color:var(--purple);}
+.hero-pill.c-purple:hover{background:#ddd8f0;border-color:var(--purple);}
+.hero-pill.c-gold{border-color:rgba(176,138,40,.3);background:var(--gold-l);color:var(--gold);}
+.hero-pill.c-gold:hover{background:#eee0c0;border-color:var(--gold);}
+.hero-pill.c-red{border-color:rgba(140,42,42,.3);background:var(--red-l);color:var(--red);}
+.hero-pill.c-red:hover{background:#eed8d8;border-color:var(--red);}
 
-.hero-scroll{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;color:var(--ink3);font-size:9px;letter-spacing:3px;font-family:'Outfit',sans-serif;font-weight:500;animation:fu .75s .5s ease both;z-index:0;}
-.scroll-line{width:1px;height:28px;background:linear-gradient(to bottom,var(--ink3),transparent);animation:sl 2.2s infinite;}
+.hero-scroll{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;color:var(--ink3);font-size:9px;letter-spacing:3px;font-family:'Outfit',sans-serif;font-weight:500;animation:fu .75s .5s ease both;z-index:0;}
+.scroll-line{width:1px;height:26px;background:linear-gradient(to bottom,var(--ink3),transparent);animation:sl 2.2s infinite;}
 @keyframes sl{0%{opacity:0;transform:scaleY(0);transform-origin:top}50%{opacity:1;transform:scaleY(1);transform-origin:top}100%{opacity:0;transform:scaleY(1);transform-origin:bottom}}
 @keyframes fu{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 
 /* ── MAIN ── */
 main{max-width:1140px;margin:0 auto;padding:0 24px 100px;}
-.metrics{display:grid;grid-template-columns:repeat(4,1fr);background:var(--white);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-bottom:56px;}
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);background:var(--white);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-bottom:52px;}
 .metric{padding:20px 22px;border-right:1px solid var(--line);transition:background .17s;}
 .metric:last-child{border-right:none;}
 .metric:hover{background:#fafaf7;}
@@ -101,24 +141,23 @@ main{max-width:1140px;margin:0 auto;padding:0 24px 100px;}
 .mt-o{background:var(--gold-l);color:var(--gold);}
 
 /* sec header */
-.sec-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid var(--line);}
-.sec-label{font-family:'Outfit',sans-serif;font-size:10px;font-weight:600;color:var(--ink3);letter-spacing:3px;text-transform:uppercase;margin-bottom:4px;}
+.sec-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid var(--line);}
+.sec-label{font-family:'Outfit',sans-serif;font-size:9.5px;font-weight:600;color:var(--ink3);letter-spacing:3px;text-transform:uppercase;margin-bottom:4px;}
 .sec-title{font-family:'Outfit',sans-serif;font-size:22px;font-weight:700;letter-spacing:-.4px;}
-.sec-actions{display:flex;gap:8px;align-items:center;}
 
 /* board list */
-.board-list{display:flex;flex-direction:column;gap:8px;margin-bottom:40px;}
-.board-item{background:var(--white);border:1px solid var(--line);border-radius:var(--r);padding:18px 20px;display:flex;align-items:center;gap:16px;transition:all .2s;cursor:grab;user-select:none;}
-.board-item:hover{border-color:#ccc;box-shadow:0 3px 16px rgba(0,0,0,.06);transform:translateX(2px);}
-.board-item.dragging{opacity:.4;cursor:grabbing;}
+.board-list{display:flex;flex-direction:column;gap:7px;margin-bottom:40px;}
+.board-item{background:var(--white);border:1px solid var(--line);border-radius:var(--r);padding:16px 18px;display:flex;align-items:center;gap:14px;transition:all .2s;cursor:grab;user-select:none;}
+.board-item:hover{border-color:#ccc;box-shadow:0 3px 14px rgba(0,0,0,.06);transform:translateX(2px);}
+.board-item.dragging{opacity:.35;cursor:grabbing;}
 .board-item.drag-over{border-color:var(--green);background:var(--green-l);}
-.board-icon{width:38px;height:38px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0;}
+.board-icon{width:36px;height:36px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;}
 .board-info{flex:1;min-width:0;}
 .board-name{font-size:13.5px;font-weight:700;margin-bottom:2px;display:flex;align-items:center;gap:6px;flex-wrap:wrap;}
 .board-desc{font-size:11.5px;color:var(--ink3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.board-meta{display:flex;align-items:center;gap:8px;flex-shrink:0;}
-.board-cnt{font-family:'Outfit',sans-serif;font-size:11.5px;color:var(--ink3);}
-.board-go{width:26px;height:26px;border-radius:7px;background:var(--bg);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--ink3);transition:all .18s;cursor:pointer;}
+.board-meta{display:flex;align-items:center;gap:7px;flex-shrink:0;}
+.board-cnt{font-family:'Outfit',sans-serif;font-size:11px;color:var(--ink3);}
+.board-go{width:26px;height:26px;border-radius:7px;background:var(--bg);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--ink3);transition:all .18s;}
 .board-item:hover .board-go{background:var(--ink);border-color:var(--ink);color:#fff;}
 .vis-badge{font-size:9px;padding:2px 6px;border-radius:4px;font-family:'Outfit',sans-serif;font-weight:700;}
 .vis-pub{background:#e9f1ec;color:var(--green);}
@@ -127,55 +166,57 @@ main{max-width:1140px;margin:0 auto;padding:0 24px 100px;}
 .btn-edit{background:#f0f4ff;border-color:#c0d0f0;color:var(--blue);}
 .btn-del{background:#fef2f2;border-color:#fecaca;color:var(--red);}
 
-/* resource view */
-.res-topbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid var(--line);gap:12px;flex-wrap:wrap;}
-.back-btn{display:inline-flex;align-items:center;gap:5px;font-size:12.5px;color:var(--ink3);cursor:pointer;background:none;border:none;font-family:'Noto Sans KR',sans-serif;transition:color .15s;padding:0;}
+/* resource topbar */
+.res-topbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid var(--line);gap:10px;flex-wrap:wrap;}
+.back-btn{display:inline-flex;align-items:center;gap:5px;font-size:12px;color:var(--ink3);cursor:pointer;background:none;border:none;font-family:'Noto Sans KR',sans-serif;transition:color .15s;padding:0;}
 .back-btn:hover{color:var(--ink);}
-.res-title{font-family:'Outfit',sans-serif;font-size:20px;font-weight:700;letter-spacing:-.3px;}
+.res-title{font-family:'Outfit',sans-serif;font-size:19px;font-weight:700;letter-spacing:-.3px;}
+.view-toggle{display:flex;gap:3px;background:var(--bg);border:1px solid var(--line);border-radius:7px;padding:3px;}
+.vt-btn{padding:4px 9px;border-radius:5px;border:none;background:transparent;color:var(--ink3);cursor:pointer;font-size:13px;transition:all .15s;}
+.vt-btn.on{background:var(--white);color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.08);}
 
-/* view toggle */
-.view-toggle{display:flex;gap:4px;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:3px;}
-.vt-btn{padding:5px 10px;border-radius:6px;border:none;background:transparent;color:var(--ink3);cursor:pointer;font-size:13px;transition:all .15s;}
-.vt-btn.on{background:var(--white);color:var(--ink);box-shadow:0 1px 4px rgba(0,0,0,.08);}
-
-/* grid */
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:12px;}
-.card{background:var(--white);border:1px solid var(--line);border-radius:var(--r);padding:22px;cursor:grab;transition:all .25s cubic-bezier(.23,1,.32,1);text-decoration:none;color:inherit;display:flex;flex-direction:column;animation:ci .4s ease both;position:relative;overflow:hidden;user-select:none;}
+/* CARD grid */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:11px;}
+.card{background:var(--white);border:1px solid var(--line);border-radius:var(--r);padding:20px;cursor:pointer;transition:all .22s cubic-bezier(.23,1,.32,1);color:inherit;display:flex;flex-direction:column;animation:ci .4s ease both;position:relative;overflow:hidden;user-select:none;}
 .card::after{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;opacity:0;transition:opacity .2s;}
-.card:hover{transform:translateY(-3px);box-shadow:0 8px 32px rgba(0,0,0,.08);border-color:#d4d3cb;}
+.card:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,0,0,.08);border-color:#d4d3cb;}
 .card:hover::after{opacity:1;}
-.card.dragging{opacity:.4;cursor:grabbing;}
+.card.dragging{opacity:.35;}
 .card.drag-over{border-color:var(--green);background:var(--green-l);}
 @keyframes ci{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 
-/* list view */
-.list-view .card{flex-direction:row;align-items:center;gap:16px;padding:14px 18px;}
-.list-view .card::after{width:100%;height:2px;top:auto;bottom:0;left:0;}
-.list-view .card-body{flex:1;min-width:0;}
-.list-view .card-chip{margin-bottom:4px;}
-.list-view .card-title{font-size:13.5px;margin-bottom:2px;}
-.list-view .card-desc{font-size:11.5px;margin-bottom:0;display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden;}
+/* LIST view — compact rows */
+.list-view{display:flex;flex-direction:column;gap:4px;}
+.list-view .card{flex-direction:row;align-items:center;gap:12px;padding:10px 14px;border-radius:9px;}
+.list-view .card::after{width:100%;height:2px;top:auto;bottom:0;left:0;right:0;}
+.list-view .card-main{flex:1;min-width:0;display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+.list-view .card-chip{margin-bottom:0;flex-shrink:0;}
+.list-view .card-title{font-size:13px;margin-bottom:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:300px;}
+.list-view .card-desc{display:none;}
 .list-view .card-usage{display:none;}
-.list-view .card-tags{margin-bottom:0;}
-.list-view .card-foot{flex-direction:column;align-items:flex-end;gap:4px;flex-shrink:0;}
+.list-view .card-tags{margin-bottom:0;flex-shrink:0;}
+.list-view .card-foot{flex-shrink:0;flex-direction:column;align-items:flex-end;gap:3px;}
+.list-view .card-views{font-size:10px;}
+.list-view .file-badge{margin-bottom:0;}
+.list-view .card-admin-btns{position:static;display:flex;gap:4px;flex-shrink:0;}
 
-.card-chip{display:inline-flex;align-items:center;padding:2px 8px;border-radius:4px;font-size:9px;font-weight:700;letter-spacing:.5px;font-family:'Outfit',sans-serif;width:fit-content;margin-bottom:10px;}
-.card-title{font-size:14px;font-weight:700;line-height:1.4;margin-bottom:7px;letter-spacing:-.2px;}
-.card-desc{font-size:11.5px;color:var(--ink2);line-height:1.6;margin-bottom:10px;}
-.card-usage{background:#fafaf7;border-radius:7px;padding:9px 11px;margin-bottom:12px;border-left:2.5px solid var(--gold);}
+.card-chip{display:inline-flex;align-items:center;padding:2px 7px;border-radius:4px;font-size:9px;font-weight:700;letter-spacing:.5px;font-family:'Outfit',sans-serif;width:fit-content;margin-bottom:9px;}
+.card-title{font-size:13.5px;font-weight:700;line-height:1.4;margin-bottom:6px;letter-spacing:-.2px;}
+.card-desc{font-size:11px;color:var(--ink2);line-height:1.6;margin-bottom:9px;}
+.card-usage{background:#fafaf7;border-radius:7px;padding:8px 10px;margin-bottom:10px;border-left:2.5px solid var(--gold);}
 .card-usage-lbl{font-size:8.5px;font-weight:700;color:var(--gold);letter-spacing:1.5px;font-family:'Outfit',sans-serif;margin-bottom:2px;}
-.card-usage-txt{font-size:11px;color:var(--ink2);line-height:1.6;}
-.card-tags{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:10px;}
-.tag-badge{font-size:10px;padding:2px 8px;border-radius:100px;font-weight:600;font-family:'Outfit',sans-serif;}
+.card-usage-txt{font-size:11px;color:var(--ink2);line-height:1.55;}
+.card-tags{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:9px;}
+.tag-badge{font-size:9.5px;padding:2px 7px;border-radius:100px;font-weight:600;font-family:'Outfit',sans-serif;}
 .tag-student{background:#e3ecf6;color:var(--blue);}
 .tag-parent{background:#f4edda;color:var(--gold);}
 .tag-teacher{background:#e9f1ec;color:var(--green);}
 .card-foot{margin-top:auto;display:flex;align-items:center;justify-content:space-between;}
 .card-views{font-size:10.5px;color:var(--ink3);font-family:'Outfit',sans-serif;}
-.card-go{width:24px;height:24px;border-radius:6px;background:var(--bg);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--ink3);transition:all .2s;flex-shrink:0;}
+.card-go{width:22px;height:22px;border-radius:6px;background:var(--bg);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--ink3);transition:all .2s;flex-shrink:0;}
 .card:hover .card-go{background:var(--ink);border-color:var(--ink);color:#fff;}
-.file-badge{display:inline-flex;align-items:center;gap:3px;font-size:9.5px;padding:2px 6px;border-radius:4px;background:#f0f0ec;color:var(--ink3);font-family:'Outfit',sans-serif;font-weight:600;margin-bottom:7px;}
-.card-admin-btns{position:absolute;top:12px;right:12px;display:flex;gap:4px;}
+.file-badge{display:inline-flex;align-items:center;gap:3px;font-size:9px;padding:2px 6px;border-radius:4px;background:#f0f0ec;color:var(--ink3);font-family:'Outfit',sans-serif;font-weight:600;margin-bottom:7px;}
+.card-admin-btns{position:absolute;top:10px;right:10px;display:flex;gap:3px;}
 
 .bc-green::after{background:var(--green);}
 .bc-blue::after{background:var(--blue);}
@@ -188,19 +229,19 @@ main{max-width:1140px;margin:0 auto;padding:0 24px 100px;}
 .chip-gold{background:var(--gold-l);color:var(--gold);}
 .chip-red{background:var(--red-l);color:var(--red);}
 
-.empty{grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--ink3);}
+.empty{text-align:center;padding:60px 20px;color:var(--ink3);}
 .empty-icon{font-size:32px;margin-bottom:10px;}
-.loading{text-align:center;padding:50px 20px;color:var(--ink3);grid-column:1/-1;}
-.spinner{width:28px;height:28px;border:2.5px solid var(--line);border-top-color:var(--green);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 12px;}
+.loading{text-align:center;padding:50px 20px;color:var(--ink3);}
+.spinner{width:26px;height:26px;border:2.5px solid var(--line);border-top-color:var(--green);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 12px;}
 @keyframes spin{to{transform:rotate(360deg)}}
 
 /* admin */
-.admin-bar{background:linear-gradient(90deg,#fffbeb,#fff8f0);border-bottom:1px solid #ecd9a4;padding:8px 32px;display:none;align-items:center;justify-content:space-between;font-size:12.5px;color:#8a6010;font-weight:600;}
+.admin-bar{background:linear-gradient(90deg,#fffbeb,#fff8f0);border-bottom:1px solid #ecd9a4;padding:8px 28px;display:none;align-items:center;justify-content:space-between;font-size:12px;color:#8a6010;font-weight:600;}
 .admin-bar.on{display:flex;}
-.btn-logout{padding:4px 11px;border-radius:6px;background:rgba(176,138,40,.12);border:1px solid rgba(176,138,40,.3);color:#8a6010;font-size:11.5px;cursor:pointer;font-family:'Noto Sans KR',sans-serif;font-weight:600;}
+.btn-logout{padding:4px 11px;border-radius:6px;background:rgba(176,138,40,.12);border:1px solid rgba(176,138,40,.3);color:#8a6010;font-size:11px;cursor:pointer;font-family:'Noto Sans KR',sans-serif;font-weight:600;}
 #addBoardWrap{display:none;}
 #addResWrap{display:none;}
-.btn-add{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:9px;background:var(--ink);border:none;color:#fff;font-size:12.5px;font-weight:600;cursor:pointer;font-family:'Noto Sans KR',sans-serif;transition:all .2s;}
+.btn-add{display:inline-flex;align-items:center;gap:6px;padding:7px 16px;border-radius:9px;background:var(--ink);border:none;color:#fff;font-size:12.5px;font-weight:600;cursor:pointer;font-family:'Noto Sans KR',sans-serif;transition:all .2s;}
 .btn-add:hover{background:var(--green);}
 .btn-add-sm{display:inline-flex;align-items:center;gap:5px;padding:6px 12px;border-radius:8px;background:transparent;border:1px solid var(--line);color:var(--ink2);font-size:11.5px;font-weight:600;cursor:pointer;font-family:'Noto Sans KR',sans-serif;transition:all .2s;}
 .btn-add-sm:hover{background:var(--white);border-color:#aaa;}
@@ -210,8 +251,8 @@ main{max-width:1140px;margin:0 auto;padding:0 24px 100px;}
 .view-res{display:none;}
 .view-res.on{display:block;}
 
-/* HTML preview modal */
-.html-preview{position:fixed;inset:0;z-index:300;background:rgba(0,0,0,.7);display:none;flex-direction:column;}
+/* html preview */
+.html-preview{position:fixed;inset:0;z-index:300;background:rgba(0,0,0,.75);display:none;flex-direction:column;}
 .html-preview.on{display:flex;}
 .preview-bar{background:var(--ink);padding:10px 16px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;}
 .preview-title{color:#fff;font-size:13px;font-weight:600;}
@@ -221,111 +262,125 @@ main{max-width:1140px;margin:0 auto;padding:0 24px 100px;}
 /* MODAL */
 .overlay{position:fixed;inset:0;z-index:200;background:rgba(24,24,21,.52);backdrop-filter:blur(7px);display:none;align-items:center;justify-content:center;padding:20px;}
 .overlay.on{display:flex;}
-.modal{background:var(--white);border-radius:16px;width:100%;max-width:500px;max-height:92vh;overflow-y:auto;padding:30px;animation:mIn .27s cubic-bezier(.23,1,.32,1);position:relative;border:1px solid var(--line);box-shadow:0 24px 70px rgba(0,0,0,.11);}
+.modal{background:var(--white);border-radius:16px;width:100%;max-width:500px;max-height:92vh;overflow-y:auto;padding:28px;animation:mIn .27s cubic-bezier(.23,1,.32,1);position:relative;border:1px solid var(--line);box-shadow:0 24px 70px rgba(0,0,0,.11);}
 @keyframes mIn{from{opacity:0;transform:scale(.97) translateY(12px)}to{opacity:1;transform:scale(1) translateY(0)}}
 .modal-x{position:absolute;top:14px;right:14px;width:26px;height:26px;border-radius:6px;background:var(--bg);border:1px solid var(--line);cursor:pointer;font-size:13px;color:var(--ink2);display:flex;align-items:center;justify-content:center;}
 .modal-x:hover{background:var(--line);}
 .modal-title{font-size:17px;font-weight:700;margin-bottom:3px;letter-spacing:-.3px;}
-.modal-sub{font-size:12px;color:var(--ink3);margin-bottom:22px;}
-.fgrp{margin-bottom:13px;}
+.modal-sub{font-size:12px;color:var(--ink3);margin-bottom:20px;}
+.fgrp{margin-bottom:12px;}
 .flbl{display:block;font-size:9.5px;font-weight:700;color:var(--ink3);margin-bottom:5px;letter-spacing:1.8px;font-family:'Outfit',sans-serif;}
 .finp,.fsel,.ftxt{width:100%;padding:9px 12px;border:1px solid var(--line);border-radius:8px;font-size:13px;color:var(--ink);font-family:'Noto Sans KR',sans-serif;background:var(--bg);outline:none;transition:border-color .17s;resize:vertical;}
 .finp:focus,.fsel:focus,.ftxt:focus{border-color:var(--green);background:var(--white);box-shadow:0 0 0 3px rgba(29,92,56,.06);}
-.ftxt{min-height:60px;}
+.ftxt{min-height:58px;}
 .btn-ok{width:100%;padding:11px;border-radius:9px;border:none;background:var(--ink);color:#fff;font-size:13.5px;font-weight:700;cursor:pointer;font-family:'Noto Sans KR',sans-serif;margin-top:4px;transition:all .2s;}
 .btn-ok:hover{background:var(--green);}
-.toggle-row{display:flex;align-items:center;justify-content:space-between;padding:10px 12px;background:var(--bg);border:1px solid var(--line);border-radius:8px;margin-bottom:13px;}
+.toggle-row{display:flex;align-items:center;justify-content:space-between;padding:10px 12px;background:var(--bg);border:1px solid var(--line);border-radius:8px;margin-bottom:12px;}
 .toggle-lbl{font-size:12.5px;font-weight:600;color:var(--ink2);}
-.toggle-lbl small{display:block;font-size:10.5px;color:var(--ink3);font-weight:400;margin-top:1px;}
+.toggle-lbl small{display:block;font-size:10px;color:var(--ink3);font-weight:400;margin-top:1px;}
 .switch{position:relative;width:40px;height:22px;flex-shrink:0;}
 .switch input{opacity:0;width:0;height:0;}
 .slider{position:absolute;inset:0;background:#ddd;border-radius:100px;cursor:pointer;transition:.3s;}
 .slider::before{content:'';position:absolute;width:16px;height:16px;border-radius:50%;background:#fff;left:3px;top:3px;transition:.3s;box-shadow:0 1px 3px rgba(0,0,0,.15);}
 .switch input:checked+.slider{background:var(--green);}
 .switch input:checked+.slider::before{transform:translateX(18px);}
-
-/* tag selector */
-.tag-selector{display:flex;gap:8px;flex-wrap:wrap;}
-.tag-opt{padding:6px 14px;border-radius:100px;border:1.5px solid var(--line);background:var(--bg);font-size:12px;font-weight:600;cursor:pointer;transition:all .18s;font-family:'Noto Sans KR',sans-serif;}
-.tag-opt:hover{border-color:#aaa;}
+.tag-selector{display:flex;gap:7px;flex-wrap:wrap;}
+.tag-opt{padding:5px 13px;border-radius:100px;border:1.5px solid var(--line);background:var(--bg);font-size:12px;font-weight:600;cursor:pointer;transition:all .18s;font-family:'Noto Sans KR',sans-serif;}
 .tag-opt.sel-student{background:var(--blue-l);border-color:var(--blue);color:var(--blue);}
 .tag-opt.sel-parent{background:var(--gold-l);border-color:var(--gold);color:var(--gold);}
 .tag-opt.sel-teacher{background:var(--green-l);border-color:var(--green);color:var(--green);}
-
-/* upload */
-.upload-area{border:2px dashed var(--line);border-radius:9px;padding:18px;text-align:center;cursor:pointer;transition:all .18s;background:var(--bg);}
+.upload-area{border:2px dashed var(--line);border-radius:9px;padding:16px;text-align:center;cursor:pointer;transition:all .18s;background:var(--bg);}
 .upload-area:hover,.upload-area.drag{border-color:var(--green);background:var(--green-l);}
-.upload-fn{font-size:11.5px;color:var(--green);font-weight:600;margin-top:5px;}
-
-/* login modal */
-.login-modal{background:var(--white);border:1px solid var(--line);border-radius:16px;width:100%;max-width:340px;padding:36px 30px;box-shadow:0 24px 70px rgba(0,0,0,.11);animation:mIn .27s cubic-bezier(.23,1,.32,1);position:relative;}
+.upload-fn{font-size:11px;color:var(--green);font-weight:600;margin-top:5px;}
+.login-modal{background:var(--white);border:1px solid var(--line);border-radius:16px;width:100%;max-width:340px;padding:34px 28px;box-shadow:0 24px 70px rgba(0,0,0,.11);animation:mIn .27s cubic-bezier(.23,1,.32,1);position:relative;}
 
 /* TOAST */
-.toast{position:fixed;bottom:22px;right:22px;background:var(--ink);color:#fff;border-radius:11px;padding:11px 18px;font-size:12.5px;font-weight:500;z-index:400;display:none;align-items:center;gap:7px;box-shadow:0 8px 30px rgba(0,0,0,.18);}
+.toast{position:fixed;bottom:20px;right:20px;background:var(--ink);color:#fff;border-radius:10px;padding:10px 16px;font-size:12.5px;font-weight:500;z-index:400;display:none;align-items:center;gap:7px;box-shadow:0 8px 28px rgba(0,0,0,.18);}
 .toast.on{display:flex;animation:tIn .22s ease;}
 @keyframes tIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
 
 /* FOOTER */
-footer{border-top:1px solid var(--line);padding:36px 32px;max-width:1140px;margin:0 auto;}
-.footer-inner{display:flex;align-items:flex-start;justify-content:space-between;gap:32px;flex-wrap:wrap;}
+footer{border-top:1px solid var(--line);padding:32px 28px;max-width:1140px;margin:0 auto;}
+.footer-inner{display:flex;align-items:flex-start;justify-content:space-between;gap:28px;flex-wrap:wrap;}
 .footer-desc{font-size:12px;color:var(--ink3);line-height:1.8;margin-top:8px;}
-.footer-sig{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:24px;color:var(--ink2);margin-bottom:6px;}
+.footer-sig{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:22px;color:var(--ink2);margin-bottom:5px;}
 .footer-copy{font-size:10.5px;color:var(--ink3);line-height:2;font-family:'Outfit',sans-serif;}
 .footer-copy strong{color:var(--ink2);font-weight:600;}
 .footer-copy a{color:var(--green);text-decoration:none;}
 
-/* ── RESPONSIVE ── */
 @media(max-width:900px){
   nav{padding:0 16px;}
   main{padding:0 16px 80px;}
   .metrics{grid-template-columns:1fr 1fr;}
-  footer{padding:28px 16px;}
-  .hero{padding:70px 16px 90px;}
+  footer{padding:24px 16px;}
+  .hero{padding:70px 16px 100px;}
+  .gate-btns{grid-template-columns:1fr 1fr;}
 }
 @media(max-width:600px){
   .metrics{grid-template-columns:1fr 1fr;}
-  .metric{padding:16px 14px;}
+  .metric{padding:14px 12px;}
   .metric-n{font-size:22px;}
   .grid{grid-template-columns:1fr;}
-  .hero-h1{font-size:clamp(48px,14vw,80px);}
-  .board-item{padding:14px 16px;gap:12px;}
+  .hero-h1{font-size:clamp(46px,13vw,76px);}
   .nav-copy{display:none;}
   footer .footer-inner{flex-direction:column;}
-  .footer-right{text-align:left !important;}
-  .admin-bar{padding:8px 16px;font-size:11.5px;}
+  .admin-bar{padding:7px 16px;}
+  .gate-box{padding:32px 24px;}
+  .gate-btns{gap:8px;}
 }
 </style>
 </head>
 <body>
 
-<!-- GATE -->
+<!-- ── GATE ── -->
 <div class="gate" id="gate">
   <div class="gate-box">
     <div class="gate-logo"><span class="gate-logo-txt">All</span></div>
     <div class="gate-title">모두의 진학자료실</div>
-    <p class="gate-sub">입장하시려면 비밀번호를 입력해주세요</p>
-    <div class="gate-notice">
-      <div class="gate-notice-title">📚 공교육을 위한 플랫폼</div>
-      <div class="gate-notice-txt">
-        이 자료실은 <strong>강원사대부설고등학교</strong> 교사 박상근이<br>
-        학생·학부모·교사 모두를 위해 운영하는<br>
-        <strong>비영리 공교육 진학 정보 플랫폼</strong>입니다.<br><br>
-        수시·정시·면접·창체·상담 자료를 무료로 제공하며,<br>
-        공교육 발전을 위한 나눔을 지향합니다.
+    <p class="gate-en">The Archive for Every Teacher & Student</p>
+
+    <!-- STEP 1: 역할 선택 -->
+    <div id="gateStep1">
+      <div class="gate-notice">
+        <div class="gate-notice-title">📚 공교육을 위한 플랫폼</div>
+        <div class="gate-notice-txt">
+          이 자료실은 <strong>비영리 공교육 진학 정보 플랫폼</strong>입니다.<br>
+          수시·정시·면접·창체·상담 자료를 무료로 제공하며,<br>
+          공교육 발전을 위한 나눔을 지향합니다.
+        </div>
+      </div>
+      <div class="gate-btns">
+        <div class="gate-role-btn teacher" onclick="selectRole('teacher')">
+          <div class="gate-role-icon">👩‍🏫</div>
+          <div class="gate-role-label">선생님</div>
+          <div class="gate-role-sub">교사 전용 입장</div>
+        </div>
+        <div class="gate-role-btn student" onclick="selectRole('student')">
+          <div class="gate-role-icon">🎓</div>
+          <div class="gate-role-label">학생 · 학부모</div>
+          <div class="gate-role-sub">학생 및 학부모 입장</div>
+        </div>
       </div>
     </div>
-    <div class="gate-input-wrap">
-      <input class="gate-input" type="password" id="gateInput" placeholder="● ● ● ●" maxlength="6" onkeydown="if(event.key==='Enter')checkGate()">
-      <button class="gate-btn" onclick="checkGate()">입장</button>
+
+    <!-- STEP 2: 비밀번호 입력 -->
+    <div class="gate-pw-step" id="gateStep2">
+      <button class="gate-back" onclick="backToStep1()">← 뒤로</button>
+      <div class="gate-pw-role" id="gatePwRole"></div>
+      <div class="gate-input-wrap">
+        <input class="gate-input" type="password" id="gateInput" placeholder="● ● ● ●" maxlength="6" onkeydown="if(event.key==='Enter')checkGate()">
+        <button class="gate-enter-btn" id="gateEnterBtn" onclick="checkGate()">입장</button>
+      </div>
+      <div class="gate-err" id="gateErr">비밀번호가 올바르지 않습니다.</div>
     </div>
-    <div class="gate-err" id="gateErr">비밀번호가 올바르지 않습니다.</div>
-    <div class="gate-copy">Copyright © All Teachers · PSG</div>
+
+    <div class="gate-copy">Copyright © All Teachers</div>
   </div>
 </div>
 
 <!-- ADMIN BAR -->
 <div class="admin-bar" id="adminBar">
-  ⚙️ 관리자 모드 — 박상근 선생님 (PSG)
+  ⚙️ 관리자 모드 — 박상근 선생님
   <button class="btn-logout" onclick="logout()">로그아웃</button>
 </div>
 
@@ -338,8 +393,11 @@ footer{border-top:1px solid var(--line);padding:36px 32px;max-width:1140px;margi
     </div>
     <div>
       <div class="nav-wordmark-ko">모두의 진학자료실</div>
-      <div class="nav-copy" id="navCopy">Copyright@All Teachers · PSG</div>
+      <div class="nav-copy" id="navCopy">Copyright@All Teachers</div>
     </div>
+  </div>
+  <div style="display:flex;align-items:center;gap:8px;">
+    <span class="nav-role" id="navRole"></span>
   </div>
   <div class="nav-right">
     <button class="btn-g" onclick="goHome()">🏠 처음으로</button>
@@ -350,21 +408,17 @@ footer{border-top:1px solid var(--line);padding:36px 32px;max-width:1140px;margi
 
 <!-- HERO -->
 <section class="hero">
-  <div class="orb-a"></div>
-  <div class="orb-b"></div>
+  <div class="orb-a"></div><div class="orb-b"></div>
   <div class="hero-badge"><div class="badge-dot"></div>공교육을 위한 진학 정보 플랫폼</div>
   <h1 class="hero-h1"><em>모두의</em><br>진학자료실</h1>
   <p class="hero-en">The Archive for Every Teacher & Student</p>
   <p class="hero-desc">수시부터 정시, 면접부터 창체 수업까지.<br>진학의 모든 자료를 한 곳에서 찾고 활용하세요.</p>
   <div class="hero-cta">
     <button class="btn-hp" onclick="document.getElementById('boards').scrollIntoView({behavior:'smooth'})">자료실 입장 →</button>
-    <button class="btn-hg" onclick="openLogin()">관리자 로그인</button>
   </div>
   <div class="hero-boards-wrap">
     <div class="hero-boards-label">BOARDS</div>
-    <div class="hero-boards" id="heroBoards">
-      <div style="font-size:12px;color:var(--ink3);">불러오는 중...</div>
-    </div>
+    <div class="hero-boards" id="heroBoards"><div style="font-size:12px;color:var(--ink3);">불러오는 중...</div></div>
   </div>
   <div class="hero-scroll"><span>SCROLL</span><div class="scroll-line"></div></div>
 </section>
@@ -377,36 +431,30 @@ footer{border-top:1px solid var(--line);padding:36px 32px;max-width:1140px;margi
     <div class="metric"><div class="metric-n"><b id="mv4">—</b></div><div class="metric-l">오늘 방문자</div><div class="metric-tag mt-o">실시간</div></div>
   </div>
 
-  <!-- BOARD LIST -->
   <div class="view-boards" id="boardsView">
     <div id="boards" class="sec-header">
       <div><div class="sec-label">Resource Boards</div><div class="sec-title">자료 게시판</div></div>
-      <div class="sec-actions">
-        <div id="addBoardWrap">
-          <button class="btn-add-sm" onclick="openBoardModal(null)">
-            <svg width="10" height="10" viewBox="0 0 10 10"><path d="M5 1v8M1 5h8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-            게시판 추가
-          </button>
-        </div>
+      <div id="addBoardWrap">
+        <button class="btn-add-sm" onclick="openBoardModal(null)">
+          <svg width="10" height="10" viewBox="0 0 10 10"><path d="M5 1v8M1 5h8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          게시판 추가
+        </button>
       </div>
     </div>
-    <div class="board-list" id="boardList">
-      <div class="loading"><div class="spinner"></div>불러오는 중...</div>
-    </div>
+    <div class="board-list" id="boardList"><div class="loading"><div class="spinner"></div>불러오는 중...</div></div>
   </div>
 
-  <!-- RESOURCE VIEW -->
   <div class="view-res" id="resView">
     <div class="res-topbar">
-      <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+      <div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap;">
         <button class="back-btn" onclick="showBoards()">
-          <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M9 2L4 7L9 12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M9 2L4 7L9 12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
           게시판 목록
         </button>
         <span style="color:var(--line);">|</span>
         <button class="back-btn" onclick="goHome()">🏠 처음으로</button>
       </div>
-      <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+      <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
         <div class="res-title" id="resTitle"></div>
         <div class="view-toggle">
           <button class="vt-btn on" id="vt-card" onclick="setView('card')" title="카드형">⊞</button>
@@ -420,23 +468,23 @@ footer{border-top:1px solid var(--line);padding:36px 32px;max-width:1140px;margi
         </div>
       </div>
     </div>
-    <div class="grid" id="resGrid"></div>
+    <div id="resGrid" class="grid"></div>
   </div>
 </main>
 
 <footer>
   <div class="footer-inner">
     <div>
-      <div style="display:flex;align-items:center;gap:10px;">
-        <div class="nav-logo" style="width:32px;height:32px;border-radius:8px;cursor:pointer;" onclick="goHome()">
-          <span class="nav-logo-txt" style="font-size:18px;">All</span>
+      <div style="display:flex;align-items:center;gap:9px;">
+        <div class="nav-logo" style="width:30px;height:30px;border-radius:8px;cursor:pointer;" onclick="goHome()">
+          <span class="nav-logo-txt" style="font-size:17px;">All</span>
           <div class="nav-logo-shine"></div>
         </div>
-        <span style="font-family:'Outfit',sans-serif;font-size:13.5px;font-weight:700;">모두의 진학자료실</span>
+        <span style="font-family:'Outfit',sans-serif;font-size:13px;font-weight:700;">모두의 진학자료실</span>
       </div>
-      <p class="footer-desc">교사와 학생, 학부모 모두가 함께 성장하는 공교육 진학 정보 플랫폼.<br>좋은 자료는 나눌수록 빛납니다.</p>
+      <p class="footer-desc">교사와 학생, 학부모 모두가 함께 성장하는 공교육 진학 정보 플랫폼.</p>
     </div>
-    <div style="text-align:right;" class="footer-right">
+    <div style="text-align:right;">
       <div class="footer-sig">Park Sang-Geun</div>
       <div class="footer-copy">
         강원사대부설고등학교 · 교사 박상근<br>
@@ -451,16 +499,13 @@ footer{border-top:1px solid var(--line);padding:36px 32px;max-width:1140px;margi
 <div class="overlay" id="loginOv">
   <div class="login-modal">
     <button class="modal-x" onclick="closeOv('loginOv')">✕</button>
-    <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px;">
-      <div class="nav-logo" style="width:38px;height:38px;border-radius:10px;flex-shrink:0;">
-        <span class="nav-logo-txt" style="font-size:21px;">All</span>
-        <div class="nav-logo-shine"></div>
-      </div>
-      <div><div style="font-weight:700;font-size:14px;">관리자 로그인</div><div style="font-size:11px;color:var(--ink3);">박상근 선생님 전용 (PSG)</div></div>
+    <div style="display:flex;align-items:center;gap:9px;margin-bottom:18px;">
+      <div class="nav-logo" style="width:36px;height:36px;border-radius:9px;flex-shrink:0;"><span class="nav-logo-txt" style="font-size:20px;">All</span><div class="nav-logo-shine"></div></div>
+      <div><div style="font-weight:700;font-size:13.5px;">관리자 로그인</div><div style="font-size:11px;color:var(--ink3);">박상근 선생님 전용</div></div>
     </div>
     <div class="fgrp"><label class="flbl">PASSWORD</label><input class="finp" type="password" id="pwIn" placeholder="비밀번호 입력" onkeydown="if(event.key==='Enter')doLogin()"></div>
     <button class="btn-ok" onclick="doLogin()">로그인</button>
-    <div id="pwErr" style="color:var(--red);font-size:12px;margin-top:8px;display:none;">비밀번호가 올바르지 않습니다.</div>
+    <div id="pwErr" style="color:var(--red);font-size:12px;margin-top:7px;display:none;">비밀번호가 올바르지 않습니다.</div>
   </div>
 </div>
 
@@ -498,7 +543,7 @@ footer{border-top:1px solid var(--line);padding:36px 32px;max-width:1140px;margi
     <div class="fgrp"><label class="flbl">자료 제목</label><input class="finp" type="text" id="rTitle" placeholder="예: 2027 수시 핵심 정리"></div>
     <div class="fgrp"><label class="flbl">간략 설명</label><textarea class="ftxt" id="rDesc" placeholder="이 자료가 무엇인지 설명해주세요"></textarea></div>
     <div class="fgrp"><label class="flbl">활용 방법</label><textarea class="ftxt" id="rUsage" placeholder="예: 수시 상담 시 배부, 창체 수업 활용 등"></textarea></div>
-    <div class="fgrp"><label class="flbl">대상 태그 (복수 선택 가능)</label>
+    <div class="fgrp"><label class="flbl">대상 태그 (복수 선택)</label>
       <div class="tag-selector">
         <button type="button" class="tag-opt" id="tag-student" onclick="toggleTag('student')">🎓 학생</button>
         <button type="button" class="tag-opt" id="tag-parent" onclick="toggleTag('parent')">👨‍👩‍👧 학부모</button>
@@ -509,7 +554,7 @@ footer{border-top:1px solid var(--line);padding:36px 32px;max-width:1140px;margi
       <select class="fsel" id="rType" onchange="toggleType()">
         <option value="link">링크 (URL)</option>
         <option value="html">HTML 파일 (바로 보기)</option>
-        <option value="file">파일 업로드 (구글드라이브 등)</option>
+        <option value="file">파일 링크 (구글드라이브 등)</option>
       </select>
     </div>
     <div id="linkWrap" class="fgrp"><label class="flbl">URL</label><input class="finp" type="url" id="rUrl" placeholder="https://..."></div>
@@ -519,15 +564,20 @@ footer{border-top:1px solid var(--line);padding:36px 32px;max-width:1140px;margi
            ondragover="event.preventDefault();this.classList.add('drag')"
            ondragleave="this.classList.remove('drag')"
            ondrop="handleHtmlDrop(event)">
-        <div style="font-size:22px;">🌐</div>
-        <div style="font-size:11.5px;color:var(--ink3);margin-top:5px;">HTML 파일 클릭 또는 드래그<br><small>업로드 후 링크처럼 바로 열람 가능</small></div>
+        <div style="font-size:20px;">🌐</div>
+        <div style="font-size:11px;color:var(--ink3);margin-top:4px;">HTML 파일 클릭 또는 드래그</div>
         <div class="upload-fn" id="htmlFn"></div>
       </div>
       <input type="file" id="htmlIn" accept=".html,.htm" style="display:none" onchange="handleHtmlFile(this)">
     </div>
     <div id="fileWrap" class="fgrp" style="display:none;">
-      <label class="flbl">링크 URL (구글드라이브 등)</label>
+      <label class="flbl">파일 링크 URL</label>
       <input class="finp" type="url" id="rFileUrl" placeholder="https://drive.google.com/...">
+    </div>
+    <!-- 게시판 이동 (수정 시) -->
+    <div class="fgrp" id="moveBoardWrap" style="display:none;">
+      <label class="flbl">게시판 이동</label>
+      <select class="fsel" id="rBoardId"></select>
     </div>
     <div class="toggle-row">
       <div class="toggle-lbl">공개 설정<small>비공개 시 관리자만 볼 수 있습니다</small></div>
@@ -553,29 +603,46 @@ const SUPABASE_URL='https://ndwxlfaauqlhxrtqrgtf.supabase.co';
 const SUPABASE_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5kd3hsZmFhdXFsaHhydHFyZ3RmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA2Mzk0MTEsImV4cCI6MjA5NjIxNTQxMX0.hmU6bX6wSKGLKN91jeXMdZQCbatK-TsHXOnrJWm8Qvw';
 const sb=supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
 
-const GATE_PW='0709';
-const ADMIN_PW='psk3412';
+const PW_TEACHER='0709', PW_STUDENT='0427', PW_ADMIN='psk3412';
+let role=''; // 'teacher' | 'student'
 let isAdmin=false;
-let curBoard=null;
-let curBoardObj=null;
-let viewMode='card';
-let selectedTags=[];
-let htmlContent=null;
-let dragSrcIdx=null;
+let curBoard=null, curBoardObj=null, viewMode='card';
+let selectedTags=[], htmlContent=null, dragSrcIdx=null;
+let allBoards=[];
 
-// visit
-let vis=JSON.parse(localStorage.getItem('psg_vis3')||'{"total":0,"today":0,"date":""}');
-(()=>{const td=new Date().toDateString();if(vis.date!==td){vis.today=0;vis.date=td;}vis.total++;vis.today++;localStorage.setItem('psg_vis3',JSON.stringify(vis));})();
+let vis=JSON.parse(localStorage.getItem('psg_vis4')||'{"total":0,"today":0,"date":""}');
+(()=>{const td=new Date().toDateString();if(vis.date!==td){vis.today=0;vis.date=td;}vis.total++;vis.today++;localStorage.setItem('psg_vis4',JSON.stringify(vis));})();
 
-// gate check
-if(localStorage.getItem('psg_gate')==='ok'){
+// ── GATE
+const savedRole=localStorage.getItem('psg_role');
+if(savedRole==='teacher'||savedRole==='student'){
+  role=savedRole;
   document.getElementById('gate').style.display='none';
   init();
 }
+
+let pendingRole='';
+function selectRole(r){
+  pendingRole=r;
+  document.getElementById('gateStep1').style.display='none';
+  document.getElementById('gateStep2').classList.add('on');
+  const btn=document.getElementById('gateEnterBtn');
+  btn.className='gate-enter-btn '+r;
+  document.getElementById('gatePwRole').textContent=r==='teacher'?'👩‍🏫 선생님 비밀번호 입력':'🎓 학생·학부모 비밀번호 입력';
+  document.getElementById('gateInput').focus();
+}
+function backToStep1(){
+  document.getElementById('gateStep1').style.display='';
+  document.getElementById('gateStep2').classList.remove('on');
+  document.getElementById('gateInput').value='';
+  document.getElementById('gateErr').style.display='none';
+}
 function checkGate(){
   const v=document.getElementById('gateInput').value.trim();
-  if(v===GATE_PW){
-    localStorage.setItem('psg_gate','ok');
+  const ok=(pendingRole==='teacher'&&v===PW_TEACHER)||(pendingRole==='student'&&v===PW_STUDENT);
+  if(ok){
+    role=pendingRole;
+    localStorage.setItem('psg_role',role);
     document.getElementById('gate').style.display='none';
     init();
   } else {
@@ -586,6 +653,10 @@ function checkGate(){
 document.getElementById('gateInput').addEventListener('keydown',e=>{if(e.key==='Enter')checkGate();});
 
 function init(){
+  // nav role badge
+  const nr=document.getElementById('navRole');
+  if(role==='teacher'){nr.textContent='👩‍🏫 선생님';nr.className='nav-role teacher';}
+  else{nr.textContent='🎓 학생·학부모';nr.className='nav-role student';}
   setTimeout(()=>document.getElementById('navCopy').classList.add('on'),700);
   renderBoards();
   updateMetrics();
@@ -595,7 +666,6 @@ const colMap={green:'var(--green)',blue:'var(--blue)',purple:'var(--purple)',gol
 const bgMap={green:'var(--green-l)',blue:'var(--blue-l)',purple:'var(--purple-l)',gold:'var(--gold-l)',red:'var(--red-l)'};
 const chipMap={green:'chip-green',blue:'chip-blue',purple:'chip-purple',gold:'chip-gold',red:'chip-red'};
 
-// metrics
 async function updateMetrics(){
   const{data:bds}=await sb.from('boards').select('id');
   const{data:res}=await sb.from('resources').select('views');
@@ -612,7 +682,7 @@ async function renderHeroPills(){
   if(!data||!data.length){el.innerHTML='<div style="font-size:12px;color:var(--ink3);">게시판을 추가해주세요</div>';return;}
   const visible=data.filter(b=>isAdmin||b.is_public);
   el.innerHTML=visible.map(b=>`
-    <div class="hero-pill" onclick="scrollAndOpen(${b.id})">
+    <div class="hero-pill c-${b.color||'green'}" onclick="scrollAndOpen(${b.id})">
       ${b.icon||'📁'} ${b.name}
     </div>`).join('');
 }
@@ -628,18 +698,19 @@ async function renderBoards(){
   let q=sb.from('boards').select('*').order('sort_order').order('created_at');
   if(!isAdmin)q=q.eq('is_public',true);
   const{data,error}=await q;
-  if(error){el.innerHTML='<div class="empty"><div class="empty-icon">⚠️</div><div>불러오기 실패</div></div>';return;}
-  if(!data||!data.length){el.innerHTML='<div class="empty"><div class="empty-icon">📂</div><div style="font-size:13px;">게시판이 없습니다.</div></div>';return;}
-
-  const{data:rc}=await sb.from('resources').select('board_id');
-  const cntMap={};(rc||[]).forEach(r=>{cntMap[r.board_id]=(cntMap[r.board_id]||0)+1;});
-
+  allBoards=data||[];
+  if(error||!data){el.innerHTML='<div class="empty"><div class="empty-icon">⚠️</div><div>불러오기 실패</div></div>';return;}
+  if(!data.length){el.innerHTML='<div class="empty"><div class="empty-icon">📂</div><div style="font-size:13px;">게시판이 없습니다.</div></div>';return;}
+  const{data:rc}=await sb.from('resources').select('board_id,is_public');
+  const cntMap={};
+  (rc||[]).forEach(r=>{
+    if(isAdmin||r.is_public) cntMap[r.board_id]=(cntMap[r.board_id]||0)+1;
+  });
   el.innerHTML=data.map((b,i)=>{
     const col=colMap[b.color]||colMap.green;
     const bg=bgMap[b.color]||bgMap.green;
-    const cnt=isAdmin?cntMap[b.id]||0:(rc||[]).filter(r=>r.board_id===b.id).length;
     return `<div class="board-item" draggable="true"
-      ondragstart="bdragStart(event,${i})" ondragover="bdragOver(event,${i})" ondrop="bdrop(event,${i},${b.id})" ondragleave="bdragLeave(event)"
+      ondragstart="bdragStart(event,${i})" ondragover="bdragOver(event)" ondrop="bdrop(event,${i})" ondragleave="bdragLeave(event)"
       onclick="openBoard(${b.id})" data-id="${b.id}">
       <div class="board-icon" style="background:${bg};color:${col};">${b.icon||'📁'}</div>
       <div class="board-info">
@@ -649,7 +720,7 @@ async function renderBoards(){
         <div class="board-desc">${b.description||''}</div>
       </div>
       <div class="board-meta">
-        <div class="board-cnt">자료 ${cnt}개</div>
+        <div class="board-cnt">자료 ${cntMap[b.id]||0}개</div>
         ${isAdmin?`<div style="display:flex;gap:4px;" onclick="event.stopPropagation()">
           <button class="btn-tiny btn-edit" onclick="openBoardModal(${b.id})">수정</button>
           <button class="btn-tiny btn-del" onclick="delBoard(${b.id})">삭제</button>
@@ -658,40 +729,27 @@ async function renderBoards(){
       </div>
     </div>`;
   }).join('');
-  renderHeroPills();
-  updateMetrics();
+  renderHeroPills();updateMetrics();
 }
 
-// board drag-sort
-let boardData=[];
-async function getBoardData(){
-  const{data}=await sb.from('boards').select('*').order('sort_order').order('created_at');
-  boardData=data||[];
-  return boardData;
-}
+// board drag
 function bdragStart(e,i){e.currentTarget.classList.add('dragging');dragSrcIdx=i;}
-function bdragOver(e,i){e.preventDefault();e.currentTarget.classList.add('drag-over');}
+function bdragOver(e){e.preventDefault();e.currentTarget.classList.add('drag-over');}
 function bdragLeave(e){e.currentTarget.classList.remove('drag-over');}
-async function bdrop(e,i,id){
+async function bdrop(e,i){
   e.preventDefault();e.currentTarget.classList.remove('drag-over');
   if(dragSrcIdx===null||dragSrcIdx===i)return;
-  // update sort_order
   const items=Array.from(document.querySelectorAll('.board-item'));
   const ids=items.map(el=>parseInt(el.dataset.id));
-  // swap
   [ids[dragSrcIdx],ids[i]]=[ids[i],ids[dragSrcIdx]];
-  for(let j=0;j<ids.length;j++){
-    await sb.from('boards').update({sort_order:j}).eq('id',ids[j]);
-  }
-  dragSrcIdx=null;
-  renderBoards();
+  for(let j=0;j<ids.length;j++) await sb.from('boards').update({sort_order:j}).eq('id',ids[j]);
+  dragSrcIdx=null;renderBoards();
 }
 
 function showBoards(){
   document.getElementById('boardsView').classList.remove('off');
   document.getElementById('resView').classList.remove('on');
-  curBoard=null;curBoardObj=null;
-  renderBoards();
+  curBoard=null;curBoardObj=null;renderBoards();
 }
 
 async function openBoard(id){
@@ -709,45 +767,65 @@ async function openBoard(id){
 // resources
 async function renderRes(){
   const grid=document.getElementById('resGrid');
-  grid.className='grid'+(viewMode==='list'?' list-view':'');
-  grid.innerHTML='<div class="loading" style="grid-column:1/-1"><div class="spinner"></div>불러오는 중...</div>';
+  grid.className=viewMode==='list'?'list-view':'grid';
+  grid.innerHTML='<div class="loading"><div class="spinner"></div>불러오는 중...</div>';
   let q=sb.from('resources').select('*').eq('board_id',curBoard).order('sort_order').order('created_at',{ascending:false});
-  if(!isAdmin)q=q.eq('is_public',true);
+  // 역할별 필터
+  if(!isAdmin){
+    q=q.eq('is_public',true);
+  }
   const{data,error}=await q;
-  if(error){grid.innerHTML='<div class="empty" style="grid-column:1/-1"><div class="empty-icon">⚠️</div><div>불러오기 실패</div></div>';return;}
-  if(!data||!data.length){grid.innerHTML='<div class="empty" style="grid-column:1/-1"><div class="empty-icon">📄</div><div style="font-size:13px;">아직 자료가 없습니다.</div></div>';return;}
+  if(error){grid.innerHTML='<div class="empty"><div class="empty-icon">⚠️</div><div>불러오기 실패</div></div>';return;}
 
+  // role 필터 (student: 학생·학부모 태그 or 태그 없는 공개)
+  let filtered=data||[];
+  if(!isAdmin&&role==='student'){
+    filtered=filtered.filter(r=>{
+      const tags=r.tags||[];
+      return tags.length===0||tags.includes('student')||tags.includes('parent');
+    });
+  }
+
+  if(!filtered.length){grid.innerHTML='<div class="empty"><div class="empty-icon">📄</div><div style="font-size:13px;">자료가 없습니다.</div></div>';return;}
   const b=curBoardObj;
   const chip=b?chipMap[b.color]||'chip-green':'chip-green';
   const bc=b?'bc-'+(b.color||'green'):'bc-green';
 
-  grid.innerHTML=data.map((r,i)=>{
-    const tags=(r.tags||[]);
-    const tagHtml=tags.map(t=>{
-      const map={student:'🎓 학생',parent:'👨‍👩‍👧 학부모',teacher:'👩‍🏫 교사'};
-      const cls={student:'tag-student',parent:'tag-parent',teacher:'tag-teacher'};
-      return `<span class="tag-badge ${cls[t]||''}">${map[t]||t}</span>`;
-    }).join('');
+  grid.innerHTML=filtered.map((r,i)=>{
+    const tags=r.tags||[];
+    const tagHtml=tags.map(t=>({student:'<span class="tag-badge tag-student">🎓 학생</span>',parent:'<span class="tag-badge tag-parent">👨‍👩‍👧 학부모</span>',teacher:'<span class="tag-badge tag-teacher">👩‍🏫 교사</span>'}[t]||'')).join('');
     const isHtml=r.type==='html';
-    const href=isHtml?'#':r.url||'#';
-    const target=isHtml?'_self':(r.url&&r.url!=='#'?'_blank':'_self');
-    const clickAct=isHtml?`event.preventDefault();openHtmlPreview(${r.id},'${(r.title||'').replace(/'/g,"\\'")}')`:`hitRes(${r.id})`;
-    return `<div class="card ${bc}" draggable="true"
-      ondragstart="rdragStart(event,${i})" ondragover="rdragOver(event,${i})" ondrop="rdrop(event,${i},${r.id})" ondragleave="rdragLeave(event)"
-      onclick="${clickAct}" style="animation-delay:${i*.04}s;cursor:pointer;" data-rid="${r.id}">
-      ${isAdmin?`<div class="card-admin-btns" onclick="event.stopPropagation()">
-        <button class="btn-tiny btn-edit" onclick="openEditRes(${r.id})">수정</button>
-        <button class="btn-tiny btn-del" onclick="delRes(${r.id})">삭제</button>
-      </div>`:''}
+    const clickAct=isHtml?`openHtmlPreview(${r.id},'${(r.title||'').replace(/'/g,"\\'")}')`:r.type==='file'?`window.open('${r.url||''}','_blank');hitRes(${r.id})`:`hitRes(${r.id})`;
+    const adminBtns=isAdmin?`<div class="card-admin-btns" onclick="event.stopPropagation()">
+      <button class="btn-tiny btn-edit" onclick="openEditRes(${r.id})">수정</button>
+      <button class="btn-tiny btn-del" onclick="delRes(${r.id})">삭제</button>
+    </div>`:'';
+    const visBadge=isAdmin?`<span class="vis-badge ${r.is_public?'vis-pub':'vis-prv'}" style="margin-left:4px;">${r.is_public?'공개':'비공개'}</span>`:'';
+
+    if(viewMode==='list'){
+      return `<div class="card ${bc}" draggable="${isAdmin}" ondragstart="rdragStart(event,${i})" ondragover="rdragOver(event,${i})" ondrop="rdrop(event,${i})" ondragleave="rdragLeave(event)" onclick="${clickAct}" data-rid="${r.id}" style="animation-delay:${i*.03}s">
+        ${adminBtns}
+        <div class="card-chip ${chip}">${b?b.name:'자료'}</div>
+        <div class="card-main">
+          <div class="file-badge">${isHtml?'🌐':r.type==='file'?'📎':'🔗'}</div>
+          <div class="card-title">${r.title}${visBadge}</div>
+          <div class="card-tags">${tagHtml}</div>
+        </div>
+        <div class="card-foot">
+          <div class="card-views">👁 ${r.views||0}</div>
+          <div class="card-go">${isHtml?'🔍':r.type==='file'?'↓':'→'}</div>
+        </div>
+      </div>`;
+    }
+    return `<div class="card ${bc}" draggable="${isAdmin}" ondragstart="rdragStart(event,${i})" ondragover="rdragOver(event,${i})" ondrop="rdrop(event,${i})" ondragleave="rdragLeave(event)" onclick="${clickAct}" data-rid="${r.id}" style="animation-delay:${i*.04}s">
+      ${adminBtns}
       <div class="card-chip ${chip}">${b?b.name:'자료'}</div>
       <div class="file-badge">${isHtml?'🌐 HTML':r.type==='file'?'📎 파일':'🔗 링크'}</div>
-      ${isAdmin?`<span class="vis-badge ${r.is_public?'vis-pub':'vis-prv'}" style="float:right;margin-bottom:4px;">${r.is_public?'공개':'비공개'}</span>`:''}
-      <div class="${viewMode==='list'?'card-body':''}">
-        <div class="card-title">${r.title}</div>
-        <div class="card-desc">${r.description||''}</div>
-        ${r.usage_tip&&viewMode!=='list'?`<div class="card-usage"><div class="card-usage-lbl">💡 활용방법</div><div class="card-usage-txt">${r.usage_tip}</div></div>`:''}
-        ${tagHtml?`<div class="card-tags">${tagHtml}</div>`:''}
-      </div>
+      ${isAdmin?`<span class="vis-badge ${r.is_public?'vis-pub':'vis-prv'}" style="float:right;">${r.is_public?'공개':'비공개'}</span>`:''}
+      <div class="card-title">${r.title}</div>
+      <div class="card-desc">${r.description||''}</div>
+      ${r.usage_tip?`<div class="card-usage"><div class="card-usage-lbl">💡 활용방법</div><div class="card-usage-txt">${r.usage_tip}</div></div>`:''}
+      ${tagHtml?`<div class="card-tags">${tagHtml}</div>`:''}
       <div class="card-foot">
         <div class="card-views">👁 ${r.views||0}</div>
         <div class="card-go">${isHtml?'🔍':r.type==='file'?'↓':'→'}</div>
@@ -756,55 +834,37 @@ async function renderRes(){
   }).join('');
 }
 
-// resource drag-sort
-function rdragStart(e,i){e.currentTarget.classList.add('dragging');dragSrcIdx=i;e.stopPropagation();}
-function rdragOver(e,i){e.preventDefault();e.currentTarget.classList.add('drag-over');e.stopPropagation();}
+// resource drag
+function rdragStart(e,i){if(!isAdmin)return;e.currentTarget.classList.add('dragging');dragSrcIdx=i;e.stopPropagation();}
+function rdragOver(e,i){if(!isAdmin)return;e.preventDefault();e.currentTarget.classList.add('drag-over');e.stopPropagation();}
 function rdragLeave(e){e.currentTarget.classList.remove('drag-over');}
-async function rdrop(e,i,id){
+async function rdrop(e,i){
   e.preventDefault();e.stopPropagation();e.currentTarget.classList.remove('drag-over');
-  if(dragSrcIdx===null||dragSrcIdx===i)return;
+  if(!isAdmin||dragSrcIdx===null||dragSrcIdx===i)return;
   const items=Array.from(document.querySelectorAll('#resGrid .card'));
   const ids=items.map(el=>parseInt(el.dataset.rid));
   [ids[dragSrcIdx],ids[i]]=[ids[i],ids[dragSrcIdx]];
-  for(let j=0;j<ids.length;j++){
-    await sb.from('resources').update({sort_order:j}).eq('id',ids[j]);
-  }
-  dragSrcIdx=null;
-  await renderRes();
+  for(let j=0;j<ids.length;j++) await sb.from('resources').update({sort_order:j}).eq('id',ids[j]);
+  dragSrcIdx=null;await renderRes();
 }
 
 async function hitRes(id){
   const{data:r}=await sb.from('resources').select('views,url,type').eq('id',id).single();
   if(r){
     await sb.from('resources').update({views:(r.views||0)+1}).eq('id',id);
-    if(r.type==='link'&&r.url&&r.url!=='#')window.open(r.url,'_blank');
+    if(r.type==='link'&&r.url&&r.url!=='#') window.open(r.url,'_blank');
   }
 }
-
-// HTML preview
 async function openHtmlPreview(id,title){
-  const{data:r}=await sb.from('resources').select('views,url').eq('id',id).single();
-  if(r){await sb.from('resources').update({views:(r.views||0)+1}).eq('id',id);}
-  // url에 html content 저장됨
-  const{data:rd}=await sb.from('resources').select('*').eq('id',id).single();
+  const{data:r}=await sb.from('resources').select('*').eq('id',id).single();
+  if(r) await sb.from('resources').update({views:(r.views||0)+1}).eq('id',id);
   document.getElementById('previewTitle').textContent=title;
   const frame=document.getElementById('previewFrame');
-  if(rd&&rd.url&&rd.url.startsWith('data:text/html')){
-    frame.src=rd.url;
-  } else if(rd&&rd.url){
-    frame.src=rd.url;
-  }
+  frame.src=r&&r.url?r.url:'about:blank';
   document.getElementById('htmlPreview').classList.add('on');
 }
 function closePreview(){document.getElementById('htmlPreview').classList.remove('on');}
-
-// view mode
-function setView(mode){
-  viewMode=mode;
-  document.getElementById('vt-card').classList.toggle('on',mode==='card');
-  document.getElementById('vt-list').classList.toggle('on',mode==='list');
-  renderRes();
-}
+function setView(m){viewMode=m;document.getElementById('vt-card').classList.toggle('on',m==='card');document.getElementById('vt-list').classList.toggle('on',m==='list');renderRes();}
 
 // board CRUD
 async function openBoardModal(id){
@@ -833,7 +893,7 @@ async function saveBoard(){
   let err;
   if(eid){({error:err}=await sb.from('boards').update(obj).eq('id',eid));toast('✅ 수정되었습니다.');}
   else{({error:err}=await sb.from('boards').insert(obj));toast('✅ 게시판이 추가되었습니다!');}
-  if(err){toast('❗ 오류: '+err.message);return;}
+  if(err){toast('❗ '+err.message);return;}
   closeOv('boardOv');renderBoards();
 }
 async function delBoard(id){
@@ -849,10 +909,11 @@ function openAddRes(){
   document.getElementById('resModalTitle').textContent='자료 추가';
   ['rTitle','rDesc','rUsage','rUrl','rFileUrl'].forEach(i=>document.getElementById(i).value='');
   selectedTags=[];htmlContent=null;
-  ['tag-student','tag-parent','tag-teacher'].forEach(id=>{document.getElementById(id).className='tag-opt';});
+  ['tag-student','tag-parent','tag-teacher'].forEach(id=>document.getElementById(id).className='tag-opt');
   document.getElementById('htmlFn').textContent='';
   document.getElementById('rPublic').checked=true;
   document.getElementById('rType').value='link';
+  document.getElementById('moveBoardWrap').style.display='none';
   toggleType();
   document.getElementById('resOv').classList.add('on');
 }
@@ -865,12 +926,18 @@ async function openEditRes(id){
   document.getElementById('rDesc').value=r.description||'';
   document.getElementById('rUsage').value=r.usage_tip||'';
   document.getElementById('rUrl').value=r.url||'';
+  document.getElementById('rFileUrl').value=r.url||'';
   document.getElementById('rPublic').checked=r.is_public!==false;
   document.getElementById('rType').value=r.type||'link';
   selectedTags=r.tags||[];
   ['student','parent','teacher'].forEach(t=>{
     document.getElementById('tag-'+t).className='tag-opt'+(selectedTags.includes(t)?' sel-'+t:'');
   });
+  // 게시판 이동 select
+  const sel=document.getElementById('rBoardId');
+  const{data:bds}=await sb.from('boards').select('id,name,icon').order('sort_order');
+  sel.innerHTML=(bds||[]).map(b=>`<option value="${b.id}" ${b.id===curBoard?'selected':''}>${b.icon||'📁'} ${b.name}</option>`).join('');
+  document.getElementById('moveBoardWrap').style.display='block';
   toggleType();
   document.getElementById('resOv').classList.add('on');
 }
@@ -881,12 +948,14 @@ async function saveRes(){
   const type=document.getElementById('rType').value;
   let url=type==='link'?document.getElementById('rUrl').value.trim():type==='html'&&htmlContent?htmlContent:document.getElementById('rFileUrl').value.trim();
   const eid=document.getElementById('editResId').value;
-  const obj={title,description:desc,usage_tip:document.getElementById('rUsage').value.trim(),type,url,is_public:document.getElementById('rPublic').checked,tags:selectedTags,board_id:curBoard};
+  const boardIdEl=document.getElementById('rBoardId');
+  const targetBoard=eid&&boardIdEl.value?parseInt(boardIdEl.value):curBoard;
+  const obj={title,description:desc,usage_tip:document.getElementById('rUsage').value.trim(),type,url,is_public:document.getElementById('rPublic').checked,tags:selectedTags,board_id:targetBoard};
   if(!eid)obj.views=0;
   let err;
   if(eid){({error:err}=await sb.from('resources').update(obj).eq('id',eid));toast('✅ 수정되었습니다.');}
   else{({error:err}=await sb.from('resources').insert(obj));toast('✅ 자료가 등록되었습니다!');}
-  if(err){toast('❗ 오류: '+err.message);return;}
+  if(err){toast('❗ '+err.message);return;}
   closeOv('resOv');await renderRes();updateMetrics();
 }
 async function delRes(id){
@@ -895,27 +964,21 @@ async function delRes(id){
   await renderRes();updateMetrics();toast('🗑 삭제되었습니다.');
 }
 
-// tags
 function toggleTag(t){
   if(selectedTags.includes(t)){selectedTags=selectedTags.filter(x=>x!==t);document.getElementById('tag-'+t).className='tag-opt';}
   else{selectedTags.push(t);document.getElementById('tag-'+t).className='tag-opt sel-'+t;}
 }
-
-// file type
 function toggleType(){
   const t=document.getElementById('rType').value;
   document.getElementById('linkWrap').style.display=t==='link'?'':'none';
   document.getElementById('htmlWrap').style.display=t==='html'?'':'none';
   document.getElementById('fileWrap').style.display=t==='file'?'':'none';
 }
-
-// HTML file read → data URL
 function handleHtmlFile(input){
   if(!input.files||!input.files[0])return;
-  const f=input.files[0];
-  document.getElementById('htmlFn').textContent='✅ '+f.name;
+  const f=input.files[0];document.getElementById('htmlFn').textContent='⏳ 읽는 중...';
   const reader=new FileReader();
-  reader.onload=e=>{htmlContent=e.target.result;};
+  reader.onload=e=>{htmlContent=e.target.result;document.getElementById('htmlFn').textContent='✅ '+f.name;};
   reader.readAsDataURL(f);
 }
 function handleHtmlDrop(e){
@@ -927,7 +990,7 @@ function handleHtmlDrop(e){
 // admin
 function openLogin(){document.getElementById('loginOv').classList.add('on');}
 function doLogin(){
-  if(document.getElementById('pwIn').value===ADMIN_PW){
+  if(document.getElementById('pwIn').value===PW_ADMIN){
     isAdmin=true;closeOv('loginOv');
     document.getElementById('adminBar').classList.add('on');
     document.getElementById('addBoardWrap').style.display='block';
@@ -949,7 +1012,7 @@ function goHome(){showBoards();window.scrollTo({top:0,behavior:'smooth'});}
 function closeOv(id){document.getElementById(id).classList.remove('on');}
 document.querySelectorAll('.overlay').forEach(ov=>ov.addEventListener('click',function(e){if(e.target===this)this.classList.remove('on');}));
 function toast(msg){const t=document.getElementById('toast');document.getElementById('toastTxt').textContent=msg;t.classList.add('on');setTimeout(()=>t.classList.remove('on'),2800);}
-window.addEventListener('scroll',()=>{document.querySelector('nav').style.boxShadow=window.scrollY>20?'0 2px 14px rgba(0,0,0,.06)':'none';});
+window.addEventListener('scroll',()=>{document.querySelector('nav').style.boxShadow=window.scrollY>20?'0 2px 12px rgba(0,0,0,.06)':'none';});
 </script>
 </body>
 </html>
