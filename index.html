@@ -19,38 +19,139 @@ html{scroll-behavior:smooth;}
 body{background:var(--bg);color:var(--ink);font-family:'Noto Sans KR',sans-serif;min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
 
 /* ══ GATE ══ */
-.gate{position:fixed;inset:0;z-index:9999;background:linear-gradient(135deg,#0f1a14,#1a2820,#0f1a14);display:flex;align-items:flex-start;justify-content:center;padding:16px;overflow-y:auto;}
-.gate-box{background:var(--white);border-radius:20px;padding:28px 24px;max-width:460px;width:100%;text-align:center;box-shadow:0 24px 60px rgba(0,0,0,.4);margin:auto;}
-.gate-logo{width:52px;height:52px;border-radius:13px;background:#181815;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;}
-.gate-logo-txt{font-family:'Great Vibes',cursive;font-size:28px;background:linear-gradient(135deg,#c8e0cc,#fff,#b8d4be);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-.gate-title{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:600;margin-bottom:2px;letter-spacing:-.5px;}
-.gate-en{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:12px;color:var(--ink3);margin-bottom:16px;}
-.gate-notice{background:var(--green-l);border:1px solid rgba(29,92,56,.15);border-radius:11px;padding:13px 15px;margin-bottom:16px;text-align:left;max-height:34vh;overflow-y:auto;}
-.gate-notice-title{font-size:10px;font-weight:700;color:var(--green);letter-spacing:.5px;margin-bottom:7px;font-family:'Outfit',sans-serif;}
-.gate-notice-txt{font-size:11.5px;color:var(--ink2);line-height:1.8;}
-.gate-quote{display:block;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:12.5px;color:var(--green);line-height:1.65;padding:8px 12px;border-left:3px solid var(--green);background:rgba(29,92,56,.05);border-radius:0 6px 6px 0;margin:7px 0;}
-.gate-quote em{display:block;font-size:10px;color:var(--ink3);font-style:normal;margin-top:3px;font-family:'Outfit',sans-serif;}
-.gate-warning{display:block;font-size:10.5px;color:var(--ink3);background:#f7f6f2;border:1px solid var(--line);border-radius:7px;padding:8px 11px;line-height:1.7;margin-top:7px;}
+.gate{
+  position:fixed;inset:0;z-index:9999;
+  background:#050a08;
+  display:flex;align-items:center;justify-content:center;
+  padding:0;overflow:hidden;
+  transition:opacity .8s ease, transform .8s ease;
+}
+.gate.exit{opacity:0;transform:scale(1.05);pointer-events:none;}
+
+/* particle canvas */
+#gateCanvas{position:absolute;inset:0;pointer-events:none;}
+
+/* gradient bg */
+.gate-bg{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 80% 60% at 20% 40%, rgba(29,92,56,.18) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 50% at 80% 60%, rgba(26,61,110,.12) 0%, transparent 60%),
+    radial-gradient(ellipse 100% 80% at 50% 0%, rgba(176,138,40,.08) 0%, transparent 50%);
+  animation:bgPulse 8s ease-in-out infinite;
+}
+@keyframes bgPulse{0%,100%{opacity:.6}50%{opacity:1}}
+
+.gate-box{
+  position:relative;z-index:2;
+  background:rgba(255,255,255,.04);
+  backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:24px;
+  padding:36px 32px;
+  max-width:480px;width:calc(100% - 32px);
+  text-align:center;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.05),
+    0 40px 80px rgba(0,0,0,.6),
+    inset 0 1px 0 rgba(255,255,255,.15);
+  animation:gateBoxIn .9s cubic-bezier(.23,1,.32,1) both;
+}
+@keyframes gateBoxIn{from{opacity:0;transform:translateY(40px) scale(.96)}to{opacity:1;transform:translateY(0) scale(1)}}
+
+/* logo */
+.gate-logo{
+  width:60px;height:60px;border-radius:16px;
+  background:linear-gradient(135deg,#1d5c38,#2d8a50);
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 16px;
+  box-shadow:0 0 40px rgba(29,92,56,.5),0 8px 24px rgba(0,0,0,.3);
+  animation:logoPulse 3s ease-in-out infinite;
+  position:relative;overflow:hidden;
+}
+@keyframes logoPulse{0%,100%{box-shadow:0 0 30px rgba(29,92,56,.4),0 8px 24px rgba(0,0,0,.3)}50%{box-shadow:0 0 60px rgba(29,92,56,.7),0 8px 24px rgba(0,0,0,.3)}}
+.gate-logo::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,transparent 30%,rgba(255,255,255,.2) 50%,transparent 70%);animation:logoShine 3s ease-in-out infinite;}
+@keyframes logoShine{0%,100%{transform:translateX(-100%)}50%{transform:translateX(100%)}}
+.gate-logo-txt{font-family:'Great Vibes',cursive;font-size:32px;color:#fff;filter:drop-shadow(0 2px 8px rgba(0,0,0,.3));position:relative;z-index:1;}
+
+/* title */
+.gate-title{
+  font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;
+  color:#fff;margin-bottom:3px;letter-spacing:-.5px;
+  text-shadow:0 2px 20px rgba(0,0,0,.5);
+}
+.gate-en{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:13px;color:rgba(255,255,255,.45);margin-bottom:20px;letter-spacing:.8px;}
+
+/* notice */
+.gate-notice{
+  background:rgba(29,92,56,.15);
+  border:1px solid rgba(29,92,56,.3);
+  border-radius:12px;padding:14px 15px;margin-bottom:20px;
+  text-align:left;max-height:32vh;overflow-y:auto;
+}
+.gate-notice::-webkit-scrollbar{width:4px;}
+.gate-notice::-webkit-scrollbar-thumb{background:rgba(29,92,56,.4);border-radius:2px;}
+.gate-notice-title{font-size:10px;font-weight:700;color:rgba(144,220,168,.9);letter-spacing:.5px;margin-bottom:7px;font-family:'Outfit',sans-serif;}
+.gate-notice-txt{font-size:11.5px;color:rgba(255,255,255,.65);line-height:1.8;}
+.gate-quote{display:block;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:12.5px;color:rgba(144,220,168,.85);line-height:1.65;padding:8px 12px;border-left:2px solid rgba(29,92,56,.6);background:rgba(29,92,56,.1);border-radius:0 6px 6px 0;margin:7px 0;}
+.gate-quote em{display:block;font-size:10px;color:rgba(255,255,255,.4);font-style:normal;margin-top:3px;font-family:'Outfit',sans-serif;}
+.gate-warning{display:block;font-size:10.5px;color:rgba(255,255,255,.4);background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:7px;padding:8px 11px;line-height:1.7;margin-top:7px;}
+
+/* role buttons */
 .gate-btns{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:6px;}
-.gate-role-btn{padding:16px 10px;border-radius:12px;border:2px solid var(--line);background:var(--bg);cursor:pointer;transition:all .2s;text-align:center;font-family:'Noto Sans KR',sans-serif;-webkit-tap-highlight-color:transparent;touch-action:manipulation;width:100%;display:block;}
-.gate-role-btn:hover,.gate-role-btn:active{transform:translateY(-1px);box-shadow:0 6px 16px rgba(0,0,0,.1);}
-.gate-role-btn.teacher{border-color:var(--green);background:var(--green-l);}
-.gate-role-btn.student{border-color:var(--blue);background:var(--blue-l);}
+.gate-role-btn{
+  padding:18px 10px;border-radius:14px;
+  border:1px solid rgba(255,255,255,.12);
+  background:rgba(255,255,255,.06);
+  cursor:pointer;transition:all .25s;text-align:center;
+  font-family:'Noto Sans KR',sans-serif;
+  -webkit-tap-highlight-color:transparent;touch-action:manipulation;
+  width:100%;display:block;
+  backdrop-filter:blur(8px);
+}
+.gate-role-btn:hover,.gate-role-btn:active{
+  transform:translateY(-3px);
+  box-shadow:0 12px 32px rgba(0,0,0,.3);
+}
+.gate-role-btn.teacher{border-color:rgba(29,92,56,.5);background:rgba(29,92,56,.2);}
+.gate-role-btn.teacher:hover{background:rgba(29,92,56,.35);border-color:rgba(29,92,56,.7);}
+.gate-role-btn.student{border-color:rgba(26,61,110,.5);background:rgba(26,61,110,.2);}
+.gate-role-btn.student:hover{background:rgba(26,61,110,.35);border-color:rgba(26,61,110,.7);}
 .gate-role-icon{font-size:26px;margin-bottom:5px;}
-.gate-role-label{font-size:14px;font-weight:700;color:var(--ink);}
-.gate-role-sub{font-size:10px;color:var(--ink3);margin-top:2px;}
+.gate-role-label{font-size:13px;font-weight:700;color:#fff;}
+.gate-role-sub{font-size:10px;color:rgba(255,255,255,.45);margin-top:2px;}
+
+/* pw step */
 .gate-pw-step{display:none;}
 .gate-pw-step.on{display:block;}
-.gate-back{background:none;border:none;color:var(--ink3);font-size:12px;cursor:pointer;font-family:'Noto Sans KR',sans-serif;margin-bottom:12px;display:inline-flex;align-items:center;gap:4px;padding:8px 0;-webkit-tap-highlight-color:transparent;touch-action:manipulation;}
-.gate-pw-role{font-size:15px;font-weight:700;margin-bottom:12px;}
+.gate-back{background:none;border:none;color:rgba(255,255,255,.4);font-size:12px;cursor:pointer;font-family:'Noto Sans KR',sans-serif;margin-bottom:12px;display:inline-flex;align-items:center;gap:4px;padding:8px 0;-webkit-tap-highlight-color:transparent;touch-action:manipulation;transition:color .2s;}
+.gate-back:hover{color:rgba(255,255,255,.8);}
+.gate-pw-role{font-size:15px;font-weight:700;color:#fff;margin-bottom:12px;}
 .gate-input-wrap{display:flex;gap:8px;margin-bottom:8px;}
-.gate-input{flex:1;padding:14px 10px;border:1.5px solid var(--line);border-radius:10px;font-size:22px;text-align:center;letter-spacing:8px;font-family:'Outfit',sans-serif;font-weight:700;color:var(--ink);background:var(--bg);outline:none;transition:border-color .2s;min-width:0;}
-.gate-input:focus{border-color:var(--green);background:var(--white);}
-.gate-enter-btn{padding:14px 18px;border-radius:10px;border:none;font-size:14px;font-weight:700;cursor:pointer;font-family:'Noto Sans KR',sans-serif;color:#fff;flex-shrink:0;-webkit-tap-highlight-color:transparent;touch-action:manipulation;min-height:48px;}
-.gate-enter-btn.teacher{background:var(--green);}
-.gate-enter-btn.student{background:var(--blue);}
-.gate-err{font-size:12px;color:var(--red);display:none;margin-top:6px;}
-.gate-copy{font-size:10px;color:var(--ink3);margin-top:14px;font-family:'Outfit',sans-serif;}
+.gate-input{
+  flex:1;padding:14px 10px;
+  border:1px solid rgba(255,255,255,.15);
+  border-radius:10px;font-size:22px;text-align:center;
+  letter-spacing:8px;font-family:'Outfit',sans-serif;font-weight:700;
+  color:#fff;background:rgba(255,255,255,.07);
+  outline:none;transition:all .2s;min-width:0;
+  -webkit-text-security:disc;
+}
+.gate-input:focus{border-color:rgba(29,92,56,.7);background:rgba(29,92,56,.15);box-shadow:0 0 0 3px rgba(29,92,56,.2);}
+.gate-enter-btn{
+  padding:14px 18px;border-radius:10px;border:none;
+  font-size:14px;font-weight:700;cursor:pointer;
+  font-family:'Noto Sans KR',sans-serif;color:#fff;flex-shrink:0;
+  -webkit-tap-highlight-color:transparent;touch-action:manipulation;min-height:50px;
+  transition:all .2s;
+}
+.gate-enter-btn.teacher{background:var(--green);box-shadow:0 4px 20px rgba(29,92,56,.4);}
+.gate-enter-btn.teacher:hover{background:#16472c;transform:translateY(-1px);}
+.gate-enter-btn.student{background:var(--blue);box-shadow:0 4px 20px rgba(26,61,110,.4);}
+.gate-enter-btn.student:hover{background:#12305a;transform:translateY(-1px);}
+.gate-err{font-size:12px;color:#f87171;display:none;margin-top:6px;animation:shake .3s ease;}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.gate-copy{font-size:10px;color:rgba(255,255,255,.2);margin-top:16px;font-family:'Outfit',sans-serif;}
 
 /* ══ NAV ══ */
 nav{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;padding:0 20px;background:rgba(246,245,241,.97);backdrop-filter:blur(20px);border-bottom:1.5px solid var(--line);gap:8px;}
@@ -124,6 +225,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nav-h);display:
 .hero-pill.c-purple{color:var(--purple);border-color:rgba(71,38,128,.2);background:rgba(237,232,246,.82);}
 .hero-pill.c-gold{color:var(--gold);border-color:rgba(176,138,40,.2);background:rgba(244,237,218,.82);}
 .hero-pill.c-red{color:var(--red);border-color:rgba(140,42,42,.2);background:rgba(245,232,232,.82);}
+.char{display:inline-block;animation:charIn .65s cubic-bezier(.23,1,.32,1) both;}
+@keyframes charIn{from{opacity:0;transform:translateY(36px) rotateX(-25deg);filter:blur(4px)}to{opacity:1;transform:translateY(0) rotateX(0);filter:blur(0)}}
 .hero-scroll{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;color:var(--ink3);font-size:9px;letter-spacing:3px;font-family:'Outfit',sans-serif;font-weight:500;animation:fu .75s .5s ease both;z-index:0;}
 .scroll-line{width:1px;height:24px;background:linear-gradient(to bottom,var(--ink3),transparent);animation:sl 2.2s infinite;}
 @keyframes sl{0%{opacity:0;transform:scaleY(0);transform-origin:top}50%{opacity:1;transform:scaleY(1);transform-origin:top}100%{opacity:0;transform:scaleY(1);transform-origin:bottom}}
@@ -386,6 +489,8 @@ footer{border-top:1.5px solid var(--line);padding:28px 20px;max-width:1100px;mar
 
 <!-- ══ GATE ══ -->
 <div class="gate" id="gate">
+  <canvas id="gateCanvas"></canvas>
+  <div class="gate-bg"></div>
   <div class="gate-box">
     <div class="gate-logo"><span class="gate-logo-txt">All</span></div>
     <div class="gate-title">모두의 진학자료실</div>
@@ -472,8 +577,9 @@ footer{border-top:1.5px solid var(--line);padding:28px 20px;max-width:1100px;mar
 <div id="pageHome" class="page active">
   <div class="orb-a"></div>
   <div class="orb-b"></div>
+  <div class="orb-c"></div>
   <div class="hero-badge"><div class="badge-dot"></div>공교육을 위한 진학 정보 플랫폼</div>
-  <h1 class="hero-h1"><em>모두의</em><br>진학자료실</h1>
+  <h1 class="hero-h1" id="heroH1"><em id="heroEm">모두의</em><br><span id="heroMain">진학자료실</span></h1>
   <p class="hero-en">The Archive for Every Teacher & Student</p>
   <p class="hero-desc">수시부터 정시, 면접부터 창체 수업까지.<br>진학의 모든 자료를 한 곳에서 찾고 활용하세요.</p>
   <div class="hero-cta">
@@ -697,11 +803,26 @@ let pendingRole='';
 // 이벤트를 addEventListener로 등록 (모바일 호환성)
 document.getElementById('btnTeacher').addEventListener('click',()=>selectRole('teacher'));
 document.getElementById('btnStudent').addEventListener('click',()=>selectRole('student'));
-document.getElementById('btnTeacher').addEventListener('touchend',e=>{e.preventDefault();selectRole('teacher');});
-document.getElementById('btnStudent').addEventListener('touchend',e=>{e.preventDefault();selectRole('student');});
+let _gt1={x:0,y:0};
+document.getElementById('btnTeacher').addEventListener('touchstart',e=>{_gt1={x:e.touches[0].clientX,y:e.touches[0].clientY};},{passive:true});
+document.getElementById('btnTeacher').addEventListener('touchend',e=>{
+  const dx=Math.abs(e.changedTouches[0].clientX-_gt1.x),dy=Math.abs(e.changedTouches[0].clientY-_gt1.y);
+  if(dx>8||dy>8)return;e.preventDefault();selectRole('teacher');
+});
+let _gt2={x:0,y:0};
+document.getElementById('btnStudent').addEventListener('touchstart',e=>{_gt2={x:e.touches[0].clientX,y:e.touches[0].clientY};},{passive:true});
+document.getElementById('btnStudent').addEventListener('touchend',e=>{
+  const dx=Math.abs(e.changedTouches[0].clientX-_gt2.x),dy=Math.abs(e.changedTouches[0].clientY-_gt2.y);
+  if(dx>8||dy>8)return;e.preventDefault();selectRole('student');
+});
 document.getElementById('gateBackBtn').addEventListener('click',backToStep1);
 document.getElementById('gateEnterBtn').addEventListener('click',checkGate);
-document.getElementById('gateEnterBtn').addEventListener('touchend',e=>{e.preventDefault();checkGate();});
+let _gt3={x:0,y:0};
+document.getElementById('gateEnterBtn').addEventListener('touchstart',e=>{_gt3={x:e.touches[0].clientX,y:e.touches[0].clientY};},{passive:true});
+document.getElementById('gateEnterBtn').addEventListener('touchend',e=>{
+  const dx=Math.abs(e.changedTouches[0].clientX-_gt3.x),dy=Math.abs(e.changedTouches[0].clientY-_gt3.y);
+  if(dx>8||dy>8)return;e.preventDefault();checkGate();
+});
 document.getElementById('gateInput').addEventListener('keydown',e=>{if(e.key==='Enter')checkGate();});
 
 function selectRole(r){
@@ -963,7 +1084,14 @@ async function renderBoards(){
       </div>`;
     // 클릭 이벤트
     div.addEventListener('click',()=>openBoard(b.id));
-    div.addEventListener('touchend',e=>{e.preventDefault();openBoard(b.id);});
+    let _ts={x:0,y:0};
+    div.addEventListener('touchstart',e=>{_ts={x:e.touches[0].clientX,y:e.touches[0].clientY};},{passive:true});
+    div.addEventListener('touchend',e=>{
+      const dx=Math.abs(e.changedTouches[0].clientX-_ts.x);
+      const dy=Math.abs(e.changedTouches[0].clientY-_ts.y);
+      if(dx>8||dy>8)return; // 스크롤 중이면 무시
+      e.preventDefault();openBoard(b.id);
+    });
     if(isAdmin){
       const ba=div.querySelector(`#ba-${b.id}`);
       ba.querySelector('.btn-edit').addEventListener('click',e=>{e.stopPropagation();openBoardModal(b.id);});
@@ -1036,8 +1164,13 @@ async function renderRes(){
       else if(r.type==='file'){window.open(r.url||'#','_blank');hitRes(r.id);}
       else hitRes(r.id);
     });
+    let _cs={x:0,y:0};
+    div.addEventListener('touchstart',e=>{_cs={x:e.touches[0].clientX,y:e.touches[0].clientY};},{passive:true});
     div.addEventListener('touchend',e=>{
       if(e.target.classList.contains('btn-edit')||e.target.classList.contains('btn-del'))return;
+      const dx=Math.abs(e.changedTouches[0].clientX-_cs.x);
+      const dy=Math.abs(e.changedTouches[0].clientY-_cs.y);
+      if(dx>8||dy>8)return;
       e.preventDefault();
       if(isHtml)openHtmlPreview(r.id,r.title);
       else if(r.type==='file'){window.open(r.url||'#','_blank');hitRes(r.id);}
@@ -1200,6 +1333,100 @@ function logout(){
 function closeOv(id){document.getElementById(id).classList.remove('on');}
 document.querySelectorAll('.overlay').forEach(ov=>ov.addEventListener('click',function(e){if(e.target===this)this.classList.remove('on');}));
 function toast(msg){const t=document.getElementById('toast');document.getElementById('toastTxt').textContent=msg;t.classList.add('on');setTimeout(()=>t.classList.remove('on'),2800);}
+
+// ══ GATE PARTICLE SYSTEM ══
+(function(){
+  const canvas=document.getElementById('gateCanvas');
+  if(!canvas)return;
+  const ctx=canvas.getContext('2d');
+  let W,H,particles=[];
+  function resize(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight;}
+  resize();window.addEventListener('resize',resize);
+  class Particle{
+    constructor(){this.reset(true);}
+    reset(init=false){
+      this.x=Math.random()*W;
+      this.y=init?Math.random()*H:H+10;
+      this.size=Math.random()*1.8+.3;
+      this.speedY=-(Math.random()*0.5+0.2);
+      this.speedX=(Math.random()-.5)*0.3;
+      this.life=0;this.maxLife=Math.random()*200+100;
+      const colors=['rgba(29,92,56,','rgba(26,61,110,','rgba(176,138,40,','rgba(255,255,255,'];
+      this.color=colors[Math.floor(Math.random()*colors.length)];
+    }
+    update(){
+      this.x+=this.speedX;this.y+=this.speedY;this.life++;
+      if(this.life>this.maxLife||this.y<-10)this.reset();
+    }
+    draw(){
+      const a=this.life<20?this.life/20:this.life>this.maxLife-20?(this.maxLife-this.life)/20:1;
+      ctx.beginPath();ctx.arc(this.x,this.y,this.size,0,Math.PI*2);
+      ctx.fillStyle=this.color+(a*.5)+')';ctx.fill();
+    }
+  }
+  for(let i=0;i<80;i++)particles.push(new Particle());
+  function loop(){
+    ctx.clearRect(0,0,W,H);
+    particles.forEach(p=>{p.update();p.draw();});
+    requestAnimationFrame(loop);
+  }
+  loop();
+})();
+
+// ══ CHAR-BY-CHAR TITLE ANIMATION ══
+function animateHeroTitle(){
+  const em=document.getElementById('heroEm');
+  const main=document.getElementById('heroMain');
+  if(!em||!main)return;
+  function splitChars(el,baseDelay){
+    const text=el.textContent;
+    el.innerHTML='';
+    [...text].forEach((ch,i)=>{
+      const span=document.createElement('span');
+      span.className='char';
+      span.style.animationDelay=(baseDelay+i*0.06)+'s';
+      span.textContent=ch==' '?'\u00a0':ch;
+      el.appendChild(span);
+    });
+  }
+  splitChars(em,.15);
+  splitChars(main,.4);
+}
+
+// ══ GATE EXIT ANIMATION ══
+function gateExit(cb){
+  const gate=document.getElementById('gate');
+  gate.classList.add('exit');
+  setTimeout(cb,800);
+}
+
+// Override init to add animations
+const _origInit=init;
+// Patch selectRole to trigger title animation when gate closes
+const _origCheckGate=checkGate;
+window.checkGate=function(){
+  const v=document.getElementById('gateInput').value.trim();
+  const ok=(pendingRole==='teacher'&&v===PW_TEACHER)||(pendingRole==='student'&&v===PW_STUDENT);
+  if(ok){
+    role=pendingRole;
+    sessionStorage.setItem('psg_role2',role);
+    gateExit(()=>{
+      document.getElementById('gate').style.display='none';
+      init();
+      setTimeout(animateHeroTitle,300);
+    });
+  } else {
+    document.getElementById('gateErr').style.display='block';
+    document.getElementById('gateInput').value='';
+    try{document.getElementById('gateInput').focus();}catch(e){}
+  }
+};
+// Also animate on session restore
+setTimeout(()=>{
+  if(document.getElementById('gate').style.display==='none'){
+    animateHeroTitle();
+  }
+},400);
 </script>
 </body>
 </html>
