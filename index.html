@@ -11,285 +11,230 @@
 :root{
   --bg:#f6f5f1;--white:#fff;--ink:#181815;--ink2:#4b4b46;--ink3:#9a9a92;
   --line:#e6e5df;--green:#1d5c38;--green-l:#e9f1ec;--gold:#b08a28;--gold-l:#f4edda;
-  --blue:#1a3d6e;--blue-l:#e3ecf6;--red:#8c2a2a;--red-l:#f5e8e8;
-  --purple:#472680;--purple-l:#ede8f6;--r:13px;
+  --blue:#1a3d6e;--blue-l:#e3ecf6;--red:#8c2a2a;--red-l:#f5e8e8;--purple:#472680;--purple-l:#ede8f6;
+  --nav-h:56px;
 }
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
 body{background:var(--bg);color:var(--ink);font-family:'Noto Sans KR',sans-serif;min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
 
-/* ── GATE ── */
-.gate{position:fixed;inset:0;z-index:999;background:linear-gradient(135deg,#0f1a14,#1a2820,#0f1a14);display:flex;align-items:flex-start;justify-content:center;padding:16px;overflow-y:auto;}
+/* ══ GATE ══ */
+.gate{position:fixed;inset:0;z-index:9999;background:linear-gradient(135deg,#0f1a14,#1a2820,#0f1a14);display:flex;align-items:flex-start;justify-content:center;padding:16px;overflow-y:auto;}
 .gate-box{background:var(--white);border-radius:20px;padding:28px 24px;max-width:460px;width:100%;text-align:center;box-shadow:0 24px 60px rgba(0,0,0,.4);margin:auto;}
 .gate-logo{width:52px;height:52px;border-radius:13px;background:#181815;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;}
 .gate-logo-txt{font-family:'Great Vibes',cursive;font-size:28px;background:linear-gradient(135deg,#c8e0cc,#fff,#b8d4be);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
 .gate-title{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:600;margin-bottom:2px;letter-spacing:-.5px;}
-.gate-en{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:12.5px;color:var(--ink3);margin-bottom:16px;}
-.gate-notice{background:var(--green-l);border:1px solid rgba(29,92,56,.15);border-radius:11px;padding:13px 15px;margin-bottom:16px;text-align:left;max-height:36vh;overflow-y:auto;}
-.gate-notice-title{font-size:10.5px;font-weight:700;color:var(--green);letter-spacing:.5px;margin-bottom:7px;font-family:'Outfit',sans-serif;}
+.gate-en{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:12px;color:var(--ink3);margin-bottom:16px;}
+.gate-notice{background:var(--green-l);border:1px solid rgba(29,92,56,.15);border-radius:11px;padding:13px 15px;margin-bottom:16px;text-align:left;max-height:34vh;overflow-y:auto;}
+.gate-notice-title{font-size:10px;font-weight:700;color:var(--green);letter-spacing:.5px;margin-bottom:7px;font-family:'Outfit',sans-serif;}
 .gate-notice-txt{font-size:11.5px;color:var(--ink2);line-height:1.8;}
 .gate-quote{display:block;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:12.5px;color:var(--green);line-height:1.65;padding:8px 12px;border-left:3px solid var(--green);background:rgba(29,92,56,.05);border-radius:0 6px 6px 0;margin:7px 0;}
-.gate-quote em{display:block;font-size:10.5px;color:var(--ink3);font-style:normal;margin-top:3px;font-family:'Outfit',sans-serif;}
+.gate-quote em{display:block;font-size:10px;color:var(--ink3);font-style:normal;margin-top:3px;font-family:'Outfit',sans-serif;}
 .gate-warning{display:block;font-size:10.5px;color:var(--ink3);background:#f7f6f2;border:1px solid var(--line);border-radius:7px;padding:8px 11px;line-height:1.7;margin-top:7px;}
 .gate-btns{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:6px;}
-.gate-role-btn{padding:14px 10px;border-radius:12px;border:2px solid var(--line);background:var(--bg);cursor:pointer;transition:all .2s;text-align:center;font-family:'Noto Sans KR',sans-serif;-webkit-tap-highlight-color:transparent;touch-action:manipulation;width:100%;}
+.gate-role-btn{padding:16px 10px;border-radius:12px;border:2px solid var(--line);background:var(--bg);cursor:pointer;transition:all .2s;text-align:center;font-family:'Noto Sans KR',sans-serif;-webkit-tap-highlight-color:transparent;touch-action:manipulation;width:100%;display:block;}
 .gate-role-btn:hover,.gate-role-btn:active{transform:translateY(-1px);box-shadow:0 6px 16px rgba(0,0,0,.1);}
 .gate-role-btn.teacher{border-color:var(--green);background:var(--green-l);}
 .gate-role-btn.student{border-color:var(--blue);background:var(--blue-l);}
-.gate-role-icon{font-size:24px;margin-bottom:4px;}
-.gate-role-label{font-size:13px;font-weight:700;color:var(--ink);}
+.gate-role-icon{font-size:26px;margin-bottom:5px;}
+.gate-role-label{font-size:14px;font-weight:700;color:var(--ink);}
 .gate-role-sub{font-size:10px;color:var(--ink3);margin-top:2px;}
 .gate-pw-step{display:none;}
 .gate-pw-step.on{display:block;}
-.gate-back{background:none;border:none;color:var(--ink3);font-size:12px;cursor:pointer;font-family:'Noto Sans KR',sans-serif;margin-bottom:12px;display:inline-flex;align-items:center;gap:4px;padding:6px 0;-webkit-tap-highlight-color:transparent;}
-.gate-pw-role{font-size:14px;font-weight:700;margin-bottom:10px;}
+.gate-back{background:none;border:none;color:var(--ink3);font-size:12px;cursor:pointer;font-family:'Noto Sans KR',sans-serif;margin-bottom:12px;display:inline-flex;align-items:center;gap:4px;padding:8px 0;-webkit-tap-highlight-color:transparent;touch-action:manipulation;}
+.gate-pw-role{font-size:15px;font-weight:700;margin-bottom:12px;}
 .gate-input-wrap{display:flex;gap:8px;margin-bottom:8px;}
-.gate-input{flex:1;padding:12px 10px;border:1.5px solid var(--line);border-radius:10px;font-size:20px;text-align:center;letter-spacing:6px;font-family:'Outfit',sans-serif;font-weight:700;color:var(--ink);background:var(--bg);outline:none;transition:border-color .2s;min-width:0;}
+.gate-input{flex:1;padding:14px 10px;border:1.5px solid var(--line);border-radius:10px;font-size:22px;text-align:center;letter-spacing:8px;font-family:'Outfit',sans-serif;font-weight:700;color:var(--ink);background:var(--bg);outline:none;transition:border-color .2s;min-width:0;}
 .gate-input:focus{border-color:var(--green);background:var(--white);}
-.gate-enter-btn{padding:12px 16px;border-radius:10px;border:none;font-size:13.5px;font-weight:700;cursor:pointer;font-family:'Noto Sans KR',sans-serif;color:#fff;flex-shrink:0;-webkit-tap-highlight-color:transparent;touch-action:manipulation;}
+.gate-enter-btn{padding:14px 18px;border-radius:10px;border:none;font-size:14px;font-weight:700;cursor:pointer;font-family:'Noto Sans KR',sans-serif;color:#fff;flex-shrink:0;-webkit-tap-highlight-color:transparent;touch-action:manipulation;min-height:48px;}
 .gate-enter-btn.teacher{background:var(--green);}
 .gate-enter-btn.student{background:var(--blue);}
 .gate-err{font-size:12px;color:var(--red);display:none;margin-top:6px;}
 .gate-copy{font-size:10px;color:var(--ink3);margin-top:14px;font-family:'Outfit',sans-serif;}
 
-/* ── NAV ── */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 24px;background:rgba(246,245,241,.96);backdrop-filter:blur(20px);border-bottom:1.5px solid var(--line);}
-.nav-left{display:flex;align-items:center;gap:11px;cursor:pointer;flex-shrink:0;}
+/* ══ NAV ══ */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;padding:0 20px;background:rgba(246,245,241,.97);backdrop-filter:blur(20px);border-bottom:1.5px solid var(--line);gap:8px;}
+.nav-left{display:flex;align-items:center;gap:10px;cursor:pointer;flex-shrink:0;min-width:0;}
 .nav-logo{width:36px;height:36px;border-radius:9px;background:#181815;display:flex;align-items:center;justify-content:center;position:relative;flex-shrink:0;overflow:hidden;}
-.nav-logo-txt{font-family:'Great Vibes',cursive;font-size:20px;padding-bottom:2px;background:linear-gradient(135deg,#c8e0cc,#fff,#b8d4be);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;position:relative;z-index:1;}
+.nav-logo-txt{font-family:'Great Vibes',cursive;font-size:19px;padding-bottom:2px;background:linear-gradient(135deg,#c8e0cc,#fff,#b8d4be);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;position:relative;z-index:1;}
 .nav-logo-shine{position:absolute;inset:0;background:linear-gradient(135deg,transparent 30%,rgba(255,255,255,.15) 50%,transparent 70%);animation:shine 4s ease-in-out infinite;}
 @keyframes shine{0%,100%{opacity:0;transform:translateX(-100%)}50%{opacity:1;transform:translateX(100%)}}
-.nav-wordmark-ko{font-family:'Outfit',sans-serif;font-size:13px;font-weight:700;color:var(--ink);letter-spacing:-.3px;transition:color .2s;}
-.nav-left:hover .nav-wordmark-ko{color:var(--green);}
-.nav-copy{font-size:8.5px;color:var(--ink3);letter-spacing:1.5px;font-family:'Outfit',sans-serif;overflow:hidden;width:0;transition:width 1.5s ease;white-space:nowrap;background:linear-gradient(90deg,#9a9a92,#1d5c38,#b08a28,#9a9a92);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-.nav-copy.on{width:190px;animation:shimmer 3s linear infinite;}
+.nav-brand{min-width:0;}
+.nav-wordmark-ko{font-family:'Outfit',sans-serif;font-size:13px;font-weight:700;color:var(--ink);letter-spacing:-.3px;white-space:nowrap;}
+.nav-copy{font-size:8px;color:var(--ink3);letter-spacing:1.5px;font-family:'Outfit',sans-serif;overflow:hidden;width:0;transition:width 1.5s ease;white-space:nowrap;background:linear-gradient(90deg,#9a9a92,#1d5c38,#b08a28,#9a9a92);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.nav-copy.on{width:180px;animation:shimmer 3s linear infinite;}
 @keyframes shimmer{0%{background-position:200% center}100%{background-position:-200% center}}
-.nav-role{display:none;font-size:10.5px;padding:3px 9px;border-radius:100px;font-weight:600;font-family:'Outfit',sans-serif;border:1px solid;}
+.nav-role{display:none;font-size:10px;padding:3px 8px;border-radius:100px;font-weight:600;font-family:'Outfit',sans-serif;border:1px solid;flex-shrink:0;white-space:nowrap;}
 .nav-role.teacher{display:inline-block;background:var(--green-l);color:var(--green);border-color:rgba(29,92,56,.2);}
 .nav-role.student{display:inline-block;background:var(--blue-l);color:var(--blue);border-color:rgba(26,61,110,.2);}
-.nav-right{display:flex;gap:6px;align-items:center;}
-.btn-g{padding:6px 12px;border-radius:8px;border:1.5px solid var(--line);background:transparent;font-size:12px;font-weight:600;color:var(--ink2);cursor:pointer;font-family:'Noto Sans KR',sans-serif;transition:all .17s;}
-.btn-g:hover{background:var(--white);border-color:#aaa;color:var(--ink);}
-.btn-s{padding:6px 14px;border-radius:8px;border:none;background:var(--ink);font-size:12px;font-weight:600;color:#fff;cursor:pointer;font-family:'Noto Sans KR',sans-serif;transition:all .17s;}
-.btn-s:hover{background:var(--green);}
+.nav-right{display:flex;gap:5px;align-items:center;flex-shrink:0;}
+.btn-nav{padding:7px 12px;border-radius:8px;border:1.5px solid var(--line);background:transparent;font-size:12px;font-weight:600;color:var(--ink2);cursor:pointer;font-family:'Noto Sans KR',sans-serif;transition:all .17s;-webkit-tap-highlight-color:transparent;touch-action:manipulation;white-space:nowrap;min-height:36px;}
+.btn-nav:hover,.btn-nav:active{background:var(--white);border-color:#aaa;color:var(--ink);}
+.btn-nav-solid{padding:7px 14px;border-radius:8px;border:none;background:var(--ink);font-size:12px;font-weight:600;color:#fff;cursor:pointer;font-family:'Noto Sans KR',sans-serif;transition:all .17s;-webkit-tap-highlight-color:transparent;touch-action:manipulation;white-space:nowrap;min-height:36px;}
+.btn-nav-solid:hover,.btn-nav-solid:active{background:var(--green);}
 
-/* ── SEARCH BAR ── */
-.search-wrap{
-  position:fixed;top:56px;left:0;right:0;z-index:90;
-  background:rgba(246,245,241,.97);
-  border-bottom:1.5px solid var(--line);
-  padding:8px 24px;
+/* ══ PAGE SYSTEM ══ */
+/* 페이지를 완전히 전환하는 방식 — 스크롤 문제 근본 해결 */
+.page{display:none;min-height:100vh;padding-top:var(--nav-h);}
+.page.active{display:block;}
+
+/* ══ HERO PAGE ══ */
+#pageHome{
   display:none;
-  backdrop-filter:blur(16px);
+  background:var(--bg);
 }
-.search-wrap.on{display:block;}
-.search-inner{max-width:700px;margin:0 auto;position:relative;}
-.search-icon{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--ink3);font-size:14px;pointer-events:none;}
-.search-input{width:100%;padding:9px 36px 9px 36px;border:1.5px solid var(--line);border-radius:10px;font-size:13.5px;color:var(--ink);font-family:'Noto Sans KR',sans-serif;background:var(--white);outline:none;transition:all .2s;}
-.search-input:focus{border-color:var(--green);box-shadow:0 0 0 3px rgba(29,92,56,.06);}
-.search-clear{position:absolute;right:10px;top:50%;transform:translateY(-50%);background:none;border:none;color:var(--ink3);cursor:pointer;font-size:16px;display:none;padding:2px;}
-.search-results{position:absolute;top:calc(100% + 6px);left:0;right:0;background:var(--white);border:1.5px solid var(--line);border-radius:12px;box-shadow:0 12px 36px rgba(0,0,0,.1);max-height:60vh;overflow-y:auto;z-index:200;display:none;}
-.search-results.on{display:block;}
-.search-item{padding:12px 16px;display:flex;align-items:center;gap:12px;cursor:pointer;border-bottom:1px solid var(--line);transition:background .15s;}
-.search-item:last-child{border-bottom:none;}
-.search-item:hover{background:#fafaf8;}
-.search-item-icon{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;}
-.search-item-info{flex:1;min-width:0;}
-.search-item-title{font-size:13px;font-weight:700;margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.search-item-board{font-size:11px;color:var(--ink3);}
-.search-empty{padding:28px;text-align:center;color:var(--ink3);font-size:13px;}
-
-/* ── HERO ── */
-.hero{min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:72px 24px 80px;position:relative;overflow:hidden;}
+#pageHome.active{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100svh;text-align:center;padding:var(--nav-h) 24px 80px;position:relative;overflow:hidden;}
 .orb-a{position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(29,92,56,.07) 0%,transparent 65%);top:-150px;left:-180px;animation:fl1 14s ease-in-out infinite;pointer-events:none;}
 .orb-b{position:absolute;width:450px;height:450px;border-radius:50%;background:radial-gradient(circle,rgba(176,138,40,.06) 0%,transparent 65%);bottom:-80px;right:-100px;animation:fl2 17s ease-in-out infinite;pointer-events:none;}
 @keyframes fl1{0%,100%{transform:translate(0,0)}50%{transform:translate(24px,-16px)}}
 @keyframes fl2{0%,100%{transform:translate(0,0)}50%{transform:translate(-18px,20px)}}
-.hero-badge{display:inline-flex;align-items:center;gap:7px;padding:5px 14px;border-radius:100px;border:1px solid rgba(29,92,56,.2);background:rgba(29,92,56,.05);font-size:11.5px;color:var(--green);font-weight:600;margin-bottom:28px;animation:fu .7s ease both;}
+.hero-badge{display:inline-flex;align-items:center;gap:7px;padding:5px 14px;border-radius:100px;border:1px solid rgba(29,92,56,.2);background:rgba(29,92,56,.05);font-size:11px;color:var(--green);font-weight:600;margin-bottom:24px;animation:fu .7s ease both;}
 .badge-dot{width:5px;height:5px;border-radius:50%;background:var(--green);animation:bk 2.5s infinite;}
 @keyframes bk{0%,100%{opacity:1}50%{opacity:.3}}
-.hero-h1{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(56px,10vw,118px);line-height:.95;letter-spacing:-3px;color:var(--ink);animation:fu .75s .07s ease both;margin-bottom:6px;}
+.hero-h1{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(52px,10vw,110px);line-height:.95;letter-spacing:-3px;color:var(--ink);animation:fu .75s .07s ease both;margin-bottom:6px;}
 .hero-h1 em{font-style:italic;color:var(--green);}
-.hero-en{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:clamp(15px,2.2vw,24px);color:var(--ink3);animation:fu .75s .14s ease both;margin-bottom:26px;letter-spacing:1px;}
-.hero-desc{font-size:14.5px;color:var(--ink2);line-height:1.85;max-width:460px;margin:0 auto 36px;animation:fu .75s .2s ease both;}
+.hero-en{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:clamp(14px,2vw,22px);color:var(--ink3);animation:fu .75s .14s ease both;margin-bottom:22px;letter-spacing:1px;}
+.hero-desc{font-size:14px;color:var(--ink2);line-height:1.85;max-width:440px;margin:0 auto 32px;animation:fu .75s .2s ease both;}
 .hero-cta{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;animation:fu .75s .26s ease both;}
-.btn-hp{padding:12px 28px;border-radius:12px;background:var(--ink);color:#fff;border:none;font-size:13.5px;font-weight:600;cursor:pointer;font-family:'Noto Sans KR',sans-serif;transition:all .25s;}
-.btn-hp:hover{background:var(--green);transform:translateY(-2px);box-shadow:0 8px 22px rgba(29,92,56,.22);}
+.btn-hp{padding:12px 28px;border-radius:12px;background:var(--ink);color:#fff;border:none;font-size:13.5px;font-weight:600;cursor:pointer;font-family:'Noto Sans KR',sans-serif;transition:all .25s;-webkit-tap-highlight-color:transparent;touch-action:manipulation;min-height:44px;}
+.btn-hp:hover,.btn-hp:active{background:var(--green);transform:translateY(-1px);}
 
-/* ── BOARD PILLS — glassmorphism ── */
-.hero-boards-wrap{
-  margin-top:36px;
-  animation:fu .75s .33s ease both;
-  position:relative;z-index:1;
-  max-width:720px;width:100%;
-}
-.hero-boards-label{font-size:9px;color:var(--ink3);letter-spacing:3px;font-family:'Outfit',sans-serif;margin-bottom:14px;font-weight:600;}
+/* glass board pills */
+.hero-boards-wrap{margin-top:32px;animation:fu .75s .33s ease both;width:100%;max-width:680px;position:relative;z-index:1;}
+.hero-boards-label{font-size:9px;color:var(--ink3);letter-spacing:3px;font-family:'Outfit',sans-serif;margin-bottom:12px;font-weight:600;}
 .hero-boards{
-  display:flex;gap:8px;justify-content:center;flex-wrap:wrap;
-  padding:20px 24px;
-  background:rgba(255,255,255,0.45);
-  backdrop-filter:blur(16px);
-  -webkit-backdrop-filter:blur(16px);
-  border:1px solid rgba(255,255,255,0.7);
-  border-radius:20px;
-  box-shadow:
-    0 8px 32px rgba(0,0,0,.06),
-    inset 0 1px 0 rgba(255,255,255,.8),
-    inset 0 -1px 0 rgba(0,0,0,.03);
-  position:relative;
-  overflow:hidden;
+  display:flex;gap:7px;justify-content:center;flex-wrap:wrap;padding:18px 20px;
+  background:rgba(255,255,255,.48);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border:1px solid rgba(255,255,255,.75);border-radius:18px;
+  box-shadow:0 8px 32px rgba(0,0,0,.06),inset 0 1px 0 rgba(255,255,255,.85);
+  position:relative;overflow:hidden;
 }
-/* shimmer sweep on glass panel */
-.hero-boards::before{
-  content:'';
-  position:absolute;
-  top:-50%;left:-60%;
-  width:40%;height:200%;
-  background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.35) 50%,transparent 60%);
-  animation:glassSweep 4s ease-in-out infinite;
-  pointer-events:none;
-}
-@keyframes glassSweep{0%{left:-60%}60%,100%{left:120%}}
-
+.hero-boards::before{content:'';position:absolute;top:-50%;left:-60%;width:35%;height:200%;background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.38) 50%,transparent 60%);animation:glassSweep 5s ease-in-out infinite;pointer-events:none;}
+@keyframes glassSweep{0%{left:-60%}70%,100%{left:130%}}
 .hero-pill{
-  padding:7px 15px;border-radius:100px;
-  font-size:12px;font-weight:600;
-  cursor:pointer;transition:all .22s;
-  display:flex;align-items:center;gap:6px;
-  white-space:nowrap;
-  -webkit-tap-highlight-color:transparent;
-  touch-action:manipulation;
-  /* glass pill */
-  background:rgba(255,255,255,0.7);
-  border:1px solid rgba(255,255,255,0.9);
-  color:var(--ink2);
-  box-shadow:0 2px 8px rgba(0,0,0,.06);
-  backdrop-filter:blur(8px);
+  padding:7px 14px;border-radius:100px;font-size:12px;font-weight:600;
+  cursor:pointer;transition:all .22s;display:inline-flex;align-items:center;gap:5px;
+  white-space:nowrap;-webkit-tap-highlight-color:transparent;touch-action:manipulation;
+  background:rgba(255,255,255,.72);border:1px solid rgba(255,255,255,.9);
+  color:var(--ink2);box-shadow:0 2px 8px rgba(0,0,0,.06);min-height:34px;
 }
-.hero-pill:hover,.hero-pill:active{
-  transform:translateY(-2px);
-  box-shadow:0 6px 18px rgba(0,0,0,.1);
-  background:rgba(255,255,255,0.9);
-}
-/* subtle color tint per board */
-.hero-pill.c-green{color:var(--green);border-color:rgba(29,92,56,.2);background:rgba(233,241,236,0.8);}
-.hero-pill.c-blue{color:var(--blue);border-color:rgba(26,61,110,.2);background:rgba(227,236,246,0.8);}
-.hero-pill.c-purple{color:var(--purple);border-color:rgba(71,38,128,.2);background:rgba(237,232,246,0.8);}
-.hero-pill.c-gold{color:var(--gold);border-color:rgba(176,138,40,.2);background:rgba(244,237,218,0.8);}
-.hero-pill.c-red{color:var(--red);border-color:rgba(140,42,42,.2);background:rgba(245,232,232,0.8);}
-/* glowing dot animation on each pill */
-.hero-pill::after{
-  content:'';width:5px;height:5px;border-radius:50%;
-  background:currentColor;opacity:0;
-  flex-shrink:0;
-  animation:pillDot 3s ease-in-out infinite;
-}
-@keyframes pillDot{0%,100%{opacity:0;transform:scale(.5)}50%{opacity:.4;transform:scale(1)}}
-
-.hero-scroll{
-  position:absolute;bottom:28px;left:50%;transform:translateX(-50%);
-  display:flex;flex-direction:column;align-items:center;gap:6px;
-  color:var(--ink3);font-size:9px;letter-spacing:3px;
-  font-family:'Outfit',sans-serif;font-weight:500;
-  animation:fu .75s .5s ease both;z-index:0;
-}
-.scroll-line{width:1px;height:26px;background:linear-gradient(to bottom,var(--ink3),transparent);animation:sl 2.2s infinite;}
+.hero-pill:hover,.hero-pill:active{transform:translateY(-2px);box-shadow:0 5px 16px rgba(0,0,0,.1);background:rgba(255,255,255,.92);}
+.hero-pill.c-green{color:var(--green);border-color:rgba(29,92,56,.2);background:rgba(233,241,236,.82);}
+.hero-pill.c-blue{color:var(--blue);border-color:rgba(26,61,110,.2);background:rgba(227,236,246,.82);}
+.hero-pill.c-purple{color:var(--purple);border-color:rgba(71,38,128,.2);background:rgba(237,232,246,.82);}
+.hero-pill.c-gold{color:var(--gold);border-color:rgba(176,138,40,.2);background:rgba(244,237,218,.82);}
+.hero-pill.c-red{color:var(--red);border-color:rgba(140,42,42,.2);background:rgba(245,232,232,.82);}
+.hero-scroll{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;color:var(--ink3);font-size:9px;letter-spacing:3px;font-family:'Outfit',sans-serif;font-weight:500;animation:fu .75s .5s ease both;z-index:0;}
+.scroll-line{width:1px;height:24px;background:linear-gradient(to bottom,var(--ink3),transparent);animation:sl 2.2s infinite;}
 @keyframes sl{0%{opacity:0;transform:scaleY(0);transform-origin:top}50%{opacity:1;transform:scaleY(1);transform-origin:top}100%{opacity:0;transform:scaleY(1);transform-origin:bottom}}
 @keyframes fu{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 
-/* ── MAIN ── */
-main{max-width:1140px;margin:0 auto;padding:0 24px 100px;}
-.metrics{display:grid;grid-template-columns:repeat(4,1fr);background:var(--white);border:1.5px solid var(--line);border-radius:14px;overflow:hidden;margin-bottom:48px;box-shadow:0 2px 12px rgba(0,0,0,.04);}
-.metric{padding:20px 22px;border-right:1.5px solid var(--line);transition:background .17s;}
+/* ══ BOARDS PAGE ══ */
+#pageBoards{padding-top:var(--nav-h);}
+#pageBoards.active{display:block;}
+.page-inner{max-width:1100px;margin:0 auto;padding:32px 20px 80px;}
+
+/* ══ RESOURCES PAGE ══ */
+#pageRes{padding-top:var(--nav-h);}
+#pageRes.active{display:block;}
+
+/* ══ SEARCH OVERLAY ══ */
+.search-overlay{
+  position:fixed;inset:0;z-index:150;
+  background:rgba(24,24,21,.6);backdrop-filter:blur(8px);
+  display:none;align-items:flex-start;justify-content:center;
+  padding:calc(var(--nav-h) + 16px) 16px 16px;
+}
+.search-overlay.on{display:flex;}
+.search-box{background:var(--white);border-radius:16px;width:100%;max-width:640px;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.2);animation:mIn .2s ease;}
+.search-header{padding:14px 16px;display:flex;align-items:center;gap:10px;border-bottom:1.5px solid var(--line);}
+.search-icon-lbl{color:var(--ink3);font-size:16px;flex-shrink:0;}
+.search-input{flex:1;border:none;outline:none;font-size:14px;color:var(--ink);font-family:'Noto Sans KR',sans-serif;background:transparent;}
+.search-input::placeholder{color:var(--ink3);}
+.search-close{background:var(--bg);border:1.5px solid var(--line);border-radius:7px;padding:4px 10px;font-size:12px;cursor:pointer;color:var(--ink2);font-weight:600;flex-shrink:0;-webkit-tap-highlight-color:transparent;}
+.search-results{max-height:60vh;overflow-y:auto;}
+.search-item{padding:12px 16px;display:flex;align-items:center;gap:12px;cursor:pointer;border-bottom:1px solid var(--line);transition:background .15s;-webkit-tap-highlight-color:transparent;}
+.search-item:last-child{border-bottom:none;}
+.search-item:hover,.search-item:active{background:#fafaf8;}
+.search-item-icon{width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;}
+.search-item-info{flex:1;min-width:0;}
+.search-item-title{font-size:13px;font-weight:700;margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.search-item-board{font-size:11px;color:var(--ink3);}
+.search-empty{padding:32px;text-align:center;color:var(--ink3);font-size:13px;}
+.search-placeholder{padding:24px;text-align:center;color:var(--ink3);font-size:13px;}
+
+/* ══ METRICS ══ */
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);background:var(--white);border:1.5px solid var(--line);border-radius:14px;overflow:hidden;margin-bottom:40px;box-shadow:0 2px 10px rgba(0,0,0,.04);}
+.metric{padding:18px 20px;border-right:1.5px solid var(--line);transition:background .17s;}
 .metric:last-child{border-right:none;}
 .metric:hover{background:#fafaf7;}
-.metric-n{font-family:'Outfit',sans-serif;font-size:26px;font-weight:700;color:var(--ink);margin-bottom:4px;}
+.metric-n{font-family:'Outfit',sans-serif;font-size:24px;font-weight:700;color:var(--ink);margin-bottom:3px;}
 .metric-n b{color:var(--green);}
-.metric-l{font-size:11px;color:var(--ink3);font-weight:500;}
-.metric-tag{display:inline-block;margin-top:6px;font-size:9.5px;padding:2px 7px;border-radius:4px;font-weight:600;}
+.metric-l{font-size:10.5px;color:var(--ink3);}
+.metric-tag{display:inline-block;margin-top:5px;font-size:9px;padding:2px 6px;border-radius:4px;font-weight:600;}
 .mt-g{background:var(--green-l);color:var(--green);}
 .mt-b{background:var(--blue-l);color:var(--blue);}
 .mt-p{background:var(--purple-l);color:var(--purple);}
 .mt-o{background:var(--gold-l);color:var(--gold);}
 
-/* sec header */
+/* ══ BOARDS LIST ══ */
 .sec-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;padding-bottom:14px;border-bottom:2px solid var(--line);}
-.sec-label{font-family:'Outfit',sans-serif;font-size:9.5px;font-weight:600;color:var(--ink3);letter-spacing:3px;text-transform:uppercase;margin-bottom:4px;}
+.sec-label{font-family:'Outfit',sans-serif;font-size:9px;font-weight:600;color:var(--ink3);letter-spacing:3px;text-transform:uppercase;margin-bottom:4px;}
 .sec-title{font-family:'Outfit',sans-serif;font-size:22px;font-weight:700;letter-spacing:-.4px;}
-
-/* board list */
-.board-list{display:flex;flex-direction:column;gap:7px;margin-bottom:40px;}
-.board-item{background:var(--white);border:1.5px solid var(--line);border-radius:var(--r);padding:16px 18px;display:flex;align-items:center;gap:14px;transition:all .2s;cursor:grab;user-select:none;box-shadow:0 1px 4px rgba(0,0,0,.03);}
-.board-item:hover{border-color:#bbb;box-shadow:0 4px 16px rgba(0,0,0,.08);transform:translateX(3px);}
-.board-item.dragging{opacity:.35;cursor:grabbing;}
+.board-list{display:flex;flex-direction:column;gap:7px;}
+.board-item{background:var(--white);border:1.5px solid var(--line);border-radius:14px;padding:16px 18px;display:flex;align-items:center;gap:14px;transition:all .2s;cursor:pointer;-webkit-tap-highlight-color:transparent;touch-action:manipulation;box-shadow:0 1px 4px rgba(0,0,0,.03);}
+.board-item:hover,.board-item:active{border-color:#aaa;box-shadow:0 4px 18px rgba(0,0,0,.08);transform:translateX(3px);}
+.board-item.dragging{opacity:.35;}
 .board-item.drag-over{border-color:var(--green);background:var(--green-l);}
-.board-icon{width:38px;height:38px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0;border:1px solid rgba(0,0,0,.06);}
+.board-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;border:1px solid rgba(0,0,0,.06);}
 .board-info{flex:1;min-width:0;}
-.board-name{font-size:13.5px;font-weight:700;margin-bottom:2px;display:flex;align-items:center;gap:6px;flex-wrap:wrap;}
-.board-desc{font-size:11.5px;color:var(--ink3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.board-name{font-size:14px;font-weight:700;margin-bottom:3px;display:flex;align-items:center;gap:6px;flex-wrap:wrap;}
+.board-desc{font-size:12px;color:var(--ink3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 .board-meta{display:flex;align-items:center;gap:8px;flex-shrink:0;}
-.board-cnt{font-family:'Outfit',sans-serif;font-size:11.5px;color:var(--ink3);background:var(--bg);padding:2px 8px;border-radius:100px;border:1px solid var(--line);}
-.board-go{width:28px;height:28px;border-radius:7px;background:var(--bg);border:1.5px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:13px;color:var(--ink2);transition:all .18s;font-weight:700;}
-.board-item:hover .board-go{background:var(--ink);border-color:var(--ink);color:#fff;}
+.board-cnt{font-family:'Outfit',sans-serif;font-size:11px;color:var(--ink3);background:var(--bg);padding:3px 9px;border-radius:100px;border:1px solid var(--line);white-space:nowrap;}
+.board-go{width:30px;height:30px;border-radius:8px;background:var(--bg);border:1.5px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--ink2);transition:all .18s;font-weight:700;}
+.board-item:hover .board-go,.board-item:active .board-go{background:var(--ink);border-color:var(--ink);color:#fff;}
 .vis-badge{font-size:9px;padding:2px 6px;border-radius:4px;font-family:'Outfit',sans-serif;font-weight:700;}
 .vis-pub{background:#e9f1ec;color:var(--green);}
 .vis-prv{background:#f5e8e8;color:var(--red);}
-.btn-tiny{font-size:10px;padding:3px 8px;border-radius:5px;cursor:pointer;font-family:'Noto Sans KR',sans-serif;font-weight:600;border:1px solid;transition:all .15s;}
+.btn-tiny{font-size:10px;padding:4px 9px;border-radius:5px;cursor:pointer;font-family:'Noto Sans KR',sans-serif;font-weight:600;border:1px solid;transition:all .15s;-webkit-tap-highlight-color:transparent;}
 .btn-edit{background:#f0f4ff;border-color:#c0d0f0;color:var(--blue);}
 .btn-del{background:#fef2f2;border-color:#fecaca;color:var(--red);}
+.btn-add{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:9px;background:var(--ink);border:none;color:#fff;font-size:12.5px;font-weight:600;cursor:pointer;font-family:'Noto Sans KR',sans-serif;transition:all .2s;-webkit-tap-highlight-color:transparent;touch-action:manipulation;}
+.btn-add:hover,.btn-add:active{background:var(--green);}
+.btn-add-sm{display:inline-flex;align-items:center;gap:5px;padding:7px 13px;border-radius:8px;background:transparent;border:1.5px solid var(--line);color:var(--ink2);font-size:12px;font-weight:600;cursor:pointer;font-family:'Noto Sans KR',sans-serif;transition:all .2s;-webkit-tap-highlight-color:transparent;touch-action:manipulation;}
+.btn-add-sm:hover,.btn-add-sm:active{background:var(--white);border-color:#aaa;}
 
-/* ── NAV BAR in resource view ── */
-.res-topbar{
-  display:flex;align-items:center;justify-content:space-between;
-  margin-bottom:16px;padding:12px 16px;
-  background:var(--white);
-  border:1.5px solid var(--line);
-  border-radius:12px;
-  gap:10px;flex-wrap:wrap;
-  box-shadow:0 2px 8px rgba(0,0,0,.04);
-}
-.back-btn{
-  display:inline-flex;align-items:center;gap:6px;
-  font-size:13px;font-weight:700;
-  color:var(--ink);
-  cursor:pointer;background:var(--bg);
-  border:1.5px solid var(--line);
-  border-radius:8px;
-  font-family:'Noto Sans KR',sans-serif;
-  transition:all .17s;
-  padding:6px 12px;
-  -webkit-tap-highlight-color:transparent;
-}
-.back-btn:hover{background:var(--ink);color:#fff;border-color:var(--ink);}
-.back-btn svg{flex-shrink:0;}
-.res-title{font-family:'Outfit',sans-serif;font-size:18px;font-weight:700;letter-spacing:-.3px;}
+/* ══ RESOURCE PAGE TOPBAR ══ */
+.res-topbar{display:flex;align-items:center;justify-content:space-between;padding:12px 20px;background:var(--white);border-bottom:1.5px solid var(--line);gap:10px;flex-wrap:wrap;position:sticky;top:var(--nav-h);z-index:10;box-shadow:0 2px 8px rgba(0,0,0,.04);}
+.res-nav-btns{display:flex;gap:8px;align-items:center;flex-wrap:wrap;}
+.back-btn{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:var(--ink);cursor:pointer;background:var(--bg);border:1.5px solid var(--line);border-radius:9px;font-family:'Noto Sans KR',sans-serif;transition:all .17s;padding:8px 14px;-webkit-tap-highlight-color:transparent;touch-action:manipulation;white-space:nowrap;min-height:40px;}
+.back-btn:hover,.back-btn:active{background:var(--ink);color:#fff;border-color:var(--ink);}
+.res-title-wrap{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.res-title{font-family:'Outfit',sans-serif;font-size:17px;font-weight:700;letter-spacing:-.3px;white-space:nowrap;}
 .view-toggle{display:flex;gap:3px;background:var(--bg);border:1.5px solid var(--line);border-radius:8px;padding:3px;}
-.vt-btn{padding:5px 10px;border-radius:6px;border:none;background:transparent;color:var(--ink3);cursor:pointer;font-size:13px;transition:all .15s;}
+.vt-btn{padding:5px 10px;border-radius:6px;border:none;background:transparent;color:var(--ink3);cursor:pointer;font-size:14px;transition:all .15s;-webkit-tap-highlight-color:transparent;}
 .vt-btn.on{background:var(--ink);color:#fff;}
+.res-content{max-width:1100px;margin:0 auto;padding:24px 20px 80px;}
 
-/* CARD grid */
+/* ══ CARDS ══ */
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;}
-.card{background:var(--white);border:1.5px solid var(--line);border-radius:var(--r);padding:20px;cursor:pointer;transition:all .22s cubic-bezier(.23,1,.32,1);color:inherit;display:flex;flex-direction:column;animation:ci .4s ease both;position:relative;overflow:hidden;user-select:none;box-shadow:0 1px 4px rgba(0,0,0,.03);}
+.card{background:var(--white);border:1.5px solid var(--line);border-radius:14px;padding:20px;cursor:pointer;transition:all .22s cubic-bezier(.23,1,.32,1);color:inherit;display:flex;flex-direction:column;animation:ci .4s ease both;position:relative;overflow:hidden;-webkit-tap-highlight-color:transparent;touch-action:manipulation;box-shadow:0 1px 4px rgba(0,0,0,.03);}
 .card::after{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;opacity:0;transition:opacity .2s;}
-.card:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,0,0,.09);border-color:#bbb;}
-.card:hover::after{opacity:1;}
-.card.dragging{opacity:.35;}
-.card.drag-over{border-color:var(--green);background:var(--green-l);}
+.card:hover,.card:active{transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,0,0,.09);border-color:#bbb;}
+.card:hover::after,.card:active::after{opacity:1;}
 @keyframes ci{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
-
-/* LIST */
-.list-view{display:flex;flex-direction:column;gap:4px;}
-.list-view .card{flex-direction:row;align-items:center;gap:12px;padding:10px 14px;border-radius:9px;}
+.list-view{display:flex;flex-direction:column;gap:5px;}
+.list-view .card{flex-direction:row;align-items:center;gap:12px;padding:11px 14px;border-radius:10px;}
 .list-view .card::after{width:100%;height:2px;top:auto;bottom:0;left:0;}
 .list-view .card-main{flex:1;min-width:0;display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
 .list-view .card-chip{margin-bottom:0;flex-shrink:0;}
-.list-view .card-title{font-size:13px;margin-bottom:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:300px;}
+.list-view .card-title{font-size:13px;margin-bottom:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:280px;}
 .list-view .card-desc,.list-view .card-usage{display:none;}
 .list-view .card-tags{margin-bottom:0;flex-shrink:0;}
-.list-view .card-foot{flex-shrink:0;flex-direction:column;align-items:flex-end;gap:3px;}
+.list-view .card-foot{flex-shrink:0;gap:6px;}
 .list-view .file-badge{margin-bottom:0;}
 .list-view .card-admin-btns{position:static;display:flex;gap:4px;flex-shrink:0;}
-
 .card-chip{display:inline-flex;align-items:center;padding:2px 7px;border-radius:4px;font-size:9px;font-weight:700;letter-spacing:.5px;font-family:'Outfit',sans-serif;width:fit-content;margin-bottom:9px;}
 .card-title{font-size:13.5px;font-weight:700;line-height:1.4;margin-bottom:6px;letter-spacing:-.2px;}
 .card-desc{font-size:11px;color:var(--ink2);line-height:1.6;margin-bottom:9px;}
@@ -302,9 +247,9 @@ main{max-width:1140px;margin:0 auto;padding:0 24px 100px;}
 .tag-parent{background:#f4edda;color:var(--gold);}
 .tag-teacher{background:#e9f1ec;color:var(--green);}
 .card-foot{margin-top:auto;display:flex;align-items:center;justify-content:space-between;}
-.card-views{font-size:10.5px;color:var(--ink3);font-family:'Outfit',sans-serif;}
-.card-go{width:24px;height:24px;border-radius:6px;background:var(--bg);border:1.5px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--ink2);transition:all .2s;flex-shrink:0;font-weight:700;}
-.card:hover .card-go{background:var(--ink);border-color:var(--ink);color:#fff;}
+.card-views{font-size:10px;color:var(--ink3);font-family:'Outfit',sans-serif;}
+.card-go{width:24px;height:24px;border-radius:6px;background:var(--bg);border:1.5px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--ink2);transition:all .2s;flex-shrink:0;font-weight:700;}
+.card:hover .card-go,.card:active .card-go{background:var(--ink);border-color:var(--ink);color:#fff;}
 .file-badge{display:inline-flex;align-items:center;gap:3px;font-size:9px;padding:2px 6px;border-radius:4px;background:#f0f0ec;color:var(--ink3);font-family:'Outfit',sans-serif;font-weight:600;margin-bottom:7px;border:1px solid var(--line);}
 .card-admin-btns{position:absolute;top:10px;right:10px;display:flex;gap:3px;}
 .bc-green::after{background:var(--green);}
@@ -323,33 +268,24 @@ main{max-width:1140px;margin:0 auto;padding:0 24px 100px;}
 .spinner{width:26px;height:26px;border:2.5px solid var(--line);border-top-color:var(--green);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 12px;}
 @keyframes spin{to{transform:rotate(360deg)}}
 
-/* admin */
-.admin-bar{background:linear-gradient(90deg,#fffbeb,#fff8f0);border-bottom:1.5px solid #ecd9a4;padding:8px 24px;display:none;align-items:center;justify-content:space-between;font-size:12px;color:#8a6010;font-weight:600;}
+/* admin bar */
+.admin-bar{background:linear-gradient(90deg,#fffbeb,#fff8f0);border-bottom:1.5px solid #ecd9a4;padding:8px 20px;display:none;align-items:center;justify-content:space-between;font-size:12px;color:#8a6010;font-weight:600;position:fixed;top:var(--nav-h);left:0;right:0;z-index:99;}
 .admin-bar.on{display:flex;}
+body.admin-mode{--nav-h:94px;}
 .btn-logout{padding:4px 11px;border-radius:6px;background:rgba(176,138,40,.12);border:1px solid rgba(176,138,40,.3);color:#8a6010;font-size:11px;cursor:pointer;font-family:'Noto Sans KR',sans-serif;font-weight:600;}
-#addBoardWrap{display:none;}
-#addResWrap{display:none;}
-.btn-add{display:inline-flex;align-items:center;gap:6px;padding:7px 16px;border-radius:9px;background:var(--ink);border:none;color:#fff;font-size:12.5px;font-weight:600;cursor:pointer;font-family:'Noto Sans KR',sans-serif;transition:all .2s;}
-.btn-add:hover{background:var(--green);}
-.btn-add-sm{display:inline-flex;align-items:center;gap:5px;padding:6px 12px;border-radius:8px;background:transparent;border:1.5px solid var(--line);color:var(--ink2);font-size:11.5px;font-weight:600;cursor:pointer;font-family:'Noto Sans KR',sans-serif;transition:all .2s;}
-.btn-add-sm:hover{background:var(--white);border-color:#aaa;}
-.view-boards{display:block;}
-.view-boards.off{display:none;}
-.view-res{display:none;}
-.view-res.on{display:block;}
 
 /* html preview */
-.html-preview{position:fixed;inset:0;z-index:300;background:rgba(0,0,0,.75);display:none;flex-direction:column;}
+.html-preview{position:fixed;inset:0;z-index:500;background:rgba(0,0,0,.8);display:none;flex-direction:column;}
 .html-preview.on{display:flex;}
 .preview-bar{background:var(--ink);padding:10px 16px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;}
-.preview-title{color:#fff;font-size:13px;font-weight:600;}
-.preview-close{background:rgba(255,255,255,.15);border:none;color:#fff;padding:6px 14px;border-radius:7px;cursor:pointer;font-size:13px;font-family:'Noto Sans KR',sans-serif;}
+.preview-title{color:#fff;font-size:13px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:1;margin-right:12px;}
+.preview-close{background:rgba(255,255,255,.15);border:none;color:#fff;padding:7px 14px;border-radius:7px;cursor:pointer;font-size:13px;font-family:'Noto Sans KR',sans-serif;flex-shrink:0;}
 .preview-iframe{flex:1;border:none;background:#fff;}
 
 /* MODAL */
-.overlay{position:fixed;inset:0;z-index:200;background:rgba(24,24,21,.52);backdrop-filter:blur(7px);display:none;align-items:center;justify-content:center;padding:20px;}
+.overlay{position:fixed;inset:0;z-index:300;background:rgba(24,24,21,.55);backdrop-filter:blur(7px);display:none;align-items:center;justify-content:center;padding:20px;overflow-y:auto;}
 .overlay.on{display:flex;}
-.modal{background:var(--white);border-radius:16px;width:100%;max-width:500px;max-height:92vh;overflow-y:auto;padding:28px;animation:mIn .27s cubic-bezier(.23,1,.32,1);position:relative;border:1.5px solid var(--line);box-shadow:0 24px 70px rgba(0,0,0,.13);}
+.modal{background:var(--white);border-radius:16px;width:100%;max-width:500px;max-height:92vh;overflow-y:auto;padding:28px;animation:mIn .25s cubic-bezier(.23,1,.32,1);position:relative;border:1.5px solid var(--line);box-shadow:0 24px 70px rgba(0,0,0,.13);margin:auto;}
 @keyframes mIn{from{opacity:0;transform:scale(.97) translateY(12px)}to{opacity:1;transform:scale(1) translateY(0)}}
 .modal-x{position:absolute;top:14px;right:14px;width:28px;height:28px;border-radius:7px;background:var(--bg);border:1.5px solid var(--line);cursor:pointer;font-size:13px;color:var(--ink2);display:flex;align-items:center;justify-content:center;font-weight:700;}
 .modal-x:hover{background:var(--line);}
@@ -357,10 +293,10 @@ main{max-width:1140px;margin:0 auto;padding:0 24px 100px;}
 .modal-sub{font-size:12px;color:var(--ink3);margin-bottom:20px;}
 .fgrp{margin-bottom:12px;}
 .flbl{display:block;font-size:9.5px;font-weight:700;color:var(--ink3);margin-bottom:5px;letter-spacing:1.8px;font-family:'Outfit',sans-serif;}
-.finp,.fsel,.ftxt{width:100%;padding:9px 12px;border:1.5px solid var(--line);border-radius:8px;font-size:13px;color:var(--ink);font-family:'Noto Sans KR',sans-serif;background:var(--bg);outline:none;transition:border-color .17s;resize:vertical;}
+.finp,.fsel,.ftxt{width:100%;padding:10px 12px;border:1.5px solid var(--line);border-radius:8px;font-size:13px;color:var(--ink);font-family:'Noto Sans KR',sans-serif;background:var(--bg);outline:none;transition:border-color .17s;resize:vertical;}
 .finp:focus,.fsel:focus,.ftxt:focus{border-color:var(--green);background:var(--white);box-shadow:0 0 0 3px rgba(29,92,56,.06);}
-.ftxt{min-height:58px;}
-.btn-ok{width:100%;padding:11px;border-radius:9px;border:none;background:var(--ink);color:#fff;font-size:13.5px;font-weight:700;cursor:pointer;font-family:'Noto Sans KR',sans-serif;margin-top:4px;transition:all .2s;}
+.ftxt{min-height:60px;}
+.btn-ok{width:100%;padding:12px;border-radius:9px;border:none;background:var(--ink);color:#fff;font-size:13.5px;font-weight:700;cursor:pointer;font-family:'Noto Sans KR',sans-serif;margin-top:4px;transition:all .2s;}
 .btn-ok:hover{background:var(--green);}
 .toggle-row{display:flex;align-items:center;justify-content:space-between;padding:10px 12px;background:var(--bg);border:1.5px solid var(--line);border-radius:8px;margin-bottom:12px;}
 .toggle-lbl{font-size:12.5px;font-weight:600;color:var(--ink2);}
@@ -372,72 +308,83 @@ main{max-width:1140px;margin:0 auto;padding:0 24px 100px;}
 .switch input:checked+.slider{background:var(--green);}
 .switch input:checked+.slider::before{transform:translateX(18px);}
 .tag-selector{display:flex;gap:7px;flex-wrap:wrap;}
-.tag-opt{padding:5px 13px;border-radius:100px;border:1.5px solid var(--line);background:var(--bg);font-size:12px;font-weight:600;cursor:pointer;transition:all .18s;font-family:'Noto Sans KR',sans-serif;}
+.tag-opt{padding:6px 14px;border-radius:100px;border:1.5px solid var(--line);background:var(--bg);font-size:12px;font-weight:600;cursor:pointer;transition:all .18s;font-family:'Noto Sans KR',sans-serif;}
 .tag-opt.sel-student{background:var(--blue-l);border-color:var(--blue);color:var(--blue);}
 .tag-opt.sel-parent{background:var(--gold-l);border-color:var(--gold);color:var(--gold);}
 .tag-opt.sel-teacher{background:var(--green-l);border-color:var(--green);color:var(--green);}
 .upload-area{border:2px dashed var(--line);border-radius:9px;padding:16px;text-align:center;cursor:pointer;transition:all .18s;background:var(--bg);}
 .upload-area:hover,.upload-area.drag{border-color:var(--green);background:var(--green-l);}
 .upload-fn{font-size:11px;color:var(--green);font-weight:600;margin-top:5px;}
-.login-modal{background:var(--white);border:1.5px solid var(--line);border-radius:16px;width:100%;max-width:340px;padding:34px 28px;box-shadow:0 24px 70px rgba(0,0,0,.11);animation:mIn .27s cubic-bezier(.23,1,.32,1);position:relative;}
+.login-modal{background:var(--white);border:1.5px solid var(--line);border-radius:16px;width:100%;max-width:340px;padding:32px 26px;box-shadow:0 24px 70px rgba(0,0,0,.13);animation:mIn .25s cubic-bezier(.23,1,.32,1);position:relative;margin:auto;}
 
 /* TOAST */
-.toast{position:fixed;bottom:20px;right:20px;background:var(--ink);color:#fff;border-radius:10px;padding:10px 16px;font-size:12.5px;font-weight:500;z-index:400;display:none;align-items:center;gap:7px;box-shadow:0 8px 28px rgba(0,0,0,.18);}
+.toast{position:fixed;bottom:20px;right:20px;background:var(--ink);color:#fff;border-radius:10px;padding:10px 16px;font-size:12.5px;font-weight:500;z-index:600;display:none;align-items:center;gap:7px;box-shadow:0 8px 28px rgba(0,0,0,.18);}
 .toast.on{display:flex;animation:tIn .22s ease;}
 @keyframes tIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
 
 /* FOOTER */
-footer{border-top:1.5px solid var(--line);padding:32px 24px;max-width:1140px;margin:0 auto;}
-.footer-inner{display:flex;align-items:flex-start;justify-content:space-between;gap:28px;flex-wrap:wrap;}
-.footer-desc{font-size:12px;color:var(--ink3);line-height:1.8;margin-top:8px;}
+footer{border-top:1.5px solid var(--line);padding:28px 20px;max-width:1100px;margin:0 auto;}
+.footer-inner{display:flex;align-items:flex-start;justify-content:space-between;gap:24px;flex-wrap:wrap;}
+.footer-desc{font-size:12px;color:var(--ink3);line-height:1.8;margin-top:7px;}
 .footer-sig{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:22px;color:var(--ink2);margin-bottom:5px;}
 .footer-copy{font-size:10.5px;color:var(--ink3);line-height:2;font-family:'Outfit',sans-serif;}
 .footer-copy strong{color:var(--ink2);font-weight:600;}
 .footer-copy a{color:var(--green);text-decoration:none;}
 
-/* ── RESPONSIVE ── */
+/* ══ RESPONSIVE ══ */
 @media(max-width:1024px){
-  nav{padding:0 18px;}
-  main{padding:0 18px 80px;}
   .metrics{grid-template-columns:repeat(2,1fr);}
-  footer{padding:24px 18px;}
+  .page-inner{padding:28px 16px 70px;}
 }
 @media(max-width:768px){
-  nav{padding:0 14px;}
   .nav-copy{display:none;}
-  main{padding:0 14px 70px;}
-  .hero{padding:64px 14px 74px;}
-  .hero-h1{font-size:clamp(46px,10vw,78px);letter-spacing:-2px;}
+  .nav-role{display:none !important;}
+  .metrics{grid-template-columns:repeat(2,1fr);}
+  .hero-h1{font-size:clamp(44px,10vw,72px);letter-spacing:-2px;}
   .hero-boards{padding:14px 14px;}
   .hero-pill{font-size:11.5px;padding:6px 12px;}
-  .metrics{grid-template-columns:repeat(2,1fr);}
-  footer{padding:22px 14px;}
+  .page-inner{padding:24px 14px 60px;}
+  .res-topbar{padding:10px 14px;}
+  .res-content{padding:18px 14px 60px;}
   .footer-inner{flex-direction:column;}
-  .search-wrap{padding:8px 14px;}
+  footer{padding:22px 14px;}
 }
 @media(max-width:480px){
-  nav{padding:0 12px;height:50px;}
-  .nav-role{display:none !important;}
-  main{padding:0 12px 60px;}
-  .hero{padding:58px 12px 68px;}
-  .hero-h1{font-size:clamp(40px,12vw,60px);letter-spacing:-2px;}
+  :root{--nav-h:50px;}
+  body.admin-mode{--nav-h:88px;}
+  nav{padding:0 12px;}
+  .btn-nav{padding:6px 10px;font-size:11.5px;}
+  .btn-nav-solid{padding:6px 12px;font-size:11.5px;}
+  .hero-h1{font-size:clamp(38px,12vw,58px);letter-spacing:-2px;}
+  .hero-en{font-size:clamp(13px,3.5vw,18px);}
+  .hero-desc{font-size:13px;}
   .hero-boards{gap:6px;padding:12px 10px;}
-  .hero-pill{font-size:11px;padding:5px 11px;gap:4px;}
+  .hero-pill{font-size:11px;padding:6px 11px;min-height:32px;}
   .metrics{grid-template-columns:1fr 1fr;}
   .metric{padding:12px 10px;}
   .metric-n{font-size:20px;}
   .grid{grid-template-columns:1fr;}
-  .board-item{padding:12px 13px;gap:10px;}
+  .board-item{padding:13px 14px;gap:11px;}
+  .board-icon{width:36px;height:36px;font-size:16px;}
+  .page-inner{padding:18px 12px 60px;}
+  .res-topbar{padding:9px 12px;}
+  .res-content{padding:16px 12px 60px;}
+  .back-btn{font-size:12px;padding:7px 11px;}
+  .res-title{font-size:15px;}
   footer{padding:18px 12px;}
-  .admin-bar{padding:6px 12px;}
-  .search-wrap{padding:7px 12px;}
-  .res-topbar{padding:10px 12px;}
+  .admin-bar{padding:7px 12px;font-size:11px;}
+}
+@media(max-width:360px){
+  .hero-h1{font-size:36px;}
+  .gate-box{padding:20px 16px;}
+  .gate-btns{gap:8px;}
+  .gate-role-btn{padding:13px 8px;}
 }
 </style>
 </head>
 <body>
 
-<!-- GATE -->
+<!-- ══ GATE ══ -->
 <div class="gate" id="gate">
   <div class="gate-box">
     <div class="gate-logo"><span class="gate-logo-txt">All</span></div>
@@ -456,12 +403,12 @@ footer{border-top:1.5px solid var(--line);padding:32px 24px;max-width:1140px;mar
         </div>
       </div>
       <div class="gate-btns">
-        <button class="gate-role-btn teacher" onclick="selectRole('teacher')" type="button">
+        <button class="gate-role-btn teacher" id="btnTeacher" type="button">
           <div class="gate-role-icon">👩‍🏫</div>
           <div class="gate-role-label">선생님</div>
           <div class="gate-role-sub">교사 전용 입장</div>
         </button>
-        <button class="gate-role-btn student" onclick="selectRole('student')" type="button">
+        <button class="gate-role-btn student" id="btnStudent" type="button">
           <div class="gate-role-icon">🎓</div>
           <div class="gate-role-label">학생 · 학부모</div>
           <div class="gate-role-sub">학생 및 학부모 입장</div>
@@ -469,11 +416,11 @@ footer{border-top:1.5px solid var(--line);padding:32px 24px;max-width:1140px;mar
       </div>
     </div>
     <div class="gate-pw-step" id="gateStep2">
-      <button class="gate-back" onclick="backToStep1()" type="button">← 뒤로</button>
+      <button class="gate-back" id="gateBackBtn" type="button">← 뒤로</button>
       <div class="gate-pw-role" id="gatePwRole"></div>
       <div class="gate-input-wrap">
-        <input class="gate-input" type="password" id="gateInput" placeholder="● ● ● ●" maxlength="6">
-        <button class="gate-enter-btn" id="gateEnterBtn" onclick="checkGate()" type="button">입장</button>
+        <input class="gate-input" type="password" id="gateInput" placeholder="● ● ● ●" maxlength="6" inputmode="numeric">
+        <button class="gate-enter-btn" id="gateEnterBtn" type="button">입장</button>
       </div>
       <div class="gate-err" id="gateErr">비밀번호가 올바르지 않습니다.</div>
     </div>
@@ -481,57 +428,56 @@ footer{border-top:1.5px solid var(--line);padding:32px 24px;max-width:1140px;mar
   </div>
 </div>
 
-<!-- ADMIN BAR -->
+<!-- ══ ADMIN BAR ══ -->
 <div class="admin-bar" id="adminBar">
   ⚙️ 관리자 모드 — 박상근 선생님
   <button class="btn-logout" onclick="logout()">로그아웃</button>
 </div>
 
-<!-- NAV -->
-<nav>
-  <div class="nav-left" onclick="goHome()" title="처음으로">
+<!-- ══ NAV ══ -->
+<nav id="mainNav">
+  <div class="nav-left" id="navLogo">
     <div class="nav-logo">
       <span class="nav-logo-txt">All</span>
       <div class="nav-logo-shine"></div>
     </div>
-    <div>
+    <div class="nav-brand">
       <div class="nav-wordmark-ko">모두의 진학자료실</div>
       <div class="nav-copy" id="navCopy">Copyright@All Teachers</div>
     </div>
   </div>
-  <div style="display:flex;align-items:center;gap:8px;">
-    <span class="nav-role" id="navRole"></span>
-  </div>
+  <span class="nav-role" id="navRole"></span>
   <div class="nav-right">
-    <!-- 검색 버튼 -->
-    <button class="btn-g" onclick="toggleSearch()" id="searchToggleBtn" title="검색">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
-      검색
-    </button>
-    <button class="btn-g" onclick="goHome()">🏠 홈</button>
-    <button class="btn-s" onclick="openLogin()">관리자</button>
+    <button class="btn-nav" id="searchBtn" type="button">🔍 검색</button>
+    <button class="btn-nav" id="homeBtn" type="button">🏠 홈</button>
+    <button class="btn-nav-solid" id="adminBtn" type="button">관리자</button>
   </div>
 </nav>
 
-<!-- SEARCH BAR -->
-<div class="search-wrap" id="searchWrap">
-  <div class="search-inner">
-    <span class="search-icon">🔍</span>
-    <input class="search-input" type="text" id="searchInput" placeholder="자료 제목, 설명으로 검색..." oninput="doSearch(this.value)" onkeydown="if(event.key==='Escape')closeSearch()">
-    <button class="search-clear" id="searchClear" onclick="clearSearch()">✕</button>
-    <div class="search-results" id="searchResults"></div>
+<!-- ══ SEARCH OVERLAY ══ -->
+<div class="search-overlay" id="searchOverlay">
+  <div class="search-box">
+    <div class="search-header">
+      <span class="search-icon-lbl">🔍</span>
+      <input class="search-input" type="text" id="searchInput" placeholder="자료 제목, 설명으로 검색...">
+      <button class="search-close" id="searchCloseBtn" type="button">닫기</button>
+    </div>
+    <div class="search-results" id="searchResults">
+      <div class="search-placeholder">검색어를 입력하세요</div>
+    </div>
   </div>
 </div>
 
-<!-- HERO -->
-<section class="hero" id="heroSection">
-  <div class="orb-a"></div><div class="orb-b"></div>
+<!-- ══ PAGE: HOME ══ -->
+<div id="pageHome" class="page active">
+  <div class="orb-a"></div>
+  <div class="orb-b"></div>
   <div class="hero-badge"><div class="badge-dot"></div>공교육을 위한 진학 정보 플랫폼</div>
   <h1 class="hero-h1"><em>모두의</em><br>진학자료실</h1>
   <p class="hero-en">The Archive for Every Teacher & Student</p>
   <p class="hero-desc">수시부터 정시, 면접부터 창체 수업까지.<br>진학의 모든 자료를 한 곳에서 찾고 활용하세요.</p>
   <div class="hero-cta">
-    <button class="btn-hp" onclick="document.getElementById('boards').scrollIntoView({behavior:'smooth'})">자료실 입장 →</button>
+    <button class="btn-hp" id="enterBtn" type="button">자료실 입장 →</button>
   </div>
   <div class="hero-boards-wrap">
     <div class="hero-boards-label">BOARDS</div>
@@ -540,89 +486,99 @@ footer{border-top:1.5px solid var(--line);padding:32px 24px;max-width:1140px;mar
     </div>
   </div>
   <div class="hero-scroll"><span>SCROLL</span><div class="scroll-line"></div></div>
-</section>
+</div>
 
-<main>
-  <div class="metrics">
-    <div class="metric"><div class="metric-n"><b id="mv1">—</b></div><div class="metric-l">전체 자료</div><div class="metric-tag mt-g">업데이트됨</div></div>
-    <div class="metric"><div class="metric-n"><b id="mv2">—</b></div><div class="metric-l">게시판 수</div><div class="metric-tag mt-b">활성화</div></div>
-    <div class="metric"><div class="metric-n"><b id="mv3">—</b></div><div class="metric-l">총 조회수</div><div class="metric-tag mt-p">누적</div></div>
-    <div class="metric"><div class="metric-n"><b id="mv4">—</b></div><div class="metric-l">오늘 방문자</div><div class="metric-tag mt-o">실시간</div></div>
-  </div>
-
-  <div class="view-boards" id="boardsView">
-    <div id="boards" class="sec-header">
+<!-- ══ PAGE: BOARDS ══ -->
+<div id="pageBoards" class="page">
+  <div class="page-inner">
+    <div class="metrics">
+      <div class="metric"><div class="metric-n"><b id="mv1">—</b></div><div class="metric-l">전체 자료</div><div class="metric-tag mt-g">업데이트됨</div></div>
+      <div class="metric"><div class="metric-n"><b id="mv2">—</b></div><div class="metric-l">게시판 수</div><div class="metric-tag mt-b">활성화</div></div>
+      <div class="metric"><div class="metric-n"><b id="mv3">—</b></div><div class="metric-l">총 조회수</div><div class="metric-tag mt-p">누적</div></div>
+      <div class="metric"><div class="metric-n"><b id="mv4">—</b></div><div class="metric-l">오늘 방문자</div><div class="metric-tag mt-o">실시간</div></div>
+    </div>
+    <div class="sec-header">
       <div><div class="sec-label">Resource Boards</div><div class="sec-title">자료 게시판</div></div>
-      <div id="addBoardWrap">
-        <button class="btn-add-sm" onclick="openBoardModal(null)">
-          <svg width="10" height="10" viewBox="0 0 10 10"><path d="M5 1v8M1 5h8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-          게시판 추가
-        </button>
+      <div id="addBoardWrap" style="display:none;">
+        <button class="btn-add-sm" id="addBoardBtn" type="button">+ 게시판 추가</button>
       </div>
     </div>
-    <div class="board-list" id="boardList"><div class="loading"><div class="spinner"></div>불러오는 중...</div></div>
+    <div class="board-list" id="boardList">
+      <div class="loading"><div class="spinner"></div>불러오는 중...</div>
+    </div>
   </div>
-
-  <div class="view-res" id="resView">
-    <div class="res-topbar">
-      <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
-        <button class="back-btn" onclick="goBackToBoards()">
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M9 2L4 7L9 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          게시판 목록
-        </button>
-        <button class="back-btn" onclick="goHome()">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12L12 4L21 12V20H15V14H9V20H3V12Z"/></svg>
-          처음으로
-        </button>
-      </div>
-      <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
-        <div class="res-title" id="resTitle"></div>
-        <div class="view-toggle">
-          <button class="vt-btn on" id="vt-card" onclick="setView('card')" title="카드형">⊞</button>
-          <button class="vt-btn" id="vt-list" onclick="setView('list')" title="리스트형">☰</button>
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div style="display:flex;align-items:center;gap:9px;">
+          <div class="nav-logo" style="width:30px;height:30px;border-radius:8px;">
+            <span class="nav-logo-txt" style="font-size:17px;">All</span>
+            <div class="nav-logo-shine"></div>
+          </div>
+          <span style="font-family:'Outfit',sans-serif;font-size:13px;font-weight:700;">모두의 진학자료실</span>
         </div>
-        <div id="addResWrap">
-          <button class="btn-add" onclick="openAddRes()">+ 자료 추가</button>
+        <p class="footer-desc">교사와 학생, 학부모 모두가 함께 성장하는 공교육 진학 정보 플랫폼.</p>
+      </div>
+      <div style="text-align:right;">
+        <div class="footer-sig">Park Sang-Geun</div>
+        <div class="footer-copy">
+          강원사대부설고등학교 · 교사 박상근<br>
+          <a href="mailto:p3412@nate.com">p3412@nate.com</a><br>
+          <strong>Copyright © All Teachers</strong>
         </div>
       </div>
     </div>
+  </footer>
+</div>
+
+<!-- ══ PAGE: RESOURCES ══ -->
+<div id="pageRes" class="page">
+  <div class="res-topbar">
+    <div class="res-nav-btns">
+      <button class="back-btn" id="backToBoardsBtn" type="button">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M9 2L4 7L9 12" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        게시판 목록
+      </button>
+      <button class="back-btn" id="backToHomeBtn" type="button">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12L12 4L21 12V20H15V14H9V20H3V12Z"/></svg>
+        처음으로
+      </button>
+    </div>
+    <div class="res-title-wrap">
+      <div class="res-title" id="resTitle"></div>
+      <div class="view-toggle">
+        <button class="vt-btn on" id="vt-card" type="button">⊞</button>
+        <button class="vt-btn" id="vt-list" type="button">☰</button>
+      </div>
+      <div id="addResWrap" style="display:none;">
+        <button class="btn-add" id="addResBtn" type="button">+ 자료 추가</button>
+      </div>
+    </div>
+  </div>
+  <div class="res-content">
     <div id="resGrid" class="grid"></div>
   </div>
-</main>
+</div>
 
-<footer>
-  <div class="footer-inner">
-    <div>
-      <div style="display:flex;align-items:center;gap:9px;">
-        <div class="nav-logo" style="width:30px;height:30px;border-radius:8px;cursor:pointer;" onclick="goHome()">
-          <span class="nav-logo-txt" style="font-size:17px;">All</span>
-          <div class="nav-logo-shine"></div>
-        </div>
-        <span style="font-family:'Outfit',sans-serif;font-size:13px;font-weight:700;">모두의 진학자료실</span>
-      </div>
-      <p class="footer-desc">교사와 학생, 학부모 모두가 함께 성장하는 공교육 진학 정보 플랫폼.</p>
-    </div>
-    <div style="text-align:right;">
-      <div class="footer-sig">Park Sang-Geun</div>
-      <div class="footer-copy">
-        강원사대부설고등학교 · 교사 박상근<br>
-        <a href="mailto:p3412@nate.com">p3412@nate.com</a><br>
-        <strong>Copyright © All Teachers</strong>
-      </div>
-    </div>
+<!-- HTML PREVIEW -->
+<div class="html-preview" id="htmlPreview">
+  <div class="preview-bar">
+    <span class="preview-title" id="previewTitle">HTML 미리보기</span>
+    <button class="preview-close" id="previewCloseBtn" type="button">✕ 닫기</button>
   </div>
-</footer>
+  <iframe class="preview-iframe" id="previewFrame"></iframe>
+</div>
 
-<!-- LOGIN -->
+<!-- LOGIN MODAL -->
 <div class="overlay" id="loginOv">
   <div class="login-modal">
-    <button class="modal-x" onclick="closeOv('loginOv')">✕</button>
+    <button class="modal-x" type="button" onclick="closeOv('loginOv')">✕</button>
     <div style="display:flex;align-items:center;gap:9px;margin-bottom:18px;">
       <div class="nav-logo" style="width:36px;height:36px;border-radius:9px;flex-shrink:0;"><span class="nav-logo-txt" style="font-size:20px;">All</span><div class="nav-logo-shine"></div></div>
       <div><div style="font-weight:700;font-size:13.5px;">관리자 로그인</div><div style="font-size:11px;color:var(--ink3);">박상근 선생님 전용</div></div>
     </div>
-    <div class="fgrp"><label class="flbl">PASSWORD</label><input class="finp" type="password" id="pwIn" placeholder="비밀번호 입력" onkeydown="if(event.key==='Enter')doLogin()"></div>
-    <button class="btn-ok" onclick="doLogin()">로그인</button>
+    <div class="fgrp"><label class="flbl">PASSWORD</label><input class="finp" type="password" id="pwIn" placeholder="비밀번호 입력"></div>
+    <button class="btn-ok" type="button" onclick="doLogin()">로그인</button>
     <div id="pwErr" style="color:var(--red);font-size:12px;margin-top:7px;display:none;">비밀번호가 올바르지 않습니다.</div>
   </div>
 </div>
@@ -630,7 +586,7 @@ footer{border-top:1.5px solid var(--line);padding:32px 24px;max-width:1140px;mar
 <!-- BOARD MODAL -->
 <div class="overlay" id="boardOv">
   <div class="modal">
-    <button class="modal-x" onclick="closeOv('boardOv')">✕</button>
+    <button class="modal-x" type="button" onclick="closeOv('boardOv')">✕</button>
     <div class="modal-title" id="boardModalTitle">게시판 추가</div>
     <div class="modal-sub">게시판을 만들어 자료를 분류하세요</div>
     <input type="hidden" id="editBoardId">
@@ -647,14 +603,14 @@ footer{border-top:1.5px solid var(--line);padding:32px 24px;max-width:1140px;mar
       <div class="toggle-lbl">공개 설정<small>비공개 시 관리자만 볼 수 있습니다</small></div>
       <label class="switch"><input type="checkbox" id="bPublic" checked><span class="slider"></span></label>
     </div>
-    <button class="btn-ok" onclick="saveBoard()">저장하기</button>
+    <button class="btn-ok" type="button" onclick="saveBoard()">저장하기</button>
   </div>
 </div>
 
 <!-- RESOURCE MODAL -->
 <div class="overlay" id="resOv">
   <div class="modal">
-    <button class="modal-x" onclick="closeOv('resOv')">✕</button>
+    <button class="modal-x" type="button" onclick="closeOv('resOv')">✕</button>
     <div class="modal-title" id="resModalTitle">자료 추가</div>
     <div class="modal-sub">링크, 파일, HTML을 등록하세요</div>
     <input type="hidden" id="editResId">
@@ -678,10 +634,7 @@ footer{border-top:1.5px solid var(--line);padding:32px 24px;max-width:1140px;mar
     <div id="linkWrap" class="fgrp"><label class="flbl">URL</label><input class="finp" type="url" id="rUrl" placeholder="https://..."></div>
     <div id="htmlWrap" class="fgrp" style="display:none;">
       <label class="flbl">HTML 파일 선택</label>
-      <div class="upload-area" onclick="document.getElementById('htmlIn').click()" id="htmlArea"
-           ondragover="event.preventDefault();this.classList.add('drag')"
-           ondragleave="this.classList.remove('drag')"
-           ondrop="handleHtmlDrop(event)">
+      <div class="upload-area" onclick="document.getElementById('htmlIn').click()" ondragover="event.preventDefault();this.classList.add('drag')" ondragleave="this.classList.remove('drag')" ondrop="handleHtmlDrop(event)">
         <div style="font-size:20px;">🌐</div>
         <div style="font-size:11px;color:var(--ink3);margin-top:4px;">HTML 파일 클릭 또는 드래그</div>
         <div class="upload-fn" id="htmlFn"></div>
@@ -700,37 +653,39 @@ footer{border-top:1.5px solid var(--line);padding:32px 24px;max-width:1140px;mar
       <div class="toggle-lbl">공개 설정<small>비공개 시 관리자만 볼 수 있습니다</small></div>
       <label class="switch"><input type="checkbox" id="rPublic" checked><span class="slider"></span></label>
     </div>
-    <button class="btn-ok" onclick="saveRes()">등록하기</button>
+    <button class="btn-ok" type="button" onclick="saveRes()">등록하기</button>
   </div>
-</div>
-
-<!-- HTML PREVIEW -->
-<div class="html-preview" id="htmlPreview">
-  <div class="preview-bar">
-    <span class="preview-title" id="previewTitle">HTML 미리보기</span>
-    <button class="preview-close" onclick="closePreview()">✕ 닫기</button>
-  </div>
-  <iframe class="preview-iframe" id="previewFrame"></iframe>
 </div>
 
 <div class="toast" id="toast"><span id="toastTxt"></span></div>
 
 <script>
+// ══ SUPABASE ══
 const SUPABASE_URL='https://ndwxlfaauqlhxrtqrgtf.supabase.co';
 const SUPABASE_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5kd3hsZmFhdXFsaHhydHFyZ3RmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA2Mzk0MTEsImV4cCI6MjA5NjIxNTQxMX0.hmU6bX6wSKGLKN91jeXMdZQCbatK-TsHXOnrJWm8Qvw';
 const sb=supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
 
 const PW_TEACHER='0709',PW_STUDENT='0427',PW_ADMIN='psk3412';
 let role='',isAdmin=false,curBoard=null,curBoardObj=null,viewMode='card';
-let selectedTags=[],htmlContent=null,dragSrcIdx=null,allResources=[];
+let selectedTags=[],htmlContent=null,dragSrcIdx=null;
 
 // visit
-let vis=JSON.parse(localStorage.getItem('psg_vis5')||'{"total":0,"today":0,"date":""}');
-(()=>{const td=new Date().toDateString();if(vis.date!==td){vis.today=0;vis.date=td;}vis.total++;vis.today++;localStorage.setItem('psg_vis5',JSON.stringify(vis));})();
+let vis=JSON.parse(localStorage.getItem('psg_vis6')||'{"total":0,"today":0,"date":""}');
+(()=>{const td=new Date().toDateString();if(vis.date!==td){vis.today=0;vis.date=td;}vis.total++;vis.today++;localStorage.setItem('psg_vis6',JSON.stringify(vis));})();
 
-// ── GATE: 세션 만료 = 브라우저 탭 닫으면 로그아웃
-// sessionStorage 사용 (탭/창 닫으면 사라짐)
-const savedRole=sessionStorage.getItem('psg_role');
+// ══ PAGE SYSTEM ══
+// 현재 페이지 스택
+let pageStack=[];
+
+function showPage(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0,0); // 항상 맨 위로
+}
+
+// ══ GATE ══
+// sessionStorage: 탭 닫으면 사라짐
+const savedRole=sessionStorage.getItem('psg_role2');
 if(savedRole==='teacher'||savedRole==='student'){
   role=savedRole;
   document.getElementById('gate').style.display='none';
@@ -738,14 +693,27 @@ if(savedRole==='teacher'||savedRole==='student'){
 }
 
 let pendingRole='';
+
+// 이벤트를 addEventListener로 등록 (모바일 호환성)
+document.getElementById('btnTeacher').addEventListener('click',()=>selectRole('teacher'));
+document.getElementById('btnStudent').addEventListener('click',()=>selectRole('student'));
+document.getElementById('btnTeacher').addEventListener('touchend',e=>{e.preventDefault();selectRole('teacher');});
+document.getElementById('btnStudent').addEventListener('touchend',e=>{e.preventDefault();selectRole('student');});
+document.getElementById('gateBackBtn').addEventListener('click',backToStep1);
+document.getElementById('gateEnterBtn').addEventListener('click',checkGate);
+document.getElementById('gateEnterBtn').addEventListener('touchend',e=>{e.preventDefault();checkGate();});
+document.getElementById('gateInput').addEventListener('keydown',e=>{if(e.key==='Enter')checkGate();});
+
 function selectRole(r){
   pendingRole=r;
   document.getElementById('gateStep1').style.display='none';
   document.getElementById('gateStep2').classList.add('on');
   const btn=document.getElementById('gateEnterBtn');
   btn.className='gate-enter-btn '+r;
-  document.getElementById('gatePwRole').textContent=r==='teacher'?'👩‍🏫 선생님 비밀번호':'🎓 학생·학부모 비밀번호';
-  setTimeout(()=>{try{document.getElementById('gateInput').focus();}catch(e){}},150);
+  document.getElementById('gatePwRole').textContent=r==='teacher'?'👩‍🏫 선생님 비밀번호 입력':'🎓 학생·학부모 비밀번호 입력';
+  document.getElementById('gateErr').style.display='none';
+  document.getElementById('gateInput').value='';
+  setTimeout(()=>{try{document.getElementById('gateInput').focus();}catch(e){}},200);
 }
 function backToStep1(){
   document.getElementById('gateStep1').style.display='';
@@ -758,42 +726,182 @@ function checkGate(){
   const ok=(pendingRole==='teacher'&&v===PW_TEACHER)||(pendingRole==='student'&&v===PW_STUDENT);
   if(ok){
     role=pendingRole;
-    sessionStorage.setItem('psg_role',role); // 탭 닫으면 사라짐
+    sessionStorage.setItem('psg_role2',role);
     document.getElementById('gate').style.display='none';
     init();
   } else {
     document.getElementById('gateErr').style.display='block';
     document.getElementById('gateInput').value='';
-    document.getElementById('gateInput').focus();
+    try{document.getElementById('gateInput').focus();}catch(e){}
   }
 }
-document.getElementById('gateInput').addEventListener('keydown',e=>{if(e.key==='Enter')checkGate();});
 
 function init(){
+  // nav role
   const nr=document.getElementById('navRole');
   if(role==='teacher'){nr.textContent='👩‍🏫 선생님';nr.className='nav-role teacher';}
   else{nr.textContent='🎓 학생·학부모';nr.className='nav-role student';}
   setTimeout(()=>document.getElementById('navCopy').classList.add('on'),700);
-  renderBoards();
+
+  // nav event listeners
+  document.getElementById('navLogo').addEventListener('click',goHome);
+  document.getElementById('homeBtn').addEventListener('click',goHome);
+  document.getElementById('enterBtn').addEventListener('click',goBoards);
+  document.getElementById('searchBtn').addEventListener('click',openSearch);
+  document.getElementById('adminBtn').addEventListener('click',()=>document.getElementById('loginOv').classList.add('on'));
+  document.getElementById('addBoardBtn').addEventListener('click',()=>openBoardModal(null));
+  document.getElementById('addResBtn').addEventListener('click',openAddRes);
+  document.getElementById('backToBoardsBtn').addEventListener('click',goBoards);
+  document.getElementById('backToHomeBtn').addEventListener('click',goHome);
+  document.getElementById('searchCloseBtn').addEventListener('click',closeSearch);
+  document.getElementById('previewCloseBtn').addEventListener('click',closePreview);
+  document.getElementById('vt-card').addEventListener('click',()=>setView('card'));
+  document.getElementById('vt-list').addEventListener('click',()=>setView('list'));
+  document.getElementById('pwIn').addEventListener('keydown',e=>{if(e.key==='Enter')doLogin();});
+
+  // history / back button
+  history.replaceState({page:'home'},'','');
+  window.addEventListener('popstate',handlePopstate);
+
+  showPage('pageHome');
+  renderHeroPills();
   updateMetrics();
-  // history API for back button
-  history.pushState({page:'home'},'','');
 }
 
-// ── 뒤로가기 버튼 처리 (모바일 포함)
-window.addEventListener('popstate',function(e){
+// ══ BACK BUTTON (모바일 포함) ══
+function handlePopstate(e){
+  const state=e.state||{page:'home'};
+  // 열려있는 것들 먼저 닫기
   if(document.getElementById('htmlPreview').classList.contains('on')){
-    closePreview();history.pushState({page:'res'},'','');
-  } else if(document.getElementById('resView').classList.contains('on')){
-    goBackToBoards();history.pushState({page:'boards'},'','');
-  } else if(document.getElementById('searchWrap').classList.contains('on')){
-    closeSearch();history.pushState({page:'home'},'','');
+    closePreview();
+    history.pushState({page:'res',boardId:curBoard},'','');
+    return;
+  }
+  if(document.getElementById('searchOverlay').classList.contains('on')){
+    closeSearch();
+    history.pushState(state,'','');
+    return;
+  }
+  if(document.querySelectorAll('.overlay.on').length>0){
+    document.querySelectorAll('.overlay.on').forEach(o=>o.classList.remove('on'));
+    history.pushState(state,'','');
+    return;
+  }
+  // 페이지 이동
+  if(state.page==='res'&&state.boardId){
+    // 이미 res면 boards로
+    if(document.getElementById('pageRes').classList.contains('active')){
+      _goBoards();
+      history.pushState({page:'boards'},'','');
+    } else {
+      _openBoard(state.boardId);
+    }
+  } else if(state.page==='boards'){
+    if(document.getElementById('pageBoards').classList.contains('active')){
+      _goHome();
+      history.pushState({page:'home'},'','');
+    } else {
+      _goBoards();
+    }
   } else {
-    // 이미 홈이면 뒤로가기 막기
+    _goHome();
     history.pushState({page:'home'},'','');
   }
-});
+}
 
+// ══ NAVIGATION ══
+function goHome(){
+  _goHome();
+  history.pushState({page:'home'},'','');
+}
+function _goHome(){
+  showPage('pageHome');
+}
+
+function goBoards(){
+  _goBoards();
+  history.pushState({page:'boards'},'','');
+}
+function _goBoards(){
+  showPage('pageBoards');
+  renderBoards();
+}
+
+async function openBoard(id){
+  await _openBoard(id);
+  history.pushState({page:'res',boardId:id},'','');
+}
+async function _openBoard(id){
+  curBoard=id;
+  const{data:b}=await sb.from('boards').select('*').eq('id',id).single();
+  curBoardObj=b;
+  document.getElementById('resTitle').textContent=b?b.icon+' '+b.name:'';
+  document.getElementById('addResWrap').style.display=isAdmin?'block':'none';
+  showPage('pageRes');
+  await renderRes();
+}
+
+// ══ SEARCH ══
+let searchTimer=null;
+function openSearch(){
+  document.getElementById('searchOverlay').classList.add('on');
+  setTimeout(()=>{try{document.getElementById('searchInput').focus();}catch(e){}},100);
+  history.pushState({page:'search'},'','');
+}
+function closeSearch(){
+  document.getElementById('searchOverlay').classList.remove('on');
+  document.getElementById('searchInput').value='';
+  document.getElementById('searchResults').innerHTML='<div class="search-placeholder">검색어를 입력하세요</div>';
+}
+document.getElementById('searchOverlay').addEventListener('click',function(e){if(e.target===this)closeSearch();});
+document.getElementById('searchInput').addEventListener('input',function(){
+  clearTimeout(searchTimer);
+  const q=this.value.trim();
+  if(!q){document.getElementById('searchResults').innerHTML='<div class="search-placeholder">검색어를 입력하세요</div>';return;}
+  searchTimer=setTimeout(()=>doSearch(q),280);
+});
+document.getElementById('searchInput').addEventListener('keydown',e=>{if(e.key==='Escape')closeSearch();});
+
+const colMap2={green:'var(--green)',blue:'var(--blue)',purple:'var(--purple)',gold:'var(--gold)',red:'var(--red)'};
+const bgMap2={green:'var(--green-l)',blue:'var(--blue-l)',purple:'var(--purple-l)',gold:'var(--gold-l)',red:'var(--red-l)'};
+
+async function doSearch(q){
+  const res=document.getElementById('searchResults');
+  res.innerHTML='<div class="search-placeholder">검색 중...</div>';
+  const{data:items}=await sb.from('resources').select('id,title,description,type,board_id,is_public,tags').ilike('title','%'+q+'%').limit(20);
+  const{data:bds}=await sb.from('boards').select('id,name,icon,color');
+  const bmap={};(bds||[]).forEach(b=>bmap[b.id]=b);
+  let filtered=(items||[]).filter(r=>isAdmin||r.is_public);
+  if(!isAdmin&&role==='student')filtered=filtered.filter(r=>{const t=r.tags||[];return t.length===0||t.includes('student')||t.includes('parent');});
+  if(!filtered.length){res.innerHTML='<div class="search-empty">검색 결과가 없습니다.</div>';return;}
+  res.innerHTML=filtered.map(r=>{
+    const b=bmap[r.board_id]||{};
+    const bg=bgMap2[b.color||'green'];const col=colMap2[b.color||'green'];
+    return `<div class="search-item" data-bid="${r.board_id}" data-rid="${r.id}">
+      <div class="search-item-icon" style="background:${bg};color:${col};">${b.icon||'📁'}</div>
+      <div class="search-item-info">
+        <div class="search-item-title">${r.title}</div>
+        <div class="search-item-board">${b.name||'게시판'} · ${r.type==='html'?'HTML':r.type==='file'?'파일':'링크'}</div>
+      </div>
+      <div style="font-size:12px;color:var(--ink3);font-weight:700;">→</div>
+    </div>`;
+  }).join('');
+  // 검색 결과 클릭
+  res.querySelectorAll('.search-item').forEach(el=>{
+    el.addEventListener('click',async()=>{
+      const bid=parseInt(el.dataset.bid);
+      const rid=parseInt(el.dataset.rid);
+      closeSearch();
+      await openBoard(bid);
+      setTimeout(()=>{
+        const card=document.querySelector(`[data-rid="${rid}"]`);
+        if(card){card.scrollIntoView({behavior:'smooth',block:'center'});card.style.outline='3px solid var(--green)';setTimeout(()=>card.style.outline='',2200);}
+      },700);
+    });
+  });
+}
+
+// ══ METRICS ══
 const colMap={green:'var(--green)',blue:'var(--blue)',purple:'var(--purple)',gold:'var(--gold)',red:'var(--red)'};
 const bgMap={green:'var(--green-l)',blue:'var(--blue-l)',purple:'var(--purple-l)',gold:'var(--gold-l)',red:'var(--red-l)'};
 const chipMap={green:'chip-green',blue:'chip-blue',purple:'chip-purple',gold:'chip-gold',red:'chip-red'};
@@ -807,89 +915,20 @@ async function updateMetrics(){
   document.getElementById('mv4').textContent=vis.today;
 }
 
-// hero pills
+// ══ HERO PILLS ══
 async function renderHeroPills(){
   const{data}=await sb.from('boards').select('id,name,icon,color,is_public').order('sort_order').order('created_at');
   const el=document.getElementById('heroBoards');
   if(!data||!data.length){el.innerHTML='<div style="font-size:12px;color:var(--ink3);">게시판을 추가해주세요</div>';return;}
   const visible=data.filter(b=>isAdmin||b.is_public);
-  el.innerHTML=visible.map(b=>`
-    <div class="hero-pill c-${b.color||'green'}" onclick="scrollAndOpen(${b.id})">
-      ${b.icon||'📁'} ${b.name}
-    </div>`).join('');
-}
-function scrollAndOpen(id){
-  document.getElementById('boards').scrollIntoView({behavior:'smooth'});
-  setTimeout(()=>openBoard(id),400);
+  el.innerHTML=visible.map(b=>`<div class="hero-pill c-${b.color||'green'}" data-bid="${b.id}">${b.icon||'📁'} ${b.name}</div>`).join('');
+  el.querySelectorAll('.hero-pill').forEach(pill=>{
+    const bid=parseInt(pill.dataset.bid);
+    pill.addEventListener('click',()=>openBoard(bid));
+  });
 }
 
-// ── SEARCH
-let searchTimeout=null;
-function toggleSearch(){
-  const wrap=document.getElementById('searchWrap');
-  const isOn=wrap.classList.contains('on');
-  if(isOn){closeSearch();}
-  else{
-    wrap.classList.add('on');
-    document.getElementById('searchInput').focus();
-    history.pushState({page:'search'},'','');
-    // main에 패딩 추가
-    document.querySelector('main').style.paddingTop='52px';
-  }
-}
-function closeSearch(){
-  document.getElementById('searchWrap').classList.remove('on');
-  document.getElementById('searchInput').value='';
-  document.getElementById('searchResults').classList.remove('on');
-  document.getElementById('searchClear').style.display='none';
-  document.querySelector('main').style.paddingTop='';
-}
-function clearSearch(){
-  document.getElementById('searchInput').value='';
-  document.getElementById('searchResults').classList.remove('on');
-  document.getElementById('searchClear').style.display='none';
-  document.getElementById('searchInput').focus();
-}
-async function doSearch(q){
-  const clear=document.getElementById('searchClear');
-  const results=document.getElementById('searchResults');
-  clear.style.display=q?'block':'none';
-  if(!q){results.classList.remove('on');return;}
-  clearTimeout(searchTimeout);
-  searchTimeout=setTimeout(async()=>{
-    const{data:res}=await sb.from('resources').select('id,title,description,type,board_id,is_public,tags').ilike('title','%'+q+'%').limit(20);
-    const{data:bds}=await sb.from('boards').select('id,name,icon,color');
-    const bmap={};(bds||[]).forEach(b=>bmap[b.id]=b);
-    let filtered=(res||[]).filter(r=>isAdmin||r.is_public);
-    if(!isAdmin&&role==='student') filtered=filtered.filter(r=>{const t=r.tags||[];return t.length===0||t.includes('student')||t.includes('parent');});
-    results.classList.add('on');
-    if(!filtered.length){results.innerHTML='<div class="search-empty">검색 결과가 없습니다.</div>';return;}
-    results.innerHTML=filtered.map(r=>{
-      const b=bmap[r.board_id]||{};
-      const bg=bgMap[b.color||'green'];
-      const col=colMap[b.color||'green'];
-      return `<div class="search-item" onclick="searchGoTo(${r.board_id},${r.id})">
-        <div class="search-item-icon" style="background:${bg};color:${col};">${b.icon||'📁'}</div>
-        <div class="search-item-info">
-          <div class="search-item-title">${r.title}</div>
-          <div class="search-item-board">${b.name||'게시판'} · ${r.type==='html'?'HTML':r.type==='file'?'파일':'링크'}</div>
-        </div>
-        <div style="font-size:11px;color:var(--ink3);">→</div>
-      </div>`;
-    }).join('');
-  },300);
-}
-async function searchGoTo(boardId,resId){
-  closeSearch();
-  await openBoard(boardId);
-  // 해당 카드 하이라이트
-  setTimeout(()=>{
-    const el=document.querySelector(`[data-rid="${resId}"]`);
-    if(el){el.scrollIntoView({behavior:'smooth',block:'center'});el.style.outline='3px solid var(--green)';setTimeout(()=>el.style.outline='',2000);}
-  },600);
-}
-
-// boards
+// ══ BOARDS ══
 async function renderBoards(){
   const el=document.getElementById('boardList');
   el.innerHTML='<div class="loading"><div class="spinner"></div>불러오는 중...</div>';
@@ -899,72 +938,56 @@ async function renderBoards(){
   if(error||!data){el.innerHTML='<div class="empty"><div class="empty-icon">⚠️</div><div>불러오기 실패</div></div>';return;}
   if(!data.length){el.innerHTML='<div class="empty"><div class="empty-icon">📂</div><div style="font-size:13px;">게시판이 없습니다.</div></div>';return;}
   const{data:rc}=await sb.from('resources').select('board_id,is_public');
-  const cntMap={};
-  (rc||[]).forEach(r=>{if(isAdmin||r.is_public)cntMap[r.board_id]=(cntMap[r.board_id]||0)+1;});
-  el.innerHTML=data.map((b,i)=>{
+  const cntMap={};(rc||[]).forEach(r=>{if(isAdmin||r.is_public)cntMap[r.board_id]=(cntMap[r.board_id]||0)+1;});
+  el.innerHTML='';
+  data.forEach((b,i)=>{
     const col=colMap[b.color]||colMap.green;
     const bg=bgMap[b.color]||bgMap.green;
-    return `<div class="board-item" draggable="${isAdmin}"
-      ondragstart="bdragStart(event,${i})" ondragover="bdragOver(event)" ondrop="bdrop(event,${i})" ondragleave="bdragLeave(event)"
-      onclick="openBoard(${b.id})" data-id="${b.id}">
+    const div=document.createElement('div');
+    div.className='board-item';
+    div.dataset.id=b.id;
+    div.setAttribute('draggable',isAdmin?'true':'false');
+    div.innerHTML=`
       <div class="board-icon" style="background:${bg};color:${col};">${b.icon||'📁'}</div>
       <div class="board-info">
-        <div class="board-name">${b.name}
-          ${isAdmin?`<span class="vis-badge ${b.is_public?'vis-pub':'vis-prv'}">${b.is_public?'공개':'비공개'}</span>`:''}
-        </div>
+        <div class="board-name">${b.name}${isAdmin?`<span class="vis-badge ${b.is_public?'vis-pub':'vis-prv'}">${b.is_public?'공개':'비공개'}</span>`:''}</div>
         <div class="board-desc">${b.description||''}</div>
       </div>
       <div class="board-meta">
         <div class="board-cnt">자료 ${cntMap[b.id]||0}개</div>
-        ${isAdmin?`<div style="display:flex;gap:4px;" onclick="event.stopPropagation()">
-          <button class="btn-tiny btn-edit" onclick="openBoardModal(${b.id})">수정</button>
-          <button class="btn-tiny btn-del" onclick="delBoard(${b.id})">삭제</button>
+        ${isAdmin?`<div style="display:flex;gap:4px;" id="ba-${b.id}">
+          <button class="btn-tiny btn-edit" type="button">수정</button>
+          <button class="btn-tiny btn-del" type="button">삭제</button>
         </div>`:''}
         <div class="board-go">→</div>
-      </div>
-    </div>`;
-  }).join('');
-  renderHeroPills();updateMetrics();
+      </div>`;
+    // 클릭 이벤트
+    div.addEventListener('click',()=>openBoard(b.id));
+    div.addEventListener('touchend',e=>{e.preventDefault();openBoard(b.id);});
+    if(isAdmin){
+      const ba=div.querySelector(`#ba-${b.id}`);
+      ba.querySelector('.btn-edit').addEventListener('click',e=>{e.stopPropagation();openBoardModal(b.id);});
+      ba.querySelector('.btn-del').addEventListener('click',e=>{e.stopPropagation();delBoard(b.id);});
+      // drag
+      div.addEventListener('dragstart',e=>{div.classList.add('dragging');dragSrcIdx=i;});
+      div.addEventListener('dragover',e=>{e.preventDefault();div.classList.add('drag-over');});
+      div.addEventListener('dragleave',()=>div.classList.remove('drag-over'));
+      div.addEventListener('drop',async e=>{
+        e.preventDefault();div.classList.remove('drag-over');
+        if(dragSrcIdx===null||dragSrcIdx===i)return;
+        const items=Array.from(document.querySelectorAll('.board-item'));
+        const ids=items.map(el=>parseInt(el.dataset.id));
+        [ids[dragSrcIdx],ids[i]]=[ids[i],ids[dragSrcIdx]];
+        for(let j=0;j<ids.length;j++)await sb.from('boards').update({sort_order:j}).eq('id',ids[j]);
+        dragSrcIdx=null;renderBoards();renderHeroPills();
+      });
+    }
+    el.appendChild(div);
+  });
+  updateMetrics();
 }
 
-// board drag
-function bdragStart(e,i){if(!isAdmin)return;e.currentTarget.classList.add('dragging');dragSrcIdx=i;}
-function bdragOver(e){if(!isAdmin)return;e.preventDefault();e.currentTarget.classList.add('drag-over');}
-function bdragLeave(e){e.currentTarget.classList.remove('drag-over');}
-async function bdrop(e,i){
-  e.preventDefault();e.currentTarget.classList.remove('drag-over');
-  if(!isAdmin||dragSrcIdx===null||dragSrcIdx===i)return;
-  const items=Array.from(document.querySelectorAll('.board-item'));
-  const ids=items.map(el=>parseInt(el.dataset.id));
-  [ids[dragSrcIdx],ids[i]]=[ids[i],ids[dragSrcIdx]];
-  for(let j=0;j<ids.length;j++)await sb.from('boards').update({sort_order:j}).eq('id',ids[j]);
-  dragSrcIdx=null;renderBoards();
-}
-
-function showBoards(){
-  document.getElementById('boardsView').classList.remove('off');
-  document.getElementById('resView').classList.remove('on');
-  curBoard=null;curBoardObj=null;renderBoards();
-}
-function goBackToBoards(){
-  showBoards();
-  document.getElementById('boards').scrollIntoView({behavior:'smooth'});
-}
-
-async function openBoard(id){
-  curBoard=id;
-  const{data:b}=await sb.from('boards').select('*').eq('id',id).single();
-  curBoardObj=b;
-  document.getElementById('resTitle').textContent=b?b.icon+' '+b.name:'';
-  document.getElementById('boardsView').classList.add('off');
-  document.getElementById('resView').classList.add('on');
-  document.getElementById('addResWrap').style.display=isAdmin?'block':'none';
-  history.pushState({page:'res',boardId:id},'','');
-  await renderRes();
-  window.scrollTo({top:0,behavior:'smooth'});
-}
-
-// resources
+// ══ RESOURCES ══
 async function renderRes(){
   const grid=document.getElementById('resGrid');
   grid.className=viewMode==='list'?'list-view':'grid';
@@ -975,55 +998,72 @@ async function renderRes(){
   if(error){grid.innerHTML='<div class="empty"><div class="empty-icon">⚠️</div><div>불러오기 실패</div></div>';return;}
   let filtered=data||[];
   if(!isAdmin&&role==='student')filtered=filtered.filter(r=>{const t=r.tags||[];return t.length===0||t.includes('student')||t.includes('parent');});
-  allResources=filtered;
   if(!filtered.length){grid.innerHTML='<div class="empty"><div class="empty-icon">📄</div><div style="font-size:13px;">자료가 없습니다.</div></div>';return;}
   const b=curBoardObj;
   const chip=b?chipMap[b.color]||'chip-green':'chip-green';
   const bc=b?'bc-'+(b.color||'green'):'bc-green';
-  grid.innerHTML=filtered.map((r,i)=>{
+  grid.innerHTML='';
+  filtered.forEach((r,i)=>{
     const tags=r.tags||[];
-    const tagHtml=tags.map(t=>({student:'<span class="tag-badge tag-student">🎓 학생</span>',parent:'<span class="tag-badge tag-parent">👨‍👩‍👧 학부모</span>',teacher:'<span class="tag-badge tag-teacher">👩‍🏫 교사</span>'}[t]||'')).join('');
+    const tagHtml=tags.map(t=>({student:'<span class="tag-badge tag-student">🎓 학생</span>',parent:'<span class="tag-badge tag-parent">👨\u200d👩\u200d👧 학부모</span>',teacher:'<span class="tag-badge tag-teacher">👩\u200d🏫 교사</span>'}[t]||'')).join('');
     const isHtml=r.type==='html';
-    const clickAct=isHtml?`openHtmlPreview(${r.id},'${(r.title||'').replace(/'/g,"\\'")}')`:r.type==='file'?`window.open('${r.url||''}','_blank');hitRes(${r.id})`:`hitRes(${r.id})`;
-    const adminBtns=isAdmin?`<div class="card-admin-btns" onclick="event.stopPropagation()"><button class="btn-tiny btn-edit" onclick="openEditRes(${r.id})">수정</button><button class="btn-tiny btn-del" onclick="delRes(${r.id})">삭제</button></div>`:'';
+    const adminBtns=isAdmin?`<div class="card-admin-btns" id="ca-${r.id}"><button class="btn-tiny btn-edit" type="button">수정</button><button class="btn-tiny btn-del" type="button">삭제</button></div>`:'';
     const visBadge=isAdmin?`<span class="vis-badge ${r.is_public?'vis-pub':'vis-prv'}" style="float:right;margin-bottom:4px;">${r.is_public?'공개':'비공개'}</span>`:'';
+    const div=document.createElement('div');
+    div.className=`card ${bc}`;
+    div.dataset.rid=r.id;
+    div.style.animationDelay=i*.04+'s';
+    div.setAttribute('draggable',isAdmin?'true':'false');
     if(viewMode==='list'){
-      return `<div class="card ${bc}" draggable="${isAdmin}" ondragstart="rdragStart(event,${i})" ondragover="rdragOver(event,${i})" ondrop="rdrop(event,${i})" ondragleave="rdragLeave(event)" onclick="${clickAct}" data-rid="${r.id}" style="animation-delay:${i*.03}s">
-        ${adminBtns}
-        <div class="card-chip ${chip}">${b?b.name:'자료'}</div>
+      div.innerHTML=`${adminBtns}<div class="card-chip ${chip}">${b?b.name:'자료'}</div>
         <div class="card-main">
           <div class="file-badge">${isHtml?'🌐':r.type==='file'?'📎':'🔗'}</div>
           <div class="card-title">${r.title}${visBadge}</div>
           <div class="card-tags">${tagHtml}</div>
         </div>
-        <div class="card-foot"><div class="card-views">👁 ${r.views||0}</div><div class="card-go">${isHtml?'🔍':r.type==='file'?'↓':'→'}</div></div>
-      </div>`;
+        <div class="card-foot"><div class="card-views">👁 ${r.views||0}</div><div class="card-go">${isHtml?'🔍':r.type==='file'?'↓':'→'}</div></div>`;
+    } else {
+      div.innerHTML=`${adminBtns}<div class="card-chip ${chip}">${b?b.name:'자료'}</div>
+        <div class="file-badge">${isHtml?'🌐 HTML':r.type==='file'?'📎 파일':'🔗 링크'}</div>${visBadge}
+        <div class="card-title">${r.title}</div>
+        <div class="card-desc">${r.description||''}</div>
+        ${r.usage_tip?`<div class="card-usage"><div class="card-usage-lbl">💡 활용방법</div><div class="card-usage-txt">${r.usage_tip}</div></div>`:''}
+        ${tagHtml?`<div class="card-tags">${tagHtml}</div>`:''}
+        <div class="card-foot"><div class="card-views">👁 ${r.views||0}</div><div class="card-go">${isHtml?'🔍':r.type==='file'?'↓':'→'}</div></div>`;
     }
-    return `<div class="card ${bc}" draggable="${isAdmin}" ondragstart="rdragStart(event,${i})" ondragover="rdragOver(event,${i})" ondrop="rdrop(event,${i})" ondragleave="rdragLeave(event)" onclick="${clickAct}" data-rid="${r.id}" style="animation-delay:${i*.04}s">
-      ${adminBtns}
-      <div class="card-chip ${chip}">${b?b.name:'자료'}</div>
-      <div class="file-badge">${isHtml?'🌐 HTML':r.type==='file'?'📎 파일':'🔗 링크'}</div>
-      ${visBadge}
-      <div class="card-title">${r.title}</div>
-      <div class="card-desc">${r.description||''}</div>
-      ${r.usage_tip?`<div class="card-usage"><div class="card-usage-lbl">💡 활용방법</div><div class="card-usage-txt">${r.usage_tip}</div></div>`:''}
-      ${tagHtml?`<div class="card-tags">${tagHtml}</div>`:''}
-      <div class="card-foot"><div class="card-views">👁 ${r.views||0}</div><div class="card-go">${isHtml?'🔍':r.type==='file'?'↓':'→'}</div></div>
-    </div>`;
-  }).join('');
-}
-
-function rdragStart(e,i){if(!isAdmin)return;e.currentTarget.classList.add('dragging');dragSrcIdx=i;e.stopPropagation();}
-function rdragOver(e,i){if(!isAdmin)return;e.preventDefault();e.currentTarget.classList.add('drag-over');e.stopPropagation();}
-function rdragLeave(e){e.currentTarget.classList.remove('drag-over');}
-async function rdrop(e,i){
-  e.preventDefault();e.stopPropagation();e.currentTarget.classList.remove('drag-over');
-  if(!isAdmin||dragSrcIdx===null||dragSrcIdx===i)return;
-  const items=Array.from(document.querySelectorAll('#resGrid .card'));
-  const ids=items.map(el=>parseInt(el.dataset.rid));
-  [ids[dragSrcIdx],ids[i]]=[ids[i],ids[dragSrcIdx]];
-  for(let j=0;j<ids.length;j++)await sb.from('resources').update({sort_order:j}).eq('id',ids[j]);
-  dragSrcIdx=null;await renderRes();
+    div.addEventListener('click',()=>{
+      if(isHtml)openHtmlPreview(r.id,r.title);
+      else if(r.type==='file'){window.open(r.url||'#','_blank');hitRes(r.id);}
+      else hitRes(r.id);
+    });
+    div.addEventListener('touchend',e=>{
+      if(e.target.classList.contains('btn-edit')||e.target.classList.contains('btn-del'))return;
+      e.preventDefault();
+      if(isHtml)openHtmlPreview(r.id,r.title);
+      else if(r.type==='file'){window.open(r.url||'#','_blank');hitRes(r.id);}
+      else hitRes(r.id);
+    });
+    if(isAdmin){
+      const ca=div.querySelector('#ca-'+r.id);
+      if(ca){
+        ca.querySelector('.btn-edit').addEventListener('click',e=>{e.stopPropagation();openEditRes(r.id);});
+        ca.querySelector('.btn-del').addEventListener('click',e=>{e.stopPropagation();delRes(r.id);});
+      }
+      div.addEventListener('dragstart',e=>{div.classList.add('dragging');dragSrcIdx=i;e.stopPropagation();});
+      div.addEventListener('dragover',e=>{e.preventDefault();div.classList.add('drag-over');e.stopPropagation();});
+      div.addEventListener('dragleave',()=>div.classList.remove('drag-over'));
+      div.addEventListener('drop',async e=>{
+        e.preventDefault();e.stopPropagation();div.classList.remove('drag-over');
+        if(dragSrcIdx===null||dragSrcIdx===i)return;
+        const items=Array.from(document.querySelectorAll('#resGrid .card'));
+        const ids=items.map(el=>parseInt(el.dataset.rid));
+        [ids[dragSrcIdx],ids[i]]=[ids[i],ids[dragSrcIdx]];
+        for(let j=0;j<ids.length;j++)await sb.from('resources').update({sort_order:j}).eq('id',ids[j]);
+        dragSrcIdx=null;await renderRes();
+      });
+    }
+    grid.appendChild(div);
+  });
 }
 
 async function hitRes(id){
@@ -1033,7 +1073,7 @@ async function hitRes(id){
 async function openHtmlPreview(id,title){
   const{data:r}=await sb.from('resources').select('*').eq('id',id).single();
   if(r)await sb.from('resources').update({views:(r.views||0)+1}).eq('id',id);
-  document.getElementById('previewTitle').textContent=title;
+  document.getElementById('previewTitle').textContent=title||'HTML 미리보기';
   document.getElementById('previewFrame').src=r&&r.url?r.url:'about:blank';
   document.getElementById('htmlPreview').classList.add('on');
   history.pushState({page:'preview'},'','');
@@ -1041,7 +1081,6 @@ async function openHtmlPreview(id,title){
 function closePreview(){document.getElementById('htmlPreview').classList.remove('on');}
 function setView(m){viewMode=m;document.getElementById('vt-card').classList.toggle('on',m==='card');document.getElementById('vt-list').classList.toggle('on',m==='list');renderRes();}
 
-// board CRUD
 async function openBoardModal(id){
   document.getElementById('editBoardId').value=id||'';
   if(id){
@@ -1052,7 +1091,7 @@ async function openBoardModal(id){
     document.getElementById('bPublic').checked=b.is_public!==false;
   } else {
     document.getElementById('boardModalTitle').textContent='게시판 추가';
-    ['bName','bDesc','bIcon'].forEach(i=>document.getElementById(i).value='');
+    ['bName','bDesc','bIcon'].forEach(x=>document.getElementById(x).value='');
     document.getElementById('bColor').value='green';document.getElementById('bPublic').checked=true;
   }
   document.getElementById('boardOv').classList.add('on');
@@ -1066,22 +1105,19 @@ async function saveBoard(){
   if(eid){({error:err}=await sb.from('boards').update(obj).eq('id',eid));toast('✅ 수정되었습니다.');}
   else{({error:err}=await sb.from('boards').insert(obj));toast('✅ 게시판이 추가되었습니다!');}
   if(err){toast('❗ '+err.message);return;}
-  closeOv('boardOv');renderBoards();
+  closeOv('boardOv');renderBoards();renderHeroPills();
 }
 async function delBoard(id){
   if(!confirm('게시판과 모든 자료를 삭제하시겠습니까?'))return;
   await sb.from('resources').delete().eq('board_id',id);
   await sb.from('boards').delete().eq('id',id);
-  renderBoards();toast('🗑 삭제되었습니다.');
+  renderBoards();renderHeroPills();toast('🗑 삭제되었습니다.');
 }
-
-// resource CRUD
 function openAddRes(){
-  document.getElementById('editResId').value='';
-  document.getElementById('resModalTitle').textContent='자료 추가';
-  ['rTitle','rDesc','rUsage','rUrl','rFileUrl'].forEach(i=>document.getElementById(i).value='');
+  document.getElementById('editResId').value='';document.getElementById('resModalTitle').textContent='자료 추가';
+  ['rTitle','rDesc','rUsage','rUrl','rFileUrl'].forEach(x=>document.getElementById(x).value='');
   selectedTags=[];htmlContent=null;
-  ['tag-student','tag-parent','tag-teacher'].forEach(id=>document.getElementById(id).className='tag-opt');
+  ['tag-student','tag-parent','tag-teacher'].forEach(x=>document.getElementById(x).className='tag-opt');
   document.getElementById('htmlFn').textContent='';document.getElementById('rPublic').checked=true;
   document.getElementById('rType').value='link';document.getElementById('moveBoardWrap').style.display='none';
   toggleType();document.getElementById('resOv').classList.add('on');
@@ -1098,7 +1134,7 @@ async function openEditRes(id){
   ['student','parent','teacher'].forEach(t=>document.getElementById('tag-'+t).className='tag-opt'+(selectedTags.includes(t)?' sel-'+t:''));
   const sel=document.getElementById('rBoardId');
   const{data:bds}=await sb.from('boards').select('id,name,icon').order('sort_order');
-  sel.innerHTML=(bds||[]).map(b=>`<option value="${b.id}" ${b.id===curBoard?'selected':''}>${b.icon||'📁'} ${b.name}</option>`).join('');
+  sel.innerHTML=(bds||[]).map(b=>`<option value="${b.id}"${b.id===curBoard?' selected':''}>${b.icon||'📁'} ${b.name}</option>`).join('');
   document.getElementById('moveBoardWrap').style.display='block';
   toggleType();document.getElementById('resOv').classList.add('on');
 }
@@ -1109,8 +1145,8 @@ async function saveRes(){
   const type=document.getElementById('rType').value;
   const url=type==='link'?document.getElementById('rUrl').value.trim():type==='html'&&htmlContent?htmlContent:document.getElementById('rFileUrl').value.trim();
   const eid=document.getElementById('editResId').value;
-  const boardIdEl=document.getElementById('rBoardId');
-  const targetBoard=eid&&boardIdEl.value?parseInt(boardIdEl.value):curBoard;
+  const bel=document.getElementById('rBoardId');
+  const targetBoard=eid&&bel.value?parseInt(bel.value):curBoard;
   const obj={title,description:desc,usage_tip:document.getElementById('rUsage').value.trim(),type,url,is_public:document.getElementById('rPublic').checked,tags:selectedTags,board_id:targetBoard};
   if(!eid)obj.views=0;
   let err;
@@ -1142,45 +1178,28 @@ function handleHtmlFile(input){
   reader.readAsDataURL(f);
 }
 function handleHtmlDrop(e){
-  e.preventDefault();document.getElementById('htmlArea').classList.remove('drag');
+  e.preventDefault();e.currentTarget.classList.remove('drag');
   const f=e.dataTransfer.files[0];
   if(f){const r=new FileReader();r.onload=ev=>{htmlContent=ev.target.result;document.getElementById('htmlFn').textContent='✅ '+f.name;};r.readAsDataURL(f);}
 }
-
-// admin
-function openLogin(){document.getElementById('loginOv').classList.add('on');}
 function doLogin(){
   if(document.getElementById('pwIn').value===PW_ADMIN){
     isAdmin=true;closeOv('loginOv');
     document.getElementById('adminBar').classList.add('on');
+    document.body.classList.add('admin-mode');
     document.getElementById('addBoardWrap').style.display='block';
     if(curBoard)document.getElementById('addResWrap').style.display='block';
-    renderBoards();if(curBoard)renderRes();toast('✅ 관리자로 로그인되었습니다.');
+    renderBoards();if(curBoard)renderRes();renderHeroPills();toast('✅ 관리자로 로그인되었습니다.');
   } else document.getElementById('pwErr').style.display='block';
 }
 function logout(){
-  isAdmin=false;
-  document.getElementById('adminBar').classList.remove('on');
-  document.getElementById('addBoardWrap').style.display='none';
-  document.getElementById('addResWrap').style.display='none';
-  if(curBoard)renderRes();else renderBoards();toast('로그아웃되었습니다.');
-}
-
-function goHome(){
-  showBoards();
-  document.getElementById('heroSection').scrollIntoView({behavior:'smooth'});
+  isAdmin=false;document.getElementById('adminBar').classList.remove('on');document.body.classList.remove('admin-mode');
+  document.getElementById('addBoardWrap').style.display='none';document.getElementById('addResWrap').style.display='none';
+  if(curBoard)renderRes();else renderBoards();renderHeroPills();toast('로그아웃되었습니다.');
 }
 function closeOv(id){document.getElementById(id).classList.remove('on');}
 document.querySelectorAll('.overlay').forEach(ov=>ov.addEventListener('click',function(e){if(e.target===this)this.classList.remove('on');}));
 function toast(msg){const t=document.getElementById('toast');document.getElementById('toastTxt').textContent=msg;t.classList.add('on');setTimeout(()=>t.classList.remove('on'),2800);}
-window.addEventListener('scroll',()=>{document.querySelector('nav').style.boxShadow=window.scrollY>10?'0 2px 14px rgba(0,0,0,.07)':'none';});
-
-// 검색창 외부 클릭 시 닫기
-document.addEventListener('click',function(e){
-  const wrap=document.getElementById('searchWrap');
-  const btn=document.getElementById('searchToggleBtn');
-  if(wrap.classList.contains('on')&&!wrap.contains(e.target)&&!btn.contains(e.target)){closeSearch();}
-});
 </script>
 </body>
 </html>
